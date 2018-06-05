@@ -1,6 +1,7 @@
 # Sage Intacct SDK for JavaScript
 
-[![Travis Build Status](https://travis-ci.org/Intacct/intacct-sdk-js.svg)](https://travis-ci.org/Intacct/intacct-sdk-js)
+[![Travis Build Status](https://travis-ci.com/Intacct/intacct-sdk-js.svg)](https://travis-ci.com/Intacct/intacct-sdk-js)
+[![npm version](https://badge.fury.io/js/%40intacct%2Fintacct-sdk.svg)](https://badge.fury.io/js/%40intacct%2Fintacct-sdk)
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.npmjs.com/package/@sage-intact/intacct-sdk)
 
 ## Resources
