@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "tslint:recommended"
+  ],
+  "jsRules": {},
+  "rules": {
+    "object-literal-key-quotes": [
+      true,
+      "consistent"
+    ],
+    "object-literal-sort-keys": false,
+    "no-string-literal": false,
+    "variable-name": [
+      true,
+      "allow-leading-underscore"
+    ]
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": [
+      "src/**/index.ts"
+    ]
+  }
+}

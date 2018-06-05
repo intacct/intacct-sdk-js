@@ -1,0 +1,9 @@
+**/tsconfig.json
+tsconfig.*.json
+tslint.json
+
+.idea/
+doc/
+node_modules/
+src/
+test/

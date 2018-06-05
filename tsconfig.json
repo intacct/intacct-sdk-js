@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "pretty": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es2015",
+    "outDir": "./dist",
+    "declaration": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "typedocOptions": {
+    "out": "doc",
+    "exclude": "**/*/index.ts",
+    "module": "commonjs",
+    "target": "es2015",
+    "mode": "modules",
+    "readme": "none",
+    "theme": "minimal",
+    "name": "Sage Intacct SDK for JavaScript"
+  }
+}
