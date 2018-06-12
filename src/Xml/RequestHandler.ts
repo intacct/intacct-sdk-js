@@ -32,7 +32,7 @@ import RequestBlock from "./RequestBlock";
 
 export default class RequestHandler {
 
-    public readonly version: string = "1.0.0"; // TODO this should match package.json
+    public readonly version: string;
 
     public clientConfig: ClientConfig;
 
@@ -41,6 +41,9 @@ export default class RequestHandler {
     public endpointUrl: string;
 
     constructor(clientConfig: ClientConfig, requestConfig: RequestConfig) {
+        const packageInfo = require("../../package.json");
+        this.version = packageInfo.version;
+
         if (clientConfig.endpointUrl != null && clientConfig.endpointUrl !== "") {
             this.endpointUrl = clientConfig.endpointUrl;
         } else {
