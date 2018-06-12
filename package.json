@@ -35,9 +35,11 @@
     "build-ts": "tsc",
     "tslint": "tslint -c tslint.json 'src/**/*.ts'",
     "doc": "rimraf doc && typedoc src/",
-    "pretest": "npm run build",
     "test": "npm run tslint && npm run test-mocha",
-    "test-mocha": "mocha -r ts-node/register test/**/*.ts"
+    "test-mocha": "mocha -r ts-node/register test/**/*.ts",
+    "preversion": "npm test",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "@types/chai": "^4.1.3",
