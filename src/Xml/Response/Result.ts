@@ -39,8 +39,8 @@ export default class Result {
         return this._controlId;
     }
 
-    private _data: object[];
-    get data(): object[] {
+    private _data: any[];
+    get data(): any[] {
         return this._data;
     }
 
