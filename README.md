@@ -21,7 +21,7 @@
 [intacct]: http://www.intacct.com
 [ia-developer]: https://developer.intacct.com/
 [sdk-homepage]: https://developer.intacct.com/tools/sdk-node-js/
-[sdk-reference]: https://intacct.github.io/intacct-sdk-js/annotated.html
+[sdk-reference]: https://intacct.github.io/intacct-sdk-js/
 [sdk-issues]: https://github.com/Intacct/intacct-sdk-js/issues
 [sdk-license]: http://www.apache.org/licenses/LICENSE-2.0
 [npm]: https://www.npmjs.com/package/@sage-intact/intacct-sdk
