@@ -45,6 +45,14 @@ export default class ProjectUpdate extends AbstractProject {
         xml.writeElement("DOCNUMBER", this.referenceNo);
         xml.writeElement("USERRESTRICTIONS", this.userRestrictions);
 
+        if (this.transactionRules != null && this.transactionRules.length > 0) {
+            for (const transactionRule of this.transactionRules) {
+                xml.writeStartElement("PROJECT_RULES");
+                xml.writeElement("RULENAME", transactionRule);
+                xml.writeEndElement(); // PROJECT_RULES
+            }
+        }
+
         if (this.active === true) {
             xml.writeElement("STATUS", "active");
         } else if (this.active === false) {

@@ -49,6 +49,8 @@ export default abstract class AbstractProject extends AbstractFunction {
 
     public userRestrictions: string;
 
+    public transactionRules: string[];
+
     public active: boolean;
 
     public primaryContactName: string;
