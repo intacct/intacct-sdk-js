@@ -24,6 +24,8 @@ export default class LoginAuthentication implements IAuthentication {
 
     private _companyId: string;
 
+    private _entityId: string;
+
     private _userId: string;
 
     private _password: string;
@@ -36,6 +38,13 @@ export default class LoginAuthentication implements IAuthentication {
             throw new Error("Company ID is required and cannot be blank");
         }
         this._companyId = companyId;
+    }
+
+    get entityId(): string {
+        return this._entityId;
+    }
+    set entityId(entityId: string) {
+        this._entityId = entityId;
     }
 
     get userId(): string {
@@ -58,10 +67,11 @@ export default class LoginAuthentication implements IAuthentication {
         this._password = password;
     }
 
-    constructor(userId: string, companyId: string, userPassword: string) {
+    constructor(userId: string, companyId: string, userPassword: string, entityId?: string) {
         this.companyId = companyId;
         this.userId = userId;
         this.password = userPassword;
+        this.entityId = entityId !== undefined ? entityId : null;
     }
 
     public writeXml(xml: IaXmlWriter): void {
@@ -70,6 +80,9 @@ export default class LoginAuthentication implements IAuthentication {
         xml.writeElement("userid", this.userId);
         xml.writeElement("companyid", this.companyId);
         xml.writeElement("password", this.password);
+        if (this.entityId != null) {
+            xml.writeElement("locationid", this.entityId);
+        }
         xml.writeEndElement(); // login
         xml.writeEndElement(); // authentication
     }

@@ -46,6 +46,7 @@ describe("SessionProvider", () => {
                   <status>success</status>
                   <userid>testuser</userid>
                   <companyid>testcompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
             </authentication>
             <result>
@@ -56,6 +57,7 @@ describe("SessionProvider", () => {
                         <api>
                               <sessionid>fAkESesSiOnId..</sessionid>
                               <endpoint>https://unittest.intacct.com/ia/xml/xmlgw.phtml</endpoint>
+                              <locationid></locationid>
                         </api>
                   </data>
             </result>
@@ -83,6 +85,64 @@ describe("SessionProvider", () => {
 
         chai.assert.equal(sessionCreds.sessionId, "fAkESesSiOnId..");
         chai.assert.equal(sessionCreds.endpointUrl, "https://unittest.intacct.com/ia/xml/xmlgw.phtml");
+        chai.assert.equal(sessionCreds.entityId, "");
+    });
+    it("should execute from login credentials with entity", async () => {
+        const xmlResponse = `<?xml version="1.0" encoding="utf-8" ?>
+<response>
+      <control>
+            <status>success</status>
+            <senderid>testsenderid</senderid>
+            <controlid>sessionProvider</controlid>
+            <uniqueid>false</uniqueid>
+            <dtdversion>3.0</dtdversion>
+      </control>
+      <operation>
+            <authentication>
+                  <status>success</status>
+                  <userid>testuser</userid>
+                  <companyid>testcompany</companyid>
+                  <locationid>testentity</locationid>
+                  <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+            </authentication>
+            <result>
+                  <status>success</status>
+                  <function>getSession</function>
+                  <controlid>testControlId</controlid>
+                  <data>
+                        <api>
+                              <sessionid>fAkESesSiOnId..</sessionid>
+                              <endpoint>https://unittest.intacct.com/ia/xml/xmlgw.phtml</endpoint>
+                              <locationid>testentity</locationid>
+                        </api>
+                  </data>
+            </result>
+      </operation>
+</response>`;
+
+        const headers = {
+            "Content-Type": 'text/xml; encoding="UTF-8"',
+        };
+
+        nock.disableNetConnect();
+        nock("https://api.intacct.com")
+            .replyContentLength()
+            .post("/ia/xml/xmlgw.phtml")
+            .reply(200, xmlResponse, headers);
+
+        const config = new ClientConfig();
+        config.senderId = "testsenderid";
+        config.senderPassword = "pass123!";
+        config.companyId = "testcompany";
+        config.entityId = "testentity";
+        config.userId = "testuser";
+        config.userPassword = "testpass";
+
+        const sessionCreds = await SessionProvider.factory(config);
+
+        chai.assert.equal(sessionCreds.sessionId, "fAkESesSiOnId..");
+        chai.assert.equal(sessionCreds.endpointUrl, "https://unittest.intacct.com/ia/xml/xmlgw.phtml");
+        chai.assert.equal(sessionCreds.entityId, "testentity");
     });
     it("should execute from session credentials", async () => {
         const xmlResponse = `<?xml version="1.0" encoding="utf-8" ?>
@@ -99,6 +159,7 @@ describe("SessionProvider", () => {
                   <status>success</status>
                   <userid>testuser</userid>
                   <companyid>testcompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
             </authentication>
             <result>
@@ -109,6 +170,7 @@ describe("SessionProvider", () => {
                         <api>
                               <sessionid>fAkESesSiOnId..</sessionid>
                               <endpoint>https://unittest.intacct.com/ia/xml/xmlgw.phtml</endpoint>
+                              <locationid></locationid>
                         </api>
                   </data>
             </result>
@@ -134,6 +196,117 @@ describe("SessionProvider", () => {
 
         chai.assert.equal(sessionCreds.sessionId, "fAkESesSiOnId..");
         chai.assert.equal(sessionCreds.endpointUrl, "https://unittest.intacct.com/ia/xml/xmlgw.phtml");
+        chai.assert.equal(sessionCreds.entityId, "");
+    });
+    it("should execute from top level session credentials with entity override", async () => {
+        const xmlResponse = `<?xml version="1.0" encoding="utf-8" ?>
+<response>
+      <control>
+            <status>success</status>
+            <senderid>testsenderid</senderid>
+            <controlid>sessionProvider</controlid>
+            <uniqueid>false</uniqueid>
+            <dtdversion>3.0</dtdversion>
+      </control>
+      <operation>
+            <authentication>
+                  <status>success</status>
+                  <userid>testuser</userid>
+                  <companyid>testcompany</companyid>
+                  <locationid></locationid>
+                  <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+            </authentication>
+            <result>
+                  <status>success</status>
+                  <function>getSession</function>
+                  <controlid>testControlId</controlid>
+                  <data>
+                        <api>
+                              <sessionid>fAkESesSiOnId..</sessionid>
+                              <endpoint>https://unittest.intacct.com/ia/xml/xmlgw.phtml</endpoint>
+                              <locationid>testentity</locationid>
+                        </api>
+                  </data>
+            </result>
+      </operation>
+</response>`;
+
+        const headers = {
+            "Content-Type": 'text/xml; encoding="UTF-8"',
+        };
+
+        nock.disableNetConnect();
+        nock("https://api.intacct.com")
+            .replyContentLength()
+            .post("/ia/xml/xmlgw.phtml")
+            .reply(200, xmlResponse, headers);
+
+        const config = new ClientConfig();
+        config.senderId = "testsenderid";
+        config.senderPassword = "pass123!";
+        config.sessionId = "fAkESesSiOnId..";
+        config.entityId = "testentity";
+
+        const sessionCreds = await SessionProvider.factory(config);
+
+        chai.assert.equal(sessionCreds.sessionId, "fAkESesSiOnId..");
+        chai.assert.equal(sessionCreds.endpointUrl, "https://unittest.intacct.com/ia/xml/xmlgw.phtml");
+        chai.assert.equal(sessionCreds.entityId, "testentity");
+    });
+    it("should execute from private entity session credentials with different entity override", async () => {
+        const xmlResponse = `<?xml version="1.0" encoding="utf-8" ?>
+<response>
+      <control>
+            <status>success</status>
+            <senderid>testsenderid</senderid>
+            <controlid>sessionProvider</controlid>
+            <uniqueid>false</uniqueid>
+            <dtdversion>3.0</dtdversion>
+      </control>
+      <operation>
+            <authentication>
+                  <status>success</status>
+                  <userid>testuser</userid>
+                  <companyid>testcompany</companyid>
+                  <locationid>entityA</locationid>
+                  <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+            </authentication>
+            <result>
+                  <status>success</status>
+                  <function>getSession</function>
+                  <controlid>testControlId</controlid>
+                  <data>
+                        <api>
+                              <sessionid>EntityBSession..</sessionid>
+                              <endpoint>https://unittest.intacct.com/ia/xml/xmlgw.phtml</endpoint>
+                              <locationid>entityB</locationid>
+                        </api>
+                  </data>
+            </result>
+      </operation>
+</response>`;
+
+        const headers = {
+            "Content-Type": 'text/xml; encoding="UTF-8"',
+        };
+
+        nock.disableNetConnect();
+        nock("https://api.intacct.com")
+            .replyContentLength()
+            .post("/ia/xml/xmlgw.phtml")
+            .reply(200, xmlResponse, headers);
+
+        const config = new ClientConfig();
+        config.senderId = "testsenderid";
+        config.senderPassword = "pass123!";
+        config.sessionId = "EntityAsession..";
+        config.entityId = "entityB";
+
+        const sessionCreds = await SessionProvider.factory(config);
+
+        chai.assert.equal(sessionCreds.sessionId, "EntityBSession..");
+        chai.assert.equal(sessionCreds.endpointUrl, "https://unittest.intacct.com/ia/xml/xmlgw.phtml");
+        chai.assert.equal(sessionCreds.entityId, "entityB");
     });
     it("should execute from session credentials using an environment sender", async () => {
         const xmlResponse = `<?xml version="1.0" encoding="utf-8" ?>
@@ -150,6 +323,7 @@ describe("SessionProvider", () => {
                   <status>success</status>
                   <userid>testuser</userid>
                   <companyid>testcompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
             </authentication>
             <result>
@@ -160,6 +334,7 @@ describe("SessionProvider", () => {
                         <api>
                               <sessionid>fAkESesSiOnId..</sessionid>
                               <endpoint>https://unittest.intacct.com/ia/xml/xmlgw.phtml</endpoint>
+                              <locationid></locationid>
                         </api>
                   </data>
             </result>

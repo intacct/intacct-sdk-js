@@ -47,6 +47,7 @@ describe("OnlineResponse", () => {
                   <status>success</status>
                   <userid>fakeuser</userid>
                   <companyid>fakecompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-10-22T20:58:27-07:00</sessiontimestamp>
             </authentication>
             <result>
@@ -57,6 +58,7 @@ describe("OnlineResponse", () => {
                         <api>
                               <sessionid>fAkESesSiOnId..</sessionid>
                               <endpoint>https://api.intacct.com/ia/xml/xmlgw.phtml</endpoint>
+                              <locationid></locationid>
                         </api>
                   </data>
             </result>
@@ -104,6 +106,7 @@ describe("OnlineResponse", () => {
                   <status>failure</status>
                   <userid>fakeuser</userid>
                   <companyid>fakecompany</companyid>
+                  <locationid></locationid>
             </authentication>
             <errormessage>
                   <error>
@@ -158,6 +161,7 @@ describe("OnlineResponse", () => {
                   <status>success</status>
                   <userid>fakeuser</userid>
                   <companyid>fakecompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-10-22T20:58:27-07:00</sessiontimestamp>
             </authentication>
       </operation>

@@ -52,6 +52,7 @@ describe("RequestHandler", () => {
                   <status>success</status>
                   <userid>testuser</userid>
                   <companyid>testcompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
             </authentication>
             <result>
@@ -62,6 +63,7 @@ describe("RequestHandler", () => {
                         <api>
                               <sessionid>unittest..</sessionid>
                               <endpoint>https://unittest.intacct.com/ia/xml/xmlgw.phtml</endpoint>
+                              <locationid></locationid>
                         </api>
                   </data>
             </result>
@@ -171,6 +173,7 @@ describe("RequestHandler", () => {
                   <status>success</status>
                   <userid>testuser</userid>
                   <companyid>testcompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
             </authentication>
             <result>
@@ -181,6 +184,7 @@ describe("RequestHandler", () => {
                         <api>
                               <sessionid>unittest..</sessionid>
                               <endpoint>https://unittest.intacct.com/ia/xml/xmlgw.phtml</endpoint>
+                              <locationid></locationid>
                         </api>
                   </data>
             </result>
@@ -299,6 +303,7 @@ describe("RequestHandler", () => {
                   <status>success</status>
                   <userid>testuser</userid>
                   <companyid>testcompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
             </authentication>
             <result>
@@ -309,6 +314,7 @@ describe("RequestHandler", () => {
                         <api>
                               <sessionid>unittest..</sessionid>
                               <endpoint>https://unittest.intacct.com/ia/xml/xmlgw.phtml</endpoint>
+                              <locationid></locationid>
                         </api>
                   </data>
             </result>

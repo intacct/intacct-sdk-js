@@ -46,6 +46,7 @@ describe("Authentication", () => {
                   <status>success</status>
                   <userid>fakeuser</userid>
                   <companyid>fakecompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-10-24T18:56:52-07:00</sessiontimestamp>
             </authentication>
             <result>
@@ -56,6 +57,7 @@ describe("Authentication", () => {
                         <api>
                               <sessionid>faKEsesSiOnId..</sessionid>
                               <endpoint>https://api.intacct.com/ia/xml/xmlgw.phtml</endpoint>
+                              <locationid></locationid>
                         </api>
                   </data>
             </result>
@@ -67,6 +69,7 @@ describe("Authentication", () => {
         chai.assert.equal(authentication.status, "success");
         chai.assert.equal(authentication.userId, "fakeuser");
         chai.assert.equal(authentication.companyId, "fakecompany");
+        chai.assert.equal(authentication.entityId, "");
     });
     it("should throw exception when status is not included", () => {
         chai.assert.throws(
@@ -85,6 +88,7 @@ describe("Authentication", () => {
                   <!--<status>success</status>-->
                   <userid>fakeuser</userid>
                   <companyid>fakecompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-10-24T18:56:52-07:00</sessiontimestamp>
             </authentication>
             <result/>
@@ -113,6 +117,7 @@ describe("Authentication", () => {
                   <status>success</status>
                   <!--<userid>fakeuser</userid>-->
                   <companyid>fakecompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-10-24T18:56:52-07:00</sessiontimestamp>
             </authentication>
             <result/>
@@ -141,6 +146,7 @@ describe("Authentication", () => {
                   <status>success</status>
                   <userid>fakeuser</userid>
                   <!--<companyid>fakecompany</companyid>-->
+                  <locationid></locationid>
                   <sessiontimestamp>2015-10-24T18:56:52-07:00</sessiontimestamp>
             </authentication>
             <result/>

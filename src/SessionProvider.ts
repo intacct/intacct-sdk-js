@@ -39,8 +39,14 @@ export default class SessionProvider {
         requestConfig.controlId = "sessionProvider";
         requestConfig.noRetryServerErrorCodes = []; // Retry all 500 level errors
 
+        const apiFunction = new ApiSessionCreate();
+
+        if (config.sessionId != null && config.entityId != null) {
+            apiFunction.entityId = config.entityId;
+        }
+
         const client = new OnlineClient(config);
-        const response = await client.execute(new ApiSessionCreate(), requestConfig);
+        const response = await client.execute(apiFunction, requestConfig);
 
         const authentication = response.authentication;
         const result = response.results[0];
@@ -52,6 +58,7 @@ export default class SessionProvider {
 
         config.sessionId = api["sessionid"].toString();
         config.endpointUrl = api["endpoint"].toString();
+        config.entityId = api["locationid"].toString();
 
         config.companyId = authentication.companyId;
         config.userId = authentication.userId;

@@ -34,6 +34,9 @@ export default class ProfileCredentialProvider {
         if (data["company_id"]) {
             creds.companyId = data["company_id"];
         }
+        if (data["entity_id"]) {
+            creds.entityId = data["entity_id"];
+        }
         if (data["user_id"]) {
             creds.userId = data["user_id"];
         }

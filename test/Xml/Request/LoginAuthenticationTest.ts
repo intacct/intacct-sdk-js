@@ -46,6 +46,40 @@ describe("LoginAuthentication", () => {
 
         XmlObjectTestHelper.CompareXml(expected, loginAuthentication);
     });
+    it("should set companyId, entityId, userId, and password", () => {
+        const expected = `<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <authentication>
+        <login>
+            <userid>testuser</userid>
+            <companyid>testcompany</companyid>
+            <password>testpass</password>
+            <locationid>testentity</locationid>
+        </login>
+    </authentication>
+</test>`;
+
+        const loginAuthentication = new LoginAuthentication("testuser", "testcompany", "testpass", "testentity");
+
+        XmlObjectTestHelper.CompareXml(expected, loginAuthentication);
+    });
+    it("should set companyId, empty entityId, userId, and password", () => {
+        const expected = `<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <authentication>
+        <login>
+            <userid>testuser</userid>
+            <companyid>testcompany</companyid>
+            <password>testpass</password>
+            <locationid />
+        </login>
+    </authentication>
+</test>`;
+
+        const loginAuthentication = new LoginAuthentication("testuser", "testcompany", "testpass", "");
+
+        XmlObjectTestHelper.CompareXml(expected, loginAuthentication);
+    });
     it("should throw exception when companyid is null", () => {
         chai.assert.throws(
             () => {

@@ -33,6 +33,11 @@ describe("ProfileCredentialsProvider", () => {
             "[unittest]\n" +
             "company_id = inicompanyid\n" +
             "user_id = iniuserid\n" +
+            "user_password = iniuserpass\n" +
+            "[entity]\n" +
+            "company_id = inicompanyid\n" +
+            "entity_id = inientityid\n" +
+            "user_id = iniuserid\n" +
             "user_password = iniuserpass\n";
         const files = {};
         const homeDir = ProfileCredentialProvider.getHomeDirProfile();
@@ -53,6 +58,7 @@ describe("ProfileCredentialsProvider", () => {
         const loginCreds = ProfileCredentialProvider.getLoginCredentials(config);
 
         chai.assert.equal(loginCreds.companyId, "defcompanyid");
+        chai.assert.isUndefined(loginCreds.entityId);
         chai.assert.equal(loginCreds.userId, "defuserid");
         chai.assert.equal(loginCreds.userPassword, "defuserpass");
 
@@ -71,6 +77,20 @@ describe("ProfileCredentialsProvider", () => {
         const loginCreds = ProfileCredentialProvider.getLoginCredentials(config);
 
         chai.assert.equal(loginCreds.companyId, "inicompanyid");
+        chai.assert.isUndefined(loginCreds.entityId);
+        chai.assert.equal(loginCreds.userId, "iniuserid");
+        chai.assert.equal(loginCreds.userPassword, "iniuserpass");
+
+        done();
+    });
+
+    it("should return credentials with entity from a specific profile", (done) => {
+        const config = new ClientConfig();
+        config.profileName = "entity";
+        const loginCreds = ProfileCredentialProvider.getLoginCredentials(config);
+
+        chai.assert.equal(loginCreds.companyId, "inicompanyid");
+        chai.assert.equal(loginCreds.entityId, "inientityid");
         chai.assert.equal(loginCreds.userId, "iniuserid");
         chai.assert.equal(loginCreds.userPassword, "iniuserpass");
 
