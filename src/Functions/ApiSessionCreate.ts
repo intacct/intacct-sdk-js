@@ -22,11 +22,19 @@ import AbstractFunction from "./AbstractFunction";
 
 export default class ApiSessionCreate extends AbstractFunction {
 
+    public entityId: string;
+
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");
         xml.writeAttribute("controlid", this.controlId, true);
 
-        xml.writeElement("getAPISession", "", true);
+        xml.writeStartElement("getAPISession");
+
+        if (this.entityId != null) {
+            xml.writeElement("locationid", this.entityId, true);
+        }
+
+        xml.writeEndElement(); // getAPISession
 
         xml.writeEndElement(); // function
     }
