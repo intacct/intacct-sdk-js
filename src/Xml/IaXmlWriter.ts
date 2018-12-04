@@ -37,13 +37,13 @@ export default class IaXmlWriter {
     public flush(pretty = false): string {
         if (pretty === true) {
             return this._writer.doc().end({
-                "spacebeforeslash": true,
+                "spacebeforeslash": " ",
                 "pretty": true,
                 "indent": "    ",
             });
         } else {
             return this._writer.doc().end({
-                "spacebeforeslash": true,
+                "spacebeforeslash": " ",
                 "pretty": false,
             });
         }
