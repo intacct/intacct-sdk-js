@@ -922,6 +922,9 @@ img { max-width: 100%; }
 					<a href="intacct_sdk_xml_request.loginauthentication.html#_companyid" class="tsd-kind-icon">_company<wbr>Id</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a href="intacct_sdk_xml_request.loginauthentication.html#_entityid" class="tsd-kind-icon">_entity<wbr>Id</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a href="intacct_sdk_xml_request.loginauthentication.html#_password" class="tsd-kind-icon">_password</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
@@ -929,6 +932,9 @@ img { max-width: 100%; }
 				</li>
 				<li class=" tsd-kind-accessor tsd-parent-kind-class">
 					<a href="intacct_sdk_xml_request.loginauthentication.html#companyid" class="tsd-kind-icon">company<wbr>Id</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class">
+					<a href="intacct_sdk_xml_request.loginauthentication.html#entityid" class="tsd-kind-icon">entity<wbr>Id</a>
 				</li>
 				<li class=" tsd-kind-accessor tsd-parent-kind-class">
 					<a href="intacct_sdk_xml_request.loginauthentication.html#password" class="tsd-kind-icon">password</a>
@@ -982,6 +988,7 @@ img { max-width: 100%; }
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="intacct_sdk_xml_request.loginauthentication.html#_companyid" class="tsd-kind-icon">_company<wbr>Id</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="intacct_sdk_xml_request.loginauthentication.html#_entityid" class="tsd-kind-icon">_entity<wbr>Id</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="intacct_sdk_xml_request.loginauthentication.html#_password" class="tsd-kind-icon">_password</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="intacct_sdk_xml_request.loginauthentication.html#_userid" class="tsd-kind-icon">_user<wbr>Id</a></li>
 						</ul>
@@ -990,6 +997,7 @@ img { max-width: 100%; }
 						<h3>Accessors</h3>
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="intacct_sdk_xml_request.loginauthentication.html#companyid" class="tsd-kind-icon">company<wbr>Id</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="intacct_sdk_xml_request.loginauthentication.html#entityid" class="tsd-kind-icon">entity<wbr>Id</a></li>
 							<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="intacct_sdk_xml_request.loginauthentication.html#password" class="tsd-kind-icon">password</a></li>
 							<li class="tsd-kind-accessor tsd-parent-kind-class"><a href="intacct_sdk_xml_request.loginauthentication.html#userid" class="tsd-kind-icon">user<wbr>Id</a></li>
 						</ul>
@@ -1009,13 +1017,13 @@ img { max-width: 100%; }
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
 				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Login<wbr>Authentication<span class="tsd-signature-symbol">(</span>userId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, companyId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, userPassword<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="intacct_sdk_xml_request.loginauthentication.html" class="tsd-signature-type">LoginAuthentication</a></li>
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Login<wbr>Authentication<span class="tsd-signature-symbol">(</span>userId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, companyId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, userPassword<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, entityId<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="intacct_sdk_xml_request.loginauthentication.html" class="tsd-signature-type">LoginAuthentication</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/9f269ef/src/Xml/Request/LoginAuthentication.ts#L59">Xml/Request/LoginAuthentication.ts:59</a></li>
+								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/fda9c38/src/Xml/Request/LoginAuthentication.ts#L68">Xml/Request/LoginAuthentication.ts:68</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1028,6 +1036,9 @@ img { max-width: 100%; }
 							</li>
 							<li>
 								<h5>userPassword: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> entityId: <span class="tsd-signature-type">string</span></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="intacct_sdk_xml_request.loginauthentication.html" class="tsd-signature-type">LoginAuthentication</a></h4>
@@ -1043,7 +1054,17 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">_company<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/9f269ef/src/Xml/Request/LoginAuthentication.ts#L25">Xml/Request/LoginAuthentication.ts:25</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/fda9c38/src/Xml/Request/LoginAuthentication.ts#L25">Xml/Request/LoginAuthentication.ts:25</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+				<a name="_entityid" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> _entity<wbr>Id</h3>
+				<div class="tsd-signature tsd-kind-icon">_entity<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/fda9c38/src/Xml/Request/LoginAuthentication.ts#L27">Xml/Request/LoginAuthentication.ts:27</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1053,7 +1074,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">_password<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/9f269ef/src/Xml/Request/LoginAuthentication.ts#L29">Xml/Request/LoginAuthentication.ts:29</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/fda9c38/src/Xml/Request/LoginAuthentication.ts#L31">Xml/Request/LoginAuthentication.ts:31</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1063,7 +1084,7 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">_user<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/9f269ef/src/Xml/Request/LoginAuthentication.ts#L27">Xml/Request/LoginAuthentication.ts:27</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/fda9c38/src/Xml/Request/LoginAuthentication.ts#L29">Xml/Request/LoginAuthentication.ts:29</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1076,8 +1097,19 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">company<wbr>Id<span class="tsd-signature-symbol">:</span> </div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/9f269ef/src/Xml/Request/LoginAuthentication.ts#L31">Xml/Request/LoginAuthentication.ts:31</a></li>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/9f269ef/src/Xml/Request/LoginAuthentication.ts#L34">Xml/Request/LoginAuthentication.ts:34</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/fda9c38/src/Xml/Request/LoginAuthentication.ts#L33">Xml/Request/LoginAuthentication.ts:33</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/fda9c38/src/Xml/Request/LoginAuthentication.ts#L36">Xml/Request/LoginAuthentication.ts:36</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class">
+				<a name="entityid" class="tsd-anchor"></a>
+				<h3>entity<wbr>Id</h3>
+				<div class="tsd-signature tsd-kind-icon">entity<wbr>Id<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/fda9c38/src/Xml/Request/LoginAuthentication.ts#L43">Xml/Request/LoginAuthentication.ts:43</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/fda9c38/src/Xml/Request/LoginAuthentication.ts#L46">Xml/Request/LoginAuthentication.ts:46</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1087,8 +1119,8 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">password<span class="tsd-signature-symbol">:</span> </div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/9f269ef/src/Xml/Request/LoginAuthentication.ts#L51">Xml/Request/LoginAuthentication.ts:51</a></li>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/9f269ef/src/Xml/Request/LoginAuthentication.ts#L54">Xml/Request/LoginAuthentication.ts:54</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/fda9c38/src/Xml/Request/LoginAuthentication.ts#L60">Xml/Request/LoginAuthentication.ts:60</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/fda9c38/src/Xml/Request/LoginAuthentication.ts#L63">Xml/Request/LoginAuthentication.ts:63</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1098,8 +1130,8 @@ img { max-width: 100%; }
 				<div class="tsd-signature tsd-kind-icon">user<wbr>Id<span class="tsd-signature-symbol">:</span> </div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/9f269ef/src/Xml/Request/LoginAuthentication.ts#L41">Xml/Request/LoginAuthentication.ts:41</a></li>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/9f269ef/src/Xml/Request/LoginAuthentication.ts#L44">Xml/Request/LoginAuthentication.ts:44</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/fda9c38/src/Xml/Request/LoginAuthentication.ts#L50">Xml/Request/LoginAuthentication.ts:50</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/fda9c38/src/Xml/Request/LoginAuthentication.ts#L53">Xml/Request/LoginAuthentication.ts:53</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1117,7 +1149,7 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/intacct_sdk_xml_request.iauthentication.html">IAuthentication</a>.<a href="../interfaces/intacct_sdk_xml_request.iauthentication.html#writexml">writeXml</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/9f269ef/src/Xml/Request/LoginAuthentication.ts#L67">Xml/Request/LoginAuthentication.ts:67</a></li>
+								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/fda9c38/src/Xml/Request/LoginAuthentication.ts#L77">Xml/Request/LoginAuthentication.ts:77</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
