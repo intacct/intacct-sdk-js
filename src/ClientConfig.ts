@@ -37,6 +37,8 @@ export default class ClientConfig {
 
     public companyId: string;
 
+    public entityId: string;
+
     public userId: string;
 
     public userPassword: string;

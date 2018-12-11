@@ -47,6 +47,7 @@ describe("Result", () => {
                   <status>success</status>
                   <userid>fakeuser</userid>
                   <companyid>fakecompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
             </authentication>
             <result>
@@ -82,6 +83,7 @@ describe("Result", () => {
                   <status>success</status>
                   <userid>fakeuser</userid>
                   <companyid>fakecompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-10-25T11:07:22-07:00</sessiontimestamp>
             </authentication>
             <result>
@@ -123,6 +125,7 @@ describe("Result", () => {
                   <status>success</status>
                   <userid>fakeuser</userid>
                   <companyid>fakecompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
             </authentication>
             <result>
@@ -157,6 +160,7 @@ describe("Result", () => {
                   <status>success</status>
                   <userid>fakeuser</userid>
                   <companyid>fakecompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
             </authentication>
             <result>
@@ -191,6 +195,7 @@ describe("Result", () => {
             <status>success</status>
             <userid>fakeuser</userid>
             <companyid>fakecompany</companyid>
+            <locationid></locationid>
             <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
         </authentication>
         <result>
@@ -225,6 +230,7 @@ describe("Result", () => {
             <status>success</status>
             <userid>fakeuser</userid>
             <companyid>fakecompany</companyid>
+            <locationid></locationid>
             <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
         </authentication>
         <result>
@@ -269,6 +275,7 @@ describe("Result", () => {
             <status>success</status>
             <userid>fakeuser</userid>
             <companyid>fakecompany</companyid>
+            <locationid></locationid>
             <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
         </authentication>
         <result>
@@ -318,6 +325,7 @@ describe("Result", () => {
             <status>success</status>
             <userid>fakeuser</userid>
             <companyid>fakecompany</companyid>
+            <locationid></locationid>
             <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
         </authentication>
         <result>
@@ -364,6 +372,7 @@ describe("Result", () => {
             <status>success</status>
             <userid>fakeuser</userid>
             <companyid>fakecompany</companyid>
+            <locationid></locationid>
             <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
         </authentication>
         <result>
@@ -416,6 +425,7 @@ describe("Result", () => {
                   <status>success</status>
                   <userid>fakeuser</userid>
                   <companyid>fakecompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
             </authentication>
             <result>
@@ -469,6 +479,7 @@ describe("Result", () => {
                   <status>success</status>
                   <userid>fakeuser</userid>
                   <companyid>fakecompany</companyid>
+                  <locationid></locationid>
                   <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
             </authentication>
             <result>
@@ -539,6 +550,7 @@ describe("Result", () => {
             <status>success</status>
             <userid>fakeuser</userid>
             <companyid>fakecompany</companyid>
+            <locationid></locationid>
             <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
         </authentication>
         <result>

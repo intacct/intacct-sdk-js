@@ -42,4 +42,36 @@ describe("ApiSessionCreate", () => {
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });
+    it("should create an object for ApiSessionCreate with a locationid", () => {
+        const expected = `<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <function controlid="unittest">
+        <getAPISession>
+            <locationid>100</locationid>
+        </getAPISession>
+    </function>
+</test>`;
+
+        const record = new ApiSessionCreate();
+        record.controlId = "unittest";
+        record.entityId = "100";
+
+        XmlObjectTestHelper.CompareXml(expected, record);
+    });
+    it("should create an object for ApiSessionCreate with an empty locationid", () => {
+        const expected = `<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <function controlid="unittest">
+        <getAPISession>
+            <locationid />
+        </getAPISession>
+    </function>
+</test>`;
+
+        const record = new ApiSessionCreate();
+        record.controlId = "unittest";
+        record.entityId = "";
+
+        XmlObjectTestHelper.CompareXml(expected, record);
+    });
 });

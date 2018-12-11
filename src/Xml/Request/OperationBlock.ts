@@ -44,7 +44,7 @@ export default class OperationBlock implements IXmlObject {
             this.authentication = new SessionAuthentication(credentials.sessionId);
         } else if (credentials != null && credentials instanceof LoginCredentials) {
             this.authentication = new LoginAuthentication(
-                credentials.userId, credentials.companyId, credentials.password);
+                credentials.userId, credentials.companyId, credentials.password, credentials.entityId);
         } else if (clientConfig.sessionId != null) {
             this.authentication = new SessionAuthentication(clientConfig.sessionId);
         } else if (
@@ -53,7 +53,7 @@ export default class OperationBlock implements IXmlObject {
             && clientConfig.userPassword != null
         ) {
             this.authentication = new LoginAuthentication(
-                clientConfig.userId, clientConfig.companyId, clientConfig.userPassword);
+                clientConfig.userId, clientConfig.companyId, clientConfig.userPassword, clientConfig.entityId);
         } else {
             throw new Error("Authentication credentials [Company ID, User ID, and User Password] or [Session ID] " +
                 "are required and cannot be blank.");

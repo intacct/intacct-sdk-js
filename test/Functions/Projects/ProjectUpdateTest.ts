@@ -49,4 +49,35 @@ describe("ProjectUpdate", () => {
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });
+
+    it("should build ProjectUpdate object with transaction rules", () => {
+        const expected = `<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <function controlid="unittest">
+        <update>
+            <PROJECT>
+                <PROJECTID>P1234</PROJECTID>
+                <NAME>hello world</NAME>
+                <PROJECT_RULES>
+                    <RULENAME>Rule 1</RULENAME>
+                </PROJECT_RULES>
+                <PROJECT_RULES>
+                    <RULENAME>Rule 2</RULENAME>
+                </PROJECT_RULES>
+            </PROJECT>
+        </update>
+    </function>
+</test>`;
+
+        const record = new ProjectUpdate();
+        record.controlId = "unittest";
+        record.projectId = "P1234";
+        record.projectName = "hello world";
+        record.transactionRules = [
+            "Rule 1",
+            "Rule 2",
+        ];
+
+        XmlObjectTestHelper.CompareXml(expected, record);
+    });
 });

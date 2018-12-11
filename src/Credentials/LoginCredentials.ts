@@ -29,6 +29,8 @@ export default class LoginCredentials implements ICredentials {
 
     public static readonly COMPANY_ID_ENV_NAME = "INTACCT_COMPANY_ID";
 
+    public static readonly ENTITY_ID_ENV_NAME = "INTACCT_ENTITY_ID";
+
     public static readonly USER_ID_ENV_NAME = "INTACCT_USER_ID";
 
     public static readonly USER_PASSWORD_ENV_NAME = "INTACCT_USER_PASSWORD";
@@ -36,6 +38,8 @@ export default class LoginCredentials implements ICredentials {
     public static readonly DEFAULT_COMPANY_PROFILE = "default";
 
     public companyId: string;
+
+    public entityId: string;
 
     public userId: string;
 
@@ -58,6 +62,9 @@ export default class LoginCredentials implements ICredentials {
         if (config.companyId == null) {
             config.companyId = process.env[LoginCredentials.COMPANY_ID_ENV_NAME];
         }
+        if (config.entityId == null) {
+            config.entityId = process.env[LoginCredentials.ENTITY_ID_ENV_NAME];
+        }
         if (config.userId == null) {
             config.userId = process.env[LoginCredentials.USER_ID_ENV_NAME];
         }
@@ -75,6 +82,9 @@ export default class LoginCredentials implements ICredentials {
             if (profile.companyId != null) {
                 config.companyId = profile.companyId;
             }
+            if (profile.entityId != null) {
+                config.entityId = profile.entityId;
+            }
             if (profile.userId != null) {
                 config.userId = profile.userId;
             }
@@ -87,6 +97,7 @@ export default class LoginCredentials implements ICredentials {
             throw new Error("Required Company ID not supplied in config or env variable \"" +
                 LoginCredentials.COMPANY_ID_ENV_NAME + "\"");
         }
+        // Entity ID is not required, no Error
         if (config.userId == null) {
             throw new Error("Required User ID not supplied in config or env variable \"" +
                 LoginCredentials.USER_ID_ENV_NAME + "\"");
@@ -97,6 +108,7 @@ export default class LoginCredentials implements ICredentials {
         }
 
         this.companyId = config.companyId;
+        this.entityId = config.entityId;
         this.userId = config.userId;
         this.password = config.userPassword;
         this.senderCreds = senderCreds;

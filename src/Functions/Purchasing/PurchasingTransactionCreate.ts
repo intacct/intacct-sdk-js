@@ -20,7 +20,7 @@
 import IaXmlWriter from "../../Xml/IaXmlWriter";
 import AbstractPurchasingTransaction from "./AbstractPurchasingTransaction";
 
-export default class OrderEntryTransactionCreate extends AbstractPurchasingTransaction {
+export default class PurchasingTransactionCreate extends AbstractPurchasingTransaction {
 
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");

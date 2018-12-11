@@ -49,4 +49,35 @@ describe("ProjectCreate", () => {
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });
+
+    it("should build ProjectCreate object with transaction rules", () => {
+        const expected = `<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <function controlid="unittest">
+        <create>
+            <PROJECT>
+                <NAME>hello world</NAME>
+                <PROJECTCATEGORY>Contract</PROJECTCATEGORY>
+                <PROJECT_RULES>
+                    <RULENAME>Rule 1</RULENAME>
+                </PROJECT_RULES>
+                <PROJECT_RULES>
+                    <RULENAME>Rule 2</RULENAME>
+                </PROJECT_RULES>
+            </PROJECT>
+        </create>
+    </function>
+</test>`;
+
+        const record = new ProjectCreate();
+        record.controlId = "unittest";
+        record.projectName = "hello world";
+        record.projectCategory = "Contract";
+        record.transactionRules = [
+            "Rule 1",
+            "Rule 2",
+        ];
+
+        XmlObjectTestHelper.CompareXml(expected, record);
+    });
 });
