@@ -72,6 +72,7 @@
     "typescript": "^2.8.4"
   },
   "dependencies": {
+    "content-type": "~1.0.4",
     "dateformat": "~3.0.3",
     "ini": "~1.3.4",
     "request": "~2.85.0",

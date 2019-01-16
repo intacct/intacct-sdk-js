@@ -22,7 +22,7 @@ import * as client from "request-promise-native";
 
 export default class HttpClientHandler {
 
-    protected options;
+    public options;
 
     constructor(options) {
         this.options = options;

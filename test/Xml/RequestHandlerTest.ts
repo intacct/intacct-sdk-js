@@ -23,6 +23,7 @@ import RequestConfig from "../../src/RequestConfig";
 import OfflineResponse from "../../src/Xml/OfflineResponse";
 import OnlineResponse from "../../src/Xml/OnlineResponse";
 import RequestHandler from "../../src/Xml/RequestHandler";
+import ResponseException from "../../src/Exceptions/ResponseException";
 
 describe("RequestHandler", () => {
     before((done) => {
@@ -255,8 +256,55 @@ describe("RequestHandler", () => {
             await requestHandler.executeOnline(contentBlock);
             chai.assert.isOk(false, "Expected exception not thrown");
         } catch (ex) {
-            chai.assert.instanceOf(ex, StatusCodeError);
-            chai.assert.equal(ex.message, "503 - \"\"");
+            chai.assert.instanceOf(ex, Error);
+            chai.assert.equal(ex.message, "Request retry count exceeded max retry count: 2");
+        }
+    }).timeout(10000);
+    it("should throw exception for 400 level error with XML response", async () => {
+        const xml = `<?xml version="1.0" encoding="utf-8" ?>
+<response>
+    <control>
+        <status>failure</status>
+    </control>
+    <errormessage>
+        <error>
+            <errorno>XMLGW_JPP0002</errorno>
+            <description>Sign-in information is incorrect. Please check your request.</description>
+        </error>
+    </errormessage>
+</response>`;
+
+        const headers = {
+            "Content-Type": 'text/xml; encoding="UTF-8"',
+        };
+
+        nock.disableNetConnect();
+        nock("https://api.intacct.com")
+            .replyContentLength()
+            .post("/ia/xml/xmlgw.phtml")
+            .reply(401, xml, headers);
+
+        const config = new ClientConfig();
+        config.senderId = "testsenderid";
+        config.senderPassword = "pass123!";
+        config.companyId = "badcompany";
+        config.userId = "baduser";
+        config.userPassword = "badpass";
+
+        const requestConfig = new RequestConfig();
+
+        const contentBlock = [
+            new ApiSessionCreate(),
+        ];
+
+        const requestHandler = new RequestHandler(config, requestConfig);
+
+        try {
+            await requestHandler.executeOnline(contentBlock);
+            chai.assert.isOk(false, "Expected exception not thrown");
+        } catch (ex) {
+            chai.assert.instanceOf(ex, ResponseException);
+            chai.assert.equal(ex.message, "Response control status failure");
         }
     }).timeout(3000);
     it("should throw exception for 524 server error", async () => {
@@ -287,7 +335,7 @@ describe("RequestHandler", () => {
             chai.assert.instanceOf(ex, StatusCodeError);
             chai.assert.equal(ex.message, "524 - \"\"");
         }
-    }).timeout(3000);
+    });
     it("should execute with a debug logger", async () => {
         const xml = `<?xml version="1.0" encoding="utf-8" ?>
 <response>

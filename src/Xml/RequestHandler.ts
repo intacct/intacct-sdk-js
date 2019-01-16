@@ -17,6 +17,7 @@
  * permissions and limitations under the License.
  */
 
+import contentType = require('content-type');
 import {RequestResponse} from "request";
 import {StatusCodeError} from "request-promise-native/errors";
 import ClientConfig from "../ClientConfig";
@@ -106,7 +107,7 @@ export default class RequestHandler {
             url: this.endpointUrl,
             method: "POST",
             timeout: this.requestConfig.maxTimeout,
-            simple: true,
+            simple: false,
             resolveWithFullResponse: true,
             body: xml,
             gzip: true,
@@ -122,24 +123,29 @@ export default class RequestHandler {
                 // Delay this retry based on exponential delay
                 await this.exponentialDelay(attempt);
             }
-            try {
-                return await httpClient.postAsync();
-            } catch (error) {
-                if (error instanceof StatusCodeError) {
-                    if (error.statusCode >= 500 && error.statusCode <= 599) {
-                        if (this.requestConfig.noRetryServerErrorCodes.indexOf(error.statusCode) !== -1) {
-                            throw error; // Do not retry this server error status code
-                        } else if (attempt < this.requestConfig.maxRetries) {
-                            attempt++;
-                        } else {
-                            throw error;
-                        }
-                    } else {
-                        throw error;
-                    }
-                } else {
-                    throw error;
+
+            const response = await httpClient.postAsync();
+
+            let ok = true;
+            if (response.statusCode >= 400 && response.statusCode < 600) {
+                ok = false;
+            }
+            if (ok == true) {
+                return response;
+            } else if (this.requestConfig.noRetryServerErrorCodes.indexOf(response.statusCode) !== -1) {
+                // Do not retry this explicitly set 500 level server error
+                throw new StatusCodeError(response.statusCode, response.body, httpClient.options, response);
+            } else if (response.statusCode >= 500 && response.statusCode <= 599) {
+                // Retry 500 level server errors
+                continue;
+            } else {
+                const contentTypeObj = contentType.parse(response.headers["content-type"]);
+                const mimeType = contentTypeObj.type;
+                if (mimeType == "text/xml" || mimeType == "application/xml") {
+                    return response;
                 }
+
+                throw new StatusCodeError(response.statusCode, response.body, httpClient.options, response);
             }
         }
         throw new Error("Request retry count exceeded max retry count: " + this.requestConfig.maxRetries.toString());
