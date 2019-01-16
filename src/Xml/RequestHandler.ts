@@ -17,7 +17,7 @@
  * permissions and limitations under the License.
  */
 
-import contentType = require('content-type');
+import contentType = require("content-type");
 import {RequestResponse} from "request";
 import {StatusCodeError} from "request-promise-native/errors";
 import ClientConfig from "../ClientConfig";
@@ -130,7 +130,7 @@ export default class RequestHandler {
             if (response.statusCode >= 400 && response.statusCode < 600) {
                 ok = false;
             }
-            if (ok == true) {
+            if (ok === true) {
                 return response;
             } else if (this.requestConfig.noRetryServerErrorCodes.indexOf(response.statusCode) !== -1) {
                 // Do not retry this explicitly set 500 level server error
@@ -141,7 +141,7 @@ export default class RequestHandler {
             } else {
                 const contentTypeObj = contentType.parse(response.headers["content-type"]);
                 const mimeType = contentTypeObj.type;
-                if (mimeType == "text/xml" || mimeType == "application/xml") {
+                if (mimeType === "text/xml" || mimeType === "application/xml") {
                     return response;
                 }
 
