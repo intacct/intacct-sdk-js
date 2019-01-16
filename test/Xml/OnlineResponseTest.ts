@@ -172,4 +172,29 @@ describe("OnlineResponse", () => {
             "Result block is missing from operation element",
         );
     });
+    it("should throw response exception with errors", () => {
+        chai.assert.throws(
+            () => {
+                const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<response>
+    <control>
+        <status>failure</status>
+        <senderid></senderid>
+        <controlid></controlid>
+    </control>
+    <errormessage>
+        <error>
+            <errorno>PL04000055</errorno>
+            <description></description>
+            <description2>This company is a demo company and has expired.</description2>
+            <correction></correction>
+        </error>
+    </errormessage>
+</response>`;
+                return new OnlineResponse(xml);
+            },
+            ResponseException,
+            "Response control status failure",
+        );
+    });
 });
