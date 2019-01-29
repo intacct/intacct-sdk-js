@@ -40,6 +40,8 @@ export default abstract class AbstractArPayment extends AbstractFunction {
     public overpaymentLocationId: string;
     public overpaymentDepartmentId: string;
     public referenceNumber: string;
+    public memo: string;
+    public refId: string;
 
     public applyToTransactions: ArPaymentItem[];
 }

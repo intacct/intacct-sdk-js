@@ -36,15 +36,20 @@ export default class ArPaymentApply extends AbstractArPayment {
         xml.writeDateSplitElements(this.receivedDate, true);
         xml.writeEndElement(); // paymentdate
 
+        xml.writeElement("memo", this.memo);
+
         xml.writeElement("batchkey", this.summaryRecordNo);
         xml.writeElement("overpaylocid", this.overpaymentLocationId);
         xml.writeElement("overpaydeptid", this.overpaymentDepartmentId);
 
+        xml.writeStartElement("arpaymentitems");
         if (this.applyToTransactions != null && this.applyToTransactions.length > 0) {
             for (const applyToTransaction of this.applyToTransactions) {
                 applyToTransaction.writeXml(xml);
             }
         }
+
+        xml.writeEndElement(); // arpaymentitems
 
         xml.writeEndElement(); // apply_arpayment
 

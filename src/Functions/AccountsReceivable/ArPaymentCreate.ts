@@ -40,6 +40,8 @@ export default class ArPaymentCreate extends AbstractArPayment {
             xml.writeElement("bankaccountid", this.bankAccountId);
         }
 
+        xml.writeElement("refid", this.refId);
+
         xml.writeStartElement("datereceived");
         xml.writeDateSplitElements(this.receivedDate, true);
         xml.writeEndElement(); // datereceived
