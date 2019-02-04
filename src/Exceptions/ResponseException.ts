@@ -23,7 +23,7 @@ export default class ResponseException extends Error {
 
     constructor(message: string, errors?: string[]) {
         if (errors && errors.length > 0) {
-            message = message + ' - ' + errors.join(' - ');
+            message = message + " - " + errors.join(" - ");
         }
 
         super(message);
