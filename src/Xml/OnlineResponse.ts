@@ -48,7 +48,7 @@ export default class OnlineResponse extends AbstractResponse {
         }
         this._authentication = new Authentication(this._xml["response"]["operation"]["authentication"]);
         if (this._authentication.status !== "success") {
-            const errorMessage = new ErrorMessage(this._xml["response"]["operation"]["errormessage"]["error"]);
+            const errorMessage = new ErrorMessage(this._xml["response"]["operation"]["errormessage"]);
 
             throw new ResponseException("Response authentication status failure", errorMessage.errors);
         }
