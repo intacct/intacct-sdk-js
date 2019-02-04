@@ -304,7 +304,7 @@ describe("RequestHandler", () => {
             chai.assert.isOk(false, "Expected exception not thrown");
         } catch (ex) {
             chai.assert.instanceOf(ex, ResponseException);
-            chai.assert.equal(ex.message, "Response control status failure");
+            chai.assert.equal(ex.message, "Response control status failure - XMLGW_JPP0002 Sign-in information is incorrect. Please check your request.");
         }
     }).timeout(3000);
     it("should throw exception for 524 server error", async () => {

@@ -121,7 +121,7 @@ describe("OnlineResponse", () => {
                 return new OnlineResponse(xml);
             },
             ResponseException,
-            "Response authentication status failure",
+            "Response authentication status failure - XL03000006 Sign-in information is incorrect",
         );
     });
     it("should throw exception with missing authentication block", () => {
@@ -194,7 +194,7 @@ describe("OnlineResponse", () => {
                 return new OnlineResponse(xml);
             },
             ResponseException,
-            "Response control status failure",
+            "Response control status failure - PL04000055 This company is a demo company and has expired.",
         );
     });
 });
