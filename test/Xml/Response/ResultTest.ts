@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Sage Intacct, Inc.
+ * Copyright 2019 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -236,7 +236,7 @@ describe("Result", () => {
         <result>
             <status>failure</status>
             <function>read</function>
-            <controlid>testControlId</controlid>
+            <controlid>testFunctionId</controlid>
             <errormessage>
                 <error>
                     <errorno>XXX</errorno>
@@ -254,7 +254,7 @@ describe("Result", () => {
                 result.ensureStatusNotFailure();
             },
             ResultException,
-            "Result status: failure for Control ID: testControlId",
+            "Result status: failure for Control ID: testFunctionId - XXX Object definition VENDOR2 not found",
         );
     });
     it("should throw error for result status as aborted", () => {
@@ -306,7 +306,7 @@ describe("Result", () => {
                 result.ensureStatusSuccess();
             },
             ResultException,
-            "Result status: aborted for Control ID: testFunctionId",
+            "Result status: aborted for Control ID: testFunctionId - Query Failed Object definition VENDOR9 not found - XL03000009 The entire transaction in this operation has been rolled back due to an error.",
         );
     });
     it("should not throw error for result status as aborted", () => {

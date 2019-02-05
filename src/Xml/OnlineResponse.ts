@@ -3,7 +3,7 @@
  */
 
 /**
- * Copyright 2018 Sage Intacct, Inc.
+ * Copyright 2019 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -48,7 +48,7 @@ export default class OnlineResponse extends AbstractResponse {
         }
         this._authentication = new Authentication(this._xml["response"]["operation"]["authentication"]);
         if (this._authentication.status !== "success") {
-            const errorMessage = new ErrorMessage(this._xml["response"]["operation"]["errormessage"]["error"]);
+            const errorMessage = new ErrorMessage(this._xml["response"]["operation"]["errormessage"]);
 
             throw new ResponseException("Response authentication status failure", errorMessage.errors);
         }

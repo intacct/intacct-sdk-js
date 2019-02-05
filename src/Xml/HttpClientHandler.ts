@@ -3,7 +3,7 @@
  */
 
 /**
- * Copyright 2018 Sage Intacct, Inc.
+ * Copyright 2019 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -22,7 +22,7 @@ import * as client from "request-promise-native";
 
 export default class HttpClientHandler {
 
-    protected options;
+    public options;
 
     constructor(options) {
         this.options = options;

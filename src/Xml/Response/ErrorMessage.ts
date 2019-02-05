@@ -3,7 +3,7 @@
  */
 
 /**
- * Copyright 2018 Sage Intacct, Inc.
+ * Copyright 2019 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -16,6 +16,8 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
+
+import striptags = require("striptags");
 
 export default class ErrorMessage {
 
@@ -52,15 +54,13 @@ export default class ErrorMessage {
         for (const errorField in errorObject) {
             if (errorObject.hasOwnProperty(errorField)) {
                 const value = errorObject[errorField];
-                const piece = this.cleanse(value);
-                pieces.push(piece);
+                let piece = striptags(value);
+                piece = piece.trim();
+                if (piece.length > 0) {
+                    pieces.push(piece);
+                }
             }
         }
         return pieces;
-    }
-
-    private cleanse(message: string): string {
-        const noHtml = message.replace(new RegExp(/<[^>]+>|&nbsp;/g), "");
-        return noHtml.replace(new RegExp("\s{2,}"), " ");
     }
 }

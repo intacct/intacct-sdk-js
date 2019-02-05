@@ -3,7 +3,7 @@
  */
 
 /**
- * Copyright 2018 Sage Intacct, Inc.
+ * Copyright 2019 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -50,23 +50,19 @@ export default class Control {
         if (!control.hasOwnProperty("status")) {
             throw new IntacctException("Control block is missing status element");
         }
-        if (!control.hasOwnProperty("senderid")) {
-            throw new IntacctException("Control block is missing senderid element");
-        }
-        if (!control.hasOwnProperty("controlid")) {
-            throw new IntacctException("Control block is missing controlid element");
-        }
-        if (!control.hasOwnProperty("uniqueid")) {
-            throw new IntacctException("Control block is missing uniqueid element");
-        }
-        if (!control.hasOwnProperty("dtdversion")) {
-            throw new IntacctException("Control block is missing dtdversion element");
-        }
 
         this._status = control["status"];
-        this._senderId = control["senderid"];
-        this._controlId = control["controlid"];
-        this._uniqueId = control["uniqueid"];
-        this._dtdVersion = control["dtdversion"];
+        if (control.hasOwnProperty("senderid")) {
+            this._senderId = control["senderid"];
+        }
+        if (control.hasOwnProperty("controlid")) {
+            this._controlId = control["controlid"];
+        }
+        if (control.hasOwnProperty("uniqueid")) {
+            this._uniqueId = control["uniqueid"];
+        }
+        if (control.hasOwnProperty("dtdversion")) {
+            this._dtdVersion = control["dtdversion"];
+        }
     }
 }

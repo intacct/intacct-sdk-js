@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Sage Intacct, Inc.
+ * Copyright 2019 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -146,7 +146,7 @@ describe("OnlineClient", () => {
             chai.assert.isOk(false, "Expected exception not thrown");
         } catch (ex) {
             chai.assert.instanceOf(ex, ResultException);
-            chai.assert.equal(ex.message, "Result status: failure for Control ID: func1UnitTest");
+            chai.assert.equal(ex.message, "Result status: failure for Control ID: func1UnitTest - Get API Session Failed Something went wrong");
         }
     });
     it("should execute a batch transaction request and return ResultException", async () => {
@@ -233,7 +233,7 @@ describe("OnlineClient", () => {
             chai.assert.isOk(false, "Expected exception not thrown");
         } catch (ex) {
             chai.assert.instanceOf(ex, ResultException);
-            chai.assert.equal(ex.message, "Result status: failure for Control ID: func2UnitTest");
+            chai.assert.equal(ex.message, "Result status: failure for Control ID: func2UnitTest - Get API Session Failed Something went wrong - XL03000009 The entire transaction in this operation has been rolled back due to an error.");
         }
     });
     it("should log the request and response", async () => {

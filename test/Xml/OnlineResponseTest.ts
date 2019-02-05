@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Sage Intacct, Inc.
+ * Copyright 2019 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -121,7 +121,7 @@ describe("OnlineResponse", () => {
                 return new OnlineResponse(xml);
             },
             ResponseException,
-            "Response authentication status failure",
+            "Response authentication status failure - XL03000006 Sign-in information is incorrect",
         );
     });
     it("should throw exception with missing authentication block", () => {
@@ -170,6 +170,31 @@ describe("OnlineResponse", () => {
             },
             Error,
             "Result block is missing from operation element",
+        );
+    });
+    it("should throw response exception with errors", () => {
+        chai.assert.throws(
+            () => {
+                const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<response>
+    <control>
+        <status>failure</status>
+        <senderid></senderid>
+        <controlid></controlid>
+    </control>
+    <errormessage>
+        <error>
+            <errorno>PL04000055</errorno>
+            <description></description>
+            <description2>This company is a demo company and has expired.</description2>
+            <correction></correction>
+        </error>
+    </errormessage>
+</response>`;
+                return new OnlineResponse(xml);
+            },
+            ResponseException,
+            "Response control status failure - PL04000055 This company is a demo company and has expired.",
         );
     });
 });

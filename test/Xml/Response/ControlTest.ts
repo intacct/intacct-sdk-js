@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 Sage Intacct, Inc.
+ * Copyright 2019 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -61,82 +61,6 @@ describe("Control", () => {
             },
             Error,
             "Control block is missing status element",
-        );
-    });
-    it("should throw exception when senderid is not included", () => {
-        chai.assert.throws(
-            () => {
-                const xml = `<?xml version="1.0" encoding="utf-8" ?>
-<response>
-      <control>
-            <status>success</status>
-            <!--<senderid>testsenderid</senderid>-->
-            <controlid>ControlIdHere</controlid>
-            <uniqueid>false</uniqueid>
-            <dtdversion>3.0</dtdversion>
-      </control>
-</response>`;
-                return new MockAbstractResponse(xml);
-            },
-            Error,
-            "Control block is missing senderid element",
-        );
-    });
-    it("should throw exception when controlid is not included", () => {
-        chai.assert.throws(
-            () => {
-                const xml = `<?xml version="1.0" encoding="utf-8" ?>
-<response>
-      <control>
-            <status>success</status>
-            <senderid>testsenderid</senderid>
-            <!--<controlid>ControlIdHere</controlid>-->
-            <uniqueid>false</uniqueid>
-            <dtdversion>3.0</dtdversion>
-      </control>
-</response>`;
-                return new MockAbstractResponse(xml);
-            },
-            Error,
-            "Control block is missing controlid element",
-        );
-    });
-    it("should throw exception when uniqueid is not included", () => {
-        chai.assert.throws(
-            () => {
-                const xml = `<?xml version="1.0" encoding="utf-8" ?>
-<response>
-      <control>
-            <status>success</status>
-            <senderid>testsenderid</senderid>
-            <controlid>ControlIdHere</controlid>
-            <!--<uniqueid>false</uniqueid>-->
-            <dtdversion>3.0</dtdversion>
-      </control>
-</response>`;
-                return new MockAbstractResponse(xml);
-            },
-            Error,
-            "Control block is missing uniqueid element",
-        );
-    });
-    it("should throw exception when dtdversion is not included", () => {
-        chai.assert.throws(
-            () => {
-                const xml = `<?xml version="1.0" encoding="utf-8" ?>
-<response>
-      <control>
-            <status>success</status>
-            <senderid>testsenderid</senderid>
-            <controlid>ControlIdHere</controlid>
-            <uniqueid>false</uniqueid>
-            <!--<dtdversion>3.0</dtdversion>-->
-      </control>
-</response>`;
-                return new MockAbstractResponse(xml);
-            },
-            Error,
-            "Control block is missing dtdversion element",
         );
     });
 });
