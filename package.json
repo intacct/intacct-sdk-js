@@ -38,7 +38,7 @@
     "pretest": "npm run build",
     "test": "npm run tslint && npm run test-coverage",
     "test-coverage": "nyc --include=src/**/*.ts --extension=.ts --reporter=json npm run test-mocha",
-    "test-mocha": "mocha -r ts-node/register test/**/*.ts",
+    "test-mocha": "mocha -r ts-node/register --recursive \"test/**/*.ts\"",
     "coverage": "nyc report",
     "preversion": "npm test",
     "version": "npm run build",
