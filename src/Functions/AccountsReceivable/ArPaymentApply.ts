@@ -22,7 +22,7 @@ import AbstractArPayment from "./AbstractArPayment";
 
 export default class ArPaymentApply extends AbstractArPayment {
 
-    public summaryRecordNo: number;
+    public memo: string;
 
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");
@@ -37,13 +37,16 @@ export default class ArPaymentApply extends AbstractArPayment {
         xml.writeEndElement(); // paymentdate
 
         xml.writeElement("batchkey", this.summaryRecordNo);
+        xml.writeElement("memo", this.memo);
         xml.writeElement("overpaylocid", this.overpaymentLocationId);
         xml.writeElement("overpaydeptid", this.overpaymentDepartmentId);
 
         if (this.applyToTransactions != null && this.applyToTransactions.length > 0) {
+            xml.writeStartElement("arpaymentitems");
             for (const applyToTransaction of this.applyToTransactions) {
                 applyToTransaction.writeXml(xml);
             }
+            xml.writeEndElement(); // arpaymentitems
         }
 
         xml.writeEndElement(); // apply_arpayment

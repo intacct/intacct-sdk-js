@@ -22,8 +22,6 @@ import AbstractArPayment from "./AbstractArPayment";
 
 export default class ArPaymentCreate extends AbstractArPayment {
 
-    public summaryRecordNo: number;
-
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");
         xml.writeAttribute("controlid", this.controlId, true);
@@ -36,9 +34,16 @@ export default class ArPaymentCreate extends AbstractArPayment {
 
         if (this.undepositedFundsGlAccountNo != null) {
             xml.writeElement("undepfundsacct", this.undepositedFundsGlAccountNo);
+        } else if (this.summaryRecordNo != null) {
+            xml.writeElement("batchkey", this.summaryRecordNo);
         } else {
             xml.writeElement("bankaccountid", this.bankAccountId);
         }
+
+        xml.writeElement("refid", this.referenceNumber);
+
+        xml.writeElement("overpaylocid", this.overpaymentLocationId);
+        xml.writeElement("overpaydeptid", this.overpaymentDepartmentId);
 
         xml.writeStartElement("datereceived");
         xml.writeDateSplitElements(this.receivedDate, true);
