@@ -26,6 +26,7 @@ export default abstract class AbstractArPayment extends AbstractFunction {
     public paymentMethod: string;
     public bankAccountId: string;
     public undepositedFundsGlAccountNo: string;
+    public summaryRecordNo: number;
     public transactionCurrency: string;
     public baseCurrency: string;
     public customerId: string;
