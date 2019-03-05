@@ -29,6 +29,10 @@ export default class ProfileCredentialProvider {
 
     public static getLoginCredentials(config: ClientConfig): ClientConfig {
         const creds = new ClientConfig();
+        if (!this.profileFileExists(config)) {
+            return creds;
+        }
+
         const data = ProfileCredentialProvider.getIniProfileData(config);
 
         if (data["company_id"]) {
@@ -49,6 +53,10 @@ export default class ProfileCredentialProvider {
 
     public static getSenderCredentials(config: ClientConfig): ClientConfig {
         const creds = new ClientConfig();
+        if (!this.profileFileExists(config)) {
+            return creds;
+        }
+
         const data = ProfileCredentialProvider.getIniProfileData(config);
 
         if (data["sender_id"]) {
@@ -81,6 +89,14 @@ export default class ProfileCredentialProvider {
         }
 
         return profile;
+    }
+
+    private static profileFileExists(config: ClientConfig): boolean {
+        if (config.profileFile == null) {
+            config.profileFile = this.getHomeDirProfile();
+        }
+
+        return fs.existsSync(config.profileFile);
     }
 
     private static getIniProfileData(config: ClientConfig) {
