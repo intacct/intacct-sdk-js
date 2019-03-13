@@ -19,30 +19,28 @@ import ClientConfig from "../../src/ClientConfig";
 import ProfileCredentialProvider from "../../src/Credentials/ProfileCredentialProvider";
 
 describe("ProfileCredentialsProvider", () => {
+
+    const testIni = "[default]\n" +
+        "sender_id = defsenderid\n" +
+        "sender_password = defsenderpass\n" +
+        "company_id = defcompanyid\n" +
+        "user_id = defuserid\n" +
+        "user_password = defuserpass\n" +
+        "endpoint_url = https://unittest.intacct.com/ia/xmlgw.phtml\n\n" +
+        "[unittest]\n" +
+        "company_id = inicompanyid\n" +
+        "user_id = iniuserid\n" +
+        "user_password = iniuserpass\n" +
+        "[entity]\n" +
+        "company_id = inicompanyid\n" +
+        "entity_id = inientityid\n" +
+        "user_id = iniuserid\n" +
+        "user_password = iniuserpass\n";
+
     before((done) => {
         return done();
     });
     beforeEach((done) => {
-        const ini = "[default]\n" +
-            "sender_id = defsenderid\n" +
-            "sender_password = defsenderpass\n" +
-            "company_id = defcompanyid\n" +
-            "user_id = defuserid\n" +
-            "user_password = defuserpass\n" +
-            "endpoint_url = https://unittest.intacct.com/ia/xmlgw.phtml\n\n" +
-            "[unittest]\n" +
-            "company_id = inicompanyid\n" +
-            "user_id = iniuserid\n" +
-            "user_password = iniuserpass\n" +
-            "[entity]\n" +
-            "company_id = inicompanyid\n" +
-            "entity_id = inientityid\n" +
-            "user_id = iniuserid\n" +
-            "user_password = iniuserpass\n";
-        const files = {};
-        const homeDir = ProfileCredentialProvider.getHomeDirProfile();
-        files[homeDir] = ini;
-        mock(files);
         return done();
     });
     afterEach((done) => {
@@ -54,6 +52,11 @@ describe("ProfileCredentialsProvider", () => {
     });
 
     it("should return credentials from default profile", (done) => {
+        const files = {};
+        const homeDir = ProfileCredentialProvider.getHomeDirProfile();
+        files[homeDir] = testIni;
+        mock(files);
+
         const config = new ClientConfig();
         const loginCreds = ProfileCredentialProvider.getLoginCredentials(config);
 
@@ -72,6 +75,11 @@ describe("ProfileCredentialsProvider", () => {
     });
 
     it("should return credentials from a specific profile", (done) => {
+        const files = {};
+        const homeDir = ProfileCredentialProvider.getHomeDirProfile();
+        files[homeDir] = testIni;
+        mock(files);
+
         const config = new ClientConfig();
         config.profileName = "unittest";
         const loginCreds = ProfileCredentialProvider.getLoginCredentials(config);
@@ -85,6 +93,11 @@ describe("ProfileCredentialsProvider", () => {
     });
 
     it("should return credentials with entity from a specific profile", (done) => {
+        const files = {};
+        const homeDir = ProfileCredentialProvider.getHomeDirProfile();
+        files[homeDir] = testIni;
+        mock(files);
+
         const config = new ClientConfig();
         config.profileName = "entity";
         const loginCreds = ProfileCredentialProvider.getLoginCredentials(config);
@@ -97,15 +110,19 @@ describe("ProfileCredentialsProvider", () => {
         done();
     });
 
-    it("should throw exception on invalid profile name", () => {
-        chai.assert.throws(
-            () => {
-                const config = new ClientConfig();
-                config.profileName = "wrongname";
-                return ProfileCredentialProvider.getLoginCredentials(config);
-            },
-            Error,
-            'Profile Name "wrongname" not found in credentials file',
-        );
+    it("should return no credentials from missing ini", () => {
+        const files = {};
+        // const homeDir = ProfileCredentialProvider.getHomeDirProfile();
+        // files[homeDir] = testIni;
+        mock(files);
+
+        const config = new ClientConfig();
+        config.profileName = "unittest";
+        const loginCreds = ProfileCredentialProvider.getLoginCredentials(config);
+
+        chai.assert.isUndefined(loginCreds.companyId);
+        chai.assert.isUndefined(loginCreds.entityId);
+        chai.assert.isUndefined(loginCreds.userId);
+        chai.assert.isUndefined(loginCreds.userPassword);
     });
 });
