@@ -29,11 +29,7 @@ export default class TimesheetUpdate extends AbstractTimesheet {
     xml.writeStartElement("TIMESHEET");
 
     xml.writeElement("EMPLOYEEID", this.employeeId, true);
-    xml.writeElementDate(
-      "BEGINDATE",
-      this.beginDate,
-      IaXmlWriter.intacctDateFormat
-    );
+    xml.writeElementDate("BEGINDATE", this.beginDate, IaXmlWriter.intacctDateFormat);
 
     xml.writeElement("DESCRIPTION", this.description);
     xml.writeElement("SUPDOCID", this.attachmentsId);
