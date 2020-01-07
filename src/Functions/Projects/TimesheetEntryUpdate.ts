@@ -28,10 +28,15 @@ export default class TimesheetEntryUpdate extends AbstractTimesheetEntry {
     xml.writeStartElement("update");
 
     xml.writeStartElement("TIMESHEETENTRY");
+    xml.writeElement("RECORDNO", this.recordNo);
 
-    xml.writeElementDate("ENTRYDATE", this.entryDate, IaXmlWriter.intacctDateFormat);
+    xml.writeElementDate(
+      "ENTRYDATE",
+      this.entryDate,
+      IaXmlWriter.intacctDateFormat
+    );
 
-    xml.writeElement("QTY", this.quantity, true);
+    xml.writeElement("QTY", this.quantity);
 
     xml.writeElement("DESCRIPTION", this.description);
     xml.writeElement("NOTES", this.notes);
