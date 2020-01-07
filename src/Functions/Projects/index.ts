@@ -13,3 +13,4 @@ export { default as TimesheetUpdate } from "./TimesheetUpdate";
 export { default as TimesheetDelete } from "./TimesheetDelete";
 export { default as TimesheetEntryCreate } from "./TimesheetEntryCreate";
 export { default as TimesheetEntryUpdate } from "./TimesheetEntryUpdate";
+export { default as TimesheetEntryDelete } from "./TimesheetEntryDelete";

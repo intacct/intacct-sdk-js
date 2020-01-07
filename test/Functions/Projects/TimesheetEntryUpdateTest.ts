@@ -36,7 +36,6 @@ describe("TimesheetEntryUpdate", () => {
         <update>
             <TIMESHEETENTRY>
                 <ENTRYDATE>06/30/2016</ENTRYDATE>
-                <QTY />
             </TIMESHEETENTRY>
         </update>
     </function>

@@ -18,28 +18,19 @@
  */
 
 import IaXmlWriter from "../../Xml/IaXmlWriter";
-import AbstractTimesheet from "./AbstractTimesheet";
+import AbstractTimesheetEntry from "./AbstractTimesheetEntry";
 
-export default class TimesheetUpdate extends AbstractTimesheet {
+export default class TimesheetDelete extends AbstractTimesheetEntry {
   public writeXml(xml: IaXmlWriter): void {
     xml.writeStartElement("function");
     xml.writeAttribute("controlid", this.controlId, true);
 
-    xml.writeStartElement("update");
-    xml.writeStartElement("TIMESHEET");
+    xml.writeStartElement("delete");
 
-    xml.writeElement("RECORDNO", this.recordNo);
-    xml.writeElement("EMPLOYEEID", this.employeeId);
-    xml.writeElementDate("BEGINDATE", this.beginDate, IaXmlWriter.intacctDateFormat);
+    xml.writeElement("object", "TIMESHEETENTRY");
+    xml.writeElement("keys", this.recordNo);
 
-    xml.writeElement("DESCRIPTION", this.description);
-    xml.writeElement("SUPDOCID", this.attachmentsId);
-    xml.writeElement("STATE", this.action);
-
-    xml.writeCustomFieldsImplicit(this.customFields);
-
-    xml.writeEndElement(); // TIMESHEET
-    xml.writeEndElement(); // update
+    xml.writeEndElement(); // delete
 
     xml.writeEndElement(); // function
   }

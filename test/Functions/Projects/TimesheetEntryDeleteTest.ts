@@ -13,10 +13,10 @@
  * permissions and limitations under the License.
  */
 
-import TimesheetDelete from "../../../src/Functions/Projects/TimesheetDelete";
+import TimesheetEntryDelete from "../../../src/Functions/Projects/TimesheetEntryDelete";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
-describe("TimesheetDelete", () => {
+describe("TimesheetEntryDelete", () => {
   before(done => {
     return done();
   });
@@ -29,18 +29,18 @@ describe("TimesheetDelete", () => {
   after(done => {
     return done();
   });
-  it("should build TimesheetDelete object", () => {
+  it("should build TimesheetEntryDelete object", () => {
     const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
         <delete>
-            <object>TIMESHEET</object>
+            <object>TIMESHEETENTRY</object>
             <keys>1234</keys>
         </delete>
     </function>
 </test>`;
 
-    const record = new TimesheetDelete();
+    const record = new TimesheetEntryDelete();
     record.controlId = "unittest";
     record.recordNo = 1234;
 
