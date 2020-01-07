@@ -17,31 +17,27 @@
  * permissions and limitations under the License.
  */
 
-import IaXmlWriter from "../../Xml/IaXmlWriter";
-import IXmlObject from "../../Xml/IXmlObject";
+import AbstractFunction from "../AbstractFunction";
 
-export default abstract class AbstractTimesheetEntry implements IXmlObject {
+export default abstract class AbstractTimesheetEntry extends AbstractFunction {
+  public entryDate: Date;
+  public quantity: number;
+  public description: string;
+  public notes: string;
+  public taskRecordNo: number;
+  public timeTypeName: string;
+  public billable: boolean;
+  public overrideBillingRate: number;
+  public overrideLaborCostRate: number;
+  public departmentId: string;
+  public locationId: string;
+  public projectId: string;
+  public customerId: string;
+  public vendorId: string;
+  public itemId: string;
+  public classId: string;
+  public contractId: string;
+  public warehouseId: string;
 
-    public entryDate: Date;
-    public quantity: number;
-    public description: string;
-    public notes: string;
-    public taskRecordNo: number;
-    public timeTypeName: string;
-    public billable: boolean;
-    public overrideBillingRate: number;
-    public overrideLaborCostRate: number;
-    public departmentId: string;
-    public locationId: string;
-    public projectId: string;
-    public customerId: string;
-    public vendorId: string;
-    public itemId: string;
-    public classId: string;
-    public contractId: string;
-    public warehouseId: string;
-
-    public customFields: Array<[string, any]> = [];
-
-    public abstract writeXml(xml: IaXmlWriter): void;
+  public customFields: Array<[string, any]> = [];
 }
