@@ -9,5 +9,7 @@ export { default as TaskCreate } from "./TaskCreate";
 export { default as TaskDelete } from "./TaskDelete";
 export { default as TaskUpdate } from "./TaskUpdate";
 export { default as TimesheetCreate } from "./TimesheetCreate";
+export { default as TimesheetUpdate } from "./TimesheetUpdate";
 export { default as TimesheetDelete } from "./TimesheetDelete";
 export { default as TimesheetEntryCreate } from "./TimesheetEntryCreate";
+export { default as TimesheetEntryUpdate } from "./TimesheetEntryUpdate";
