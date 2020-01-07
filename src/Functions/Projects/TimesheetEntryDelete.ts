@@ -3,7 +3,7 @@
  */
 
 /**
- * Copyright 2020 Sage Intacct, Inc.
+ * Copyright 2019 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -18,22 +18,20 @@
  */
 
 import IaXmlWriter from "../../Xml/IaXmlWriter";
-import AbstractTimesheet from "./AbstractTimesheet";
+import AbstractTimesheetEntry from "./AbstractTimesheetEntry";
 
-export default class TimesheetDelete extends AbstractTimesheet {
+export default class TimesheetDelete extends AbstractTimesheetEntry {
   public writeXml(xml: IaXmlWriter): void {
     xml.writeStartElement("function");
     xml.writeAttribute("controlid", this.controlId, true);
 
     xml.writeStartElement("delete");
 
-        xml.writeStartElement("delete");
+    xml.writeElement("object", "TIMESHEETENTRY");
+    xml.writeElement("keys", this.recordNo);
 
-        xml.writeElement("object", "TIMESHEET");
-        xml.writeElement("keys", this.recordNo);
+    xml.writeEndElement(); // delete
 
-        xml.writeEndElement(); // delete
-
-        xml.writeEndElement(); // function
-    }
+    xml.writeEndElement(); // function
+  }
 }
