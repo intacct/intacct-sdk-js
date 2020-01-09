@@ -25,46 +25,46 @@ import OnlineClient from "./OnlineClient";
 import RequestConfig from "./RequestConfig";
 
 export default class SessionProvider {
-
-    /**
-     * @param {ClientConfig} config
-     * @return {Promise<ClientConfig>}
-     */
-    public static async factory(config?: ClientConfig): Promise<ClientConfig> {
-        if (!config) {
-            config = new ClientConfig();
-        }
-
-        const requestConfig = new RequestConfig();
-        requestConfig.controlId = "sessionProvider";
-        requestConfig.noRetryServerErrorCodes = []; // Retry all 500 level errors
-
-        const apiFunction = new ApiSessionCreate();
-
-        if (config.sessionId != null && config.entityId != null) {
-            apiFunction.entityId = config.entityId;
-        }
-
-        const client = new OnlineClient(config);
-        const response = await client.execute(apiFunction, requestConfig);
-
-        const authentication = response.authentication;
-        const result = response.results[0];
-
-        result.ensureStatusSuccess(); // Throw any result errors
-
-        const data = result.data;
-        const api = data[0];
-
-        config.sessionId = api["sessionid"].toString();
-        config.endpointUrl = api["endpoint"].toString();
-        config.entityId = api["locationid"].toString();
-
-        config.companyId = authentication.companyId;
-        config.userId = authentication.userId;
-
-        config.credentials = new SessionCredentials(config, new SenderCredentials(config));
-
-        return config;
+  /**
+   * @param {ClientConfig} config
+   * @return {Promise<ClientConfig>}
+   */
+  public static async factory(config?: ClientConfig): Promise<ClientConfig> {
+    if (!config) {
+      config = new ClientConfig();
     }
+
+    const requestConfig = new RequestConfig();
+    requestConfig.controlId = "sessionProvider";
+    requestConfig.noRetryServerErrorCodes = []; // Retry all 500 level errors
+
+    const apiFunction = new ApiSessionCreate();
+
+    if (config.sessionId != null && config.entityId != null) {
+      apiFunction.entityId = config.entityId;
+    }
+
+    const client = new OnlineClient(config);
+    const response = await client.execute(apiFunction, requestConfig);
+
+    const authentication = response.authentication;
+    const result = response.results[0];
+
+    result.ensureStatusSuccess(); // Throw any result errors
+
+    const data = result.data;
+    const api = data[0];
+
+    config.sessionId = api["sessionid"].toString();
+    config.endpointUrl = api["endpoint"].toString();
+    config.entityId = api["locationid"].toString();
+
+    config.companyId = authentication.companyId;
+    config.userId = authentication.userId;
+    config.sessionTimeout = authentication.sessionTimeout;
+
+    config.credentials = new SessionCredentials(config, new SenderCredentials(config));
+
+    return config;
+  }
 }

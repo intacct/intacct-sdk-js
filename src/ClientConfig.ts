@@ -17,42 +17,43 @@
  * permissions and limitations under the License.
  */
 
-import {LoggerInstance} from "winston";
+import { LoggerInstance } from "winston";
 import ICredentials from "./Credentials/ICredentials";
 import MessageFormatter from "./Logging/MessageFormatter";
 
 export default class ClientConfig {
+  public profileFile: string;
 
-    public profileFile: string;
+  public profileName: string;
 
-    public profileName: string;
+  public endpointUrl: string;
 
-    public endpointUrl: string;
+  public senderId: string;
 
-    public senderId: string;
+  public senderPassword: string;
 
-    public senderPassword: string;
+  public sessionId: string;
 
-    public sessionId: string;
+  public sessionTimeout: Date;
 
-    public companyId: string;
+  public companyId: string;
 
-    public entityId: string;
+  public entityId: string;
 
-    public userId: string;
+  public userId: string;
 
-    public userPassword: string;
+  public userPassword: string;
 
-    public credentials: ICredentials;
+  public credentials: ICredentials;
 
-    public logger: LoggerInstance;
+  public logger: LoggerInstance;
 
-    public logLevel: string;
+  public logLevel: string;
 
-    public logMessageFormatter: MessageFormatter;
+  public logMessageFormatter: MessageFormatter;
 
-    constructor() {
-        this.logLevel = "debug";
-        this.logMessageFormatter = new MessageFormatter();
-    }
+  constructor() {
+    this.logLevel = "debug";
+    this.logMessageFormatter = new MessageFormatter();
+  }
 }

@@ -20,43 +20,48 @@
 import IntacctException from "../../Exceptions/IntacctException";
 
 export default class Authentication {
+  private _status: string;
+  get status(): string {
+    return this._status;
+  }
 
-    private _status: string;
-    get status(): string {
-        return this._status;
+  private _userId: string;
+  get userId(): string {
+    return this._userId;
+  }
+
+  private _companyId: string;
+  get companyId(): string {
+    return this._companyId;
+  }
+
+  private _entityId: string;
+  get entityId(): string {
+    return this._entityId;
+  }
+
+  private _sessionTimeout: Date;
+  get sessionTimeout(): Date {
+    return this._sessionTimeout;
+  }
+
+  constructor(authentication: object) {
+    if (!authentication.hasOwnProperty("status")) {
+      throw new IntacctException("Authentication block is missing status element");
+    }
+    if (!authentication.hasOwnProperty("userid")) {
+      throw new IntacctException("Authentication block is missing userid element");
+    }
+    if (!authentication.hasOwnProperty("companyid")) {
+      throw new IntacctException("Authentication block is missing companyid element");
     }
 
-    private _userId: string;
-    get userId(): string {
-        return this._userId;
-    }
+    this._status = authentication["status"];
+    this._userId = authentication["userid"];
+    this._companyId = authentication["companyid"];
+    this._entityId = authentication["locationid"];
+    this._sessionTimeout = authentication["sessiontimeout"];
 
-    private _companyId: string;
-    get companyId(): string {
-        return this._companyId;
-    }
-
-    private _entityId: string;
-    get entityId(): string {
-        return this._entityId;
-    }
-
-    constructor(authentication: object) {
-        if (!authentication.hasOwnProperty("status")) {
-            throw new IntacctException("Authentication block is missing status element");
-        }
-        if (!authentication.hasOwnProperty("userid")) {
-            throw new IntacctException("Authentication block is missing userid element");
-        }
-        if (!authentication.hasOwnProperty("companyid")) {
-            throw new IntacctException("Authentication block is missing companyid element");
-        }
-
-        this._status = authentication["status"];
-        this._userId = authentication["userid"];
-        this._companyId = authentication["companyid"];
-        this._entityId = authentication["locationid"];
-
-        // TODO add getter/setter for elements: clientstatus, clientid, sessiontimestamp
-    }
+    // TODO add getter/setter for elements: clientstatus, clientid, sessiontimestamp
+  }
 }
