@@ -21,6 +21,7 @@ import AbstractFunction from "../AbstractFunction";
 
 export default abstract class AbstractTimesheetEntry extends AbstractFunction {
   public recordNo: number;
+  public timesheetRecordNo: number;
   public entryDate: Date;
   public quantity: number;
   public description: string;
