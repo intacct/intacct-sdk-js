@@ -1,5 +1,5 @@
 {
-  "name": "@intacct/intacct-sdk",
+  "name": "@rudymalhi/intacct-sdk",
   "version": "1.1.4",
   "description": "Sage Intacct SDK for JavaScript",
   "main": "dist/index.js",
