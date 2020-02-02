@@ -14,10 +14,10 @@
  */
 
 import * as chai from "chai";
-import GetDimensionRelationships from "../../../src/Functions/Common/GetDimensionRelationships";
+import GetDimensions from "../../../src/Functions/Common/GetDimensions";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
-describe("GetDimensionRelationships", () => {
+describe("GetDimensions", () => {
   before(done => {
     return done();
   });
@@ -34,11 +34,11 @@ describe("GetDimensionRelationships", () => {
     const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
-        <getDimensionRelationships />
+        <getDimensions />
     </function>
 </test>`;
 
-    const record = new GetDimensionRelationships("unittest");
+    const record = new GetDimensions("unittest");
 
     XmlObjectTestHelper.CompareXml(expected, record);
   });
