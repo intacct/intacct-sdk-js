@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 Sage Intacct, Inc.
+ * Copyright 2020 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -44,7 +44,7 @@ describe("PurchasingTransactionCreate", () => {
             </datecreated>
             <vendorid>2530</vendorid>
             <datedue>
-                <year>2019</year>
+                <year>2020</year>
                 <month>09</month>
                 <day>15</day>
             </datedue>
@@ -69,7 +69,7 @@ describe("PurchasingTransactionCreate", () => {
         record.transactionDefinition = "Purchase Order";
         record.transactionDate = new Date("6/30/2015");
         record.vendorId = "2530";
-        record.dueDate = new Date("9/15/2019");
+        record.dueDate = new Date("9/15/2020");
 
         const line1 = new PurchasingTransactionLineCreate();
         line1.itemId = "02354032";
