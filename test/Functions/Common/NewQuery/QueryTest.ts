@@ -251,6 +251,7 @@ describe("Query", () => {
 
         const query = (new Query("unittest"))
             .setFromObject("ARINVOICE")
+            .setCaseInsensitive(false)
             .setDocParId("123456")
             .setOrderBy(orderBy)
             .setSelectFields(fields)
