@@ -24,14 +24,8 @@ import SelectFunctionFactory from "./SelectFunctionFactory";
 
 export default class SelectBuilder {
 
-    /**
-     * @type {ISelect[]}
-     */
-    private readonly selects: ISelect[];
+    public selects: ISelect[];
 
-    /**
-     * @type {SelectFunctionFactory}
-     */
     private factory: SelectFunctionFactory;
 
     constructor() {
@@ -40,12 +34,12 @@ export default class SelectBuilder {
     }
 
     /**
-     *
+     * Add Field for given fieldName to list for select
      * @param {string} fieldName
      *
      * @return SelectBuilder
      */
-    public field(fieldName: string): SelectBuilder {
+    public addField(fieldName: string): SelectBuilder {
         const currentSelectField = new Field(fieldName);
         this.selects.push(currentSelectField);
 
@@ -53,29 +47,29 @@ export default class SelectBuilder {
     }
 
     /**
-     *
+     * Add Fields for given list of fieldNames to list for select
      * @param {string[]} fieldNames
      *
      * @return SelectBuilder
      */
-    public fields(fieldNames: string[]): SelectBuilder {
+    public addFields(fieldNames: string[]): SelectBuilder {
         if (fieldNames == null || fieldNames.length < 1) {
             throw new Error("Empty list not allowed for fields.  Provide at least 1 field name in list.");
         }
         for (const fieldName of fieldNames) {
-            this.field(fieldName);
+            this.addField(fieldName);
         }
 
         return this;
     }
 
     /**
-     *
+     * Add Average for given fieldName to list for select
      * @param {string} fieldName
      *
      * @return SelectBuilder
      */
-    public avg(fieldName: string): SelectBuilder {
+    public addAverage(fieldName: string): SelectBuilder {
         const currentSelectField = this.factory.create(AbstractSelectFunction.AVERAGE, fieldName);
         this.selects.push(currentSelectField);
 
@@ -83,12 +77,12 @@ export default class SelectBuilder {
     }
 
     /**
-     *
+     * Add Count for given fieldName to list for select
      * @param {string} fieldName
      *
      * @return SelectBuilder
      */
-    public count(fieldName: string): SelectBuilder {
+    public addCount(fieldName: string): SelectBuilder {
         const currentSelectField = this.factory.create(AbstractSelectFunction.COUNT, fieldName);
         this.selects.push(currentSelectField);
 
@@ -96,12 +90,12 @@ export default class SelectBuilder {
     }
 
     /**
-     *
+     * Add Minimum for given fieldName to list for select
      * @param {string} fieldName
      *
      * @return SelectBuilder
      */
-    public min(fieldName: string): SelectBuilder {
+    public addMinimum(fieldName: string): SelectBuilder {
         const currentSelectField = this.factory.create(AbstractSelectFunction.MINIMUM, fieldName);
         this.selects.push(currentSelectField);
 
@@ -109,12 +103,12 @@ export default class SelectBuilder {
     }
 
     /**
-     *
+     * Add Maximum for given fieldName to list for select
      * @param {string} fieldName
      *
      * @return SelectBuilder
      */
-    public max(fieldName: string): SelectBuilder {
+    public addMaximum(fieldName: string): SelectBuilder {
         const currentSelectField = this.factory.create(AbstractSelectFunction.MAXIMUM, fieldName);
         this.selects.push(currentSelectField);
 
@@ -122,22 +116,15 @@ export default class SelectBuilder {
     }
 
     /**
-     *
+     * Add Sum for given fieldName to list for select
      * @param {string} fieldName
      *
-     * SelectBuilder
+     * @return SelectBuilder
      */
-    public sum(fieldName: string): SelectBuilder {
+    public addSum(fieldName: string): SelectBuilder {
         const currentSelectField = this.factory.create(AbstractSelectFunction.SUM, fieldName);
         this.selects.push(currentSelectField);
 
         return this;
-    }
-
-    /**
-     * @return ISelect[]
-     */
-    public getFields(): ISelect[] {
-        return this.selects;
     }
 }

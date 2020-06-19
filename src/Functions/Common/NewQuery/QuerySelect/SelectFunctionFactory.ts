@@ -26,9 +26,6 @@ import Sum from "./Sum";
 
 export default class SelectFunctionFactory {
 
-    /**
-     * @type {AbstractSelectFunction}
-     */
     private newFunction: AbstractSelectFunction;
 
     /**
@@ -41,7 +38,7 @@ export default class SelectFunctionFactory {
      * @throws Error
      */
     public create(functionName: string, fieldName: string): AbstractSelectFunction {
-        if (fieldName === null || fieldName === "") {
+        if (!fieldName) {
             throw new Error("Field name for " + functionName + " cannot be empty or null.  " +
                 "Provide a field name for the builder.");
         }

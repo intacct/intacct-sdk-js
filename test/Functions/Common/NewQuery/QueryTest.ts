@@ -14,7 +14,10 @@
  */
 
 import Query from "../../../../src/Functions/Common/NewQuery/Query";
-import {OrderBuilder} from "../../../../src/Functions/Common/NewQuery/QueryOrderBy";
+import AndOperator from "../../../../src/Functions/Common/NewQuery/QueryFilter/AndOperator";
+import Filter from "../../../../src/Functions/Common/NewQuery/QueryFilter/Filter";
+import OrOperator from "../../../../src/Functions/Common/NewQuery/QueryFilter/OrOperator";
+import OrderBuilder from "../../../../src/Functions/Common/NewQuery/QueryOrderBy/OrderBuilder";
 import Field from "../../../../src/Functions/Common/NewQuery/QuerySelect/Field";
 import XmlObjectTestHelper from "../../../Xml/XmlObjectTestHelper";
 
@@ -198,29 +201,63 @@ describe("Query", () => {
             new Field("RECORDNO"),
         ];
 
-        const orderBy = (new OrderBuilder()).ascending("TOTALDUE")
-            .descending("RECORDNO")
-            .getOrders();
+        const orderBy = (new OrderBuilder()).addAscending("TOTALDUE")
+            .addDescending("RECORDNO");
 
         const query = new Query("unittest");
         query.fromObject = "ARINVOICE";
         query.selectFields = fields;
-        query.orderBy = orderBy;
+        query.orderBy = orderBy.orders;
 
         XmlObjectTestHelper.CompareXml(expected, query);
     });
 
-    it("should set all through method chaining for query", () => {
+    it("should set three levels of filter through method chaining for query", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
         <query>
             <select>
-                <field>CUSTOMERID</field>
+                <field>BATCHNO</field>
                 <field>RECORDNO</field>
+                <field>STATE</field>
             </select>
-            <object>ARINVOICE</object>
+            <object>GLBATCH</object>
             <docparid>123456</docparid>
+            <filter>
+                <or>
+                    <and>
+                        <equalto>
+                            <field>JOURNAL</field>
+                            <value>APJ</value>
+                        </equalto>
+                        <equalto>
+                            <field>STATE</field>
+                            <value>Posted</value>
+                        </equalto>
+                    </and>
+                    <and>
+                        <equalto>
+                            <field>JOURNAL</field>
+                            <value>RCPT</value>
+                        </equalto>
+                        <equalto>
+                            <field>STATE</field>
+                            <value>Posted</value>
+                        </equalto>
+                        <or>
+                            <equalto>
+                                <field>RECORDNO</field>
+                                <value>168</value>
+                            </equalto>
+                            <equalto>
+                                <field>RECORDNO</field>
+                                <value>132</value>
+                            </equalto>
+                        </or>
+                    </and>
+                </or>
+            </filter>
             <orderby>
                 <order>
                     <field>TOTALDUE</field>
@@ -241,22 +278,48 @@ describe("Query", () => {
 </test>`;
 
         const fields = [
-            new Field("CUSTOMERID"),
+            new Field("BATCHNO"),
             new Field("RECORDNO"),
+            new Field("STATE"),
         ];
 
-        const orderBy = (new OrderBuilder()).ascending("TOTALDUE")
-            .descending("RECORDNO")
-            .getOrders();
+        const orderBy = (new OrderBuilder()).addAscending("TOTALDUE")
+            .addDescending("RECORDNO")
+            .orders;
+
+        const apjAndState = new AndOperator(
+        [
+                    (new Filter("JOURNAL")).equalTo("APJ"),
+                    (new Filter("STATE")).equalTo("Posted"),
+               ],
+        );
+
+        const recordnoOr = new OrOperator(
+         [
+                    (new Filter("RECORDNO")).equalTo("168"),
+                    (new Filter("RECORDNO")).equalTo("132"),
+                ],
+        );
+
+        const rcptAndState = new AndOperator(
+         [
+                    (new Filter("JOURNAL")).equalTo("RCPT"),
+                    (new Filter("STATE")).equalTo("Posted"),
+                    recordnoOr,
+                ],
+    );
+
+        const filter = new OrOperator([apjAndState, rcptAndState]);
 
         const query = (new Query("unittest"))
-            .setFromObject("ARINVOICE")
-            .setCaseInsensitive(false)
-            .setDocParId("123456")
-            .setOrderBy(orderBy)
-            .setSelectFields(fields)
-            .setPageSize(100)
-            .setOffset(0);
+            .addFromObject("GLBATCH")
+            .addCaseInsensitive(false)
+            .addDocParId("123456")
+            .addFilter(filter)
+            .addOrderBy(orderBy)
+            .addSelectFields(fields)
+            .addPageSize(100)
+            .addOffset(0);
 
         XmlObjectTestHelper.CompareXml(expected, query);
     });

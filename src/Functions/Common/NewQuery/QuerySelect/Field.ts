@@ -25,13 +25,10 @@ export default class Field implements ISelect, IXmlObject {
 
     public static readonly FIELD = "field";
 
-    /**
-     * @type {string}
-     */
     public fieldName: string;
 
-    constructor(fieldName?: string) {
-        if (fieldName === null || fieldName === "") {
+    constructor(fieldName: string) {
+        if (!fieldName) {
             throw new Error("Field name cannot be empty or null. Provide a field name for the builder.");
         }
         this.fieldName = fieldName;

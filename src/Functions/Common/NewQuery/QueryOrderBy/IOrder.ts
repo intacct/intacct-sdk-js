@@ -2,8 +2,6 @@
  * @module Intacct/SDK/Functions/Common/NewQuery/QueryOrderBy
  */
 
-import IaXmlWriter from "../../../../Xml/IaXmlWriter";
-
 /**
  * Copyright 2020 Sage Intacct, Inc.
  *
@@ -18,6 +16,8 @@ import IaXmlWriter from "../../../../Xml/IaXmlWriter";
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
+
+import IaXmlWriter from "../../../../Xml/IaXmlWriter";
 
 export default interface IOrder {
 

@@ -1,5 +1,5 @@
 /**
- * @module Intacct/SDK/Functions/Common/NewQuery/QuerySelect
+ * @module Intacct/SDK/Functions/Common/NewQuery/QueryFilter
  */
 
 /**
@@ -17,16 +17,16 @@
  * permissions and limitations under the License.
  */
 
-import AbstractSelectFunction from "./AbstractSelectFunction";
+import AbstractOperator from "./AbstractOperator";
+import IFilter from "./IFilter";
 
-export default class Sum extends AbstractSelectFunction {
+export default class OrOperator extends AbstractOperator {
 
-    /**
-     * Returns sum aggregate function name
-     *
-     * @return {string}
-     */
-    public getFunctionName(): string {
-        return AbstractSelectFunction.SUM;
+    constructor(filters?: IFilter[]) {
+        super(filters);
+    }
+
+    public getOperator(): string {
+        return AbstractOperator.OR;
     }
 }

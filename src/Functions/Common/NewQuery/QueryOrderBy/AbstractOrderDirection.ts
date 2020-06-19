@@ -26,9 +26,6 @@ export default abstract class AbstractOrderDirection implements IOrder {
 
     public static readonly DESCENDING = "descending";
 
-    /**
-     * @type {string}
-     */
     public fieldName: string;
 
     constructor(fieldName?: string) {

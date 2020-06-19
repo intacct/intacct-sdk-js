@@ -22,7 +22,7 @@ import AbstractSelectFunction from "./AbstractSelectFunction";
 export default class Minimum extends AbstractSelectFunction {
 
     /**
-     * Returns aggregate function name
+     * Returns minimum aggregate function name
      *
      * @return {string}
      */

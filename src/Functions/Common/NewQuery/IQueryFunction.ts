@@ -18,99 +18,41 @@
  */
 
 import IXmlObject from "../../../Xml/IXmlObject";
-import {IOrder} from "./QueryOrderBy";
+import IFilter from "./QueryFilter/IFilter";
+import IOrder from "./QueryOrderBy/IOrder";
 import ISelect from "./QuerySelect/ISelect";
 
 export default interface IQueryFunction extends IXmlObject {
 
-    /**
-     * @type {ISelect[]}
-     */
     selectFields: ISelect[];
 
-    /**
-     * @type {string}
-     */
     fromObject: string;
 
-    /**
-     * @type {string}
-     */
     docParId: string;
 
-    /**
-     * @type {IOrder[]}
-     */
+    filter: IFilter;
+
     orderBy: IOrder[];
 
-    /**
-     * @type {boolean}
-     */
     caseInsensitive: boolean;
 
-    /**
-     * @type {number}
-     */
     pageSize: number;
 
-    /**
-     * @type {number}
-     */
     offset: number;
 
-    /**
-     *
-     * @param selectFields
-     *
-     * @return IQueryFunction
-     */
-    setSelectFields(selectFields: ISelect[]): IQueryFunction;
+    addSelectFields(selectFields: ISelect[]): IQueryFunction;
 
-    /**
-     *
-     * @param fromObject
-     *
-     * @return IQueryFunction
-     */
-    setFromObject(fromObject: string): IQueryFunction;
+    addFromObject(fromObject: string): IQueryFunction;
 
-    /**
-     *
-     * @param docParId
-     *
-     * @return IQueryFunction
-     */
-    setDocParId(docParId: string): IQueryFunction;
+    addDocParId(docParId: string): IQueryFunction;
 
-    /**
-     *
-     * @param orderBy
-     *
-     * @return IQueryFunction
-     */
-    setOrderBy(orderBy: IOrder[]): IQueryFunction;
+    addFilter(filter: IFilter): IQueryFunction;
 
-    /**
-     *
-     * @param caseInsensitive
-     *
-     * @return IQueryFunction
-     */
-    setCaseInsensitive(caseInsensitive: boolean): IQueryFunction;
+    addOrderBy(orderBy: IOrder[]): IQueryFunction;
 
-    /**
-     *
-     * @param pageSize
-     *
-     * @return IQueryFunction
-     */
-    setPageSize(pageSize: number): IQueryFunction;
+    addCaseInsensitive(caseInsensitive: boolean): IQueryFunction;
 
-    /**
-     *
-     * @param offset
-     *
-     * @return IQueryFunction
-     */
-    setOffset(offset: number): IQueryFunction;
+    addPageSize(pageSize: number): IQueryFunction;
+
+    addOffset(offset: number): IQueryFunction;
 }

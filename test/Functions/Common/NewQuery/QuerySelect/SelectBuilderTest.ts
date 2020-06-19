@@ -14,9 +14,9 @@
  */
 
 import * as chai from "chai";
-import {Query} from "../../../../../src/Functions/Common/NewQuery";
-import {SelectFunctionFactory} from "../../../../../src/Functions/Common/NewQuery/QuerySelect";
+import Query from "../../../../../src/Functions/Common/NewQuery/Query";
 import SelectBuilder from "../../../../../src/Functions/Common/NewQuery/QuerySelect/SelectBuilder";
+import SelectFunctionFactory from "../../../../../src/Functions/Common/NewQuery/QuerySelect/SelectFunctionFactory";
 import XmlObjectTestHelper from "../../../../Xml/XmlObjectTestHelper";
 
 describe("SelectFunctionFactory", () => {
@@ -48,7 +48,7 @@ describe("SelectFunctionFactory", () => {
     </function>
 </test>`;
 
-        const fields = (new SelectBuilder()).field("CUSTOMERID").getFields();
+        const fields = (new SelectBuilder()).addField("CUSTOMERID").selects;
 
         const query = new Query("unittest");
         query.selectFields = fields;
@@ -57,9 +57,19 @@ describe("SelectFunctionFactory", () => {
     });
 
     it("should throw exception when field name is empty", () => {
+    chai.assert.throws(
+        () => {
+            (new SelectBuilder()).addField("");
+        },
+        Error,
+        "Field name cannot be empty or null. Provide a field name for the builder.",
+    );
+    });
+
+    it("should throw exception when field name is null", () => {
         chai.assert.throws(
             () => {
-                (new SelectBuilder()).field("").getFields();
+                (new SelectBuilder()).addField(null);
             },
             Error,
             "Field name cannot be empty or null. Provide a field name for the builder.",
@@ -83,8 +93,8 @@ describe("SelectFunctionFactory", () => {
     </function>
 </test>`;
 
-        const fields = (new SelectBuilder()).fields(["CUSTOMERID", "RECORDNO", "NAME"])
-            .getFields();
+        const fields = (new SelectBuilder()).addFields(["CUSTOMERID", "RECORDNO", "NAME"])
+            .selects;
 
         const query = new Query("unittest");
         query.selectFields = fields;
@@ -95,7 +105,7 @@ describe("SelectFunctionFactory", () => {
     it("should throw exception when field names are empty", () => {
         chai.assert.throws(
             () => {
-                (new SelectBuilder()).fields([]).getFields();
+                (new SelectBuilder()).addFields([]);
             },
             Error,
             "Empty list not allowed for fields.  Provide at least 1 field name in list.",
@@ -117,7 +127,7 @@ describe("SelectFunctionFactory", () => {
     </function>
 </test>`;
 
-        const fields = (new SelectBuilder()).avg("TOTALDUE").getFields();
+        const fields = (new SelectBuilder()).addAverage("TOTALDUE").selects;
 
         const query = new Query("unittest");
         query.selectFields = fields;
@@ -128,7 +138,7 @@ describe("SelectFunctionFactory", () => {
     it("should throw exception when field name for avg is empty", () => {
         chai.assert.throws(
             () => {
-                (new SelectBuilder()).avg("").getFields();
+                (new SelectBuilder()).addAverage("");
             },
             Error,
             "Field name for avg cannot be empty or null.  Provide a field name for the builder.",
@@ -150,7 +160,7 @@ describe("SelectFunctionFactory", () => {
     </function>
 </test>`;
 
-        const fields = (new SelectBuilder()).count("RECORDNO").getFields();
+        const fields = (new SelectBuilder()).addCount("RECORDNO").selects;
 
         const query = new Query("unittest");
         query.selectFields = fields;
@@ -161,7 +171,7 @@ describe("SelectFunctionFactory", () => {
     it("should throw exception when field name for count is empty", () => {
         chai.assert.throws(
             () => {
-                (new SelectBuilder()).count("").getFields();
+                (new SelectBuilder()).addCount("");
             },
             Error,
             "Field name for count cannot be empty or null.  Provide a field name for the builder.",
@@ -183,7 +193,7 @@ describe("SelectFunctionFactory", () => {
     </function>
 </test>`;
 
-        const fields = (new SelectBuilder()).min("TOTALDUE").getFields();
+        const fields = (new SelectBuilder()).addMinimum("TOTALDUE").selects;
 
         const query = new Query("unittest");
         query.selectFields = fields;
@@ -194,7 +204,7 @@ describe("SelectFunctionFactory", () => {
     it("should throw exception when field name for min is empty", () => {
         chai.assert.throws(
             () => {
-                (new SelectBuilder()).min("").getFields();
+                (new SelectBuilder()).addMinimum("");
             },
             Error,
             "Field name for min cannot be empty or null.  Provide a field name for the builder.",
@@ -216,7 +226,7 @@ describe("SelectFunctionFactory", () => {
     </function>
 </test>`;
 
-        const fields = (new SelectBuilder()).max("TOTALDUE").getFields();
+        const fields = (new SelectBuilder()).addMaximum("TOTALDUE").selects;
 
         const query = new Query("unittest");
         query.selectFields = fields;
@@ -227,7 +237,7 @@ describe("SelectFunctionFactory", () => {
     it("should throw exception when field name for max is empty", () => {
         chai.assert.throws(
             () => {
-                (new SelectBuilder()).max("").getFields();
+                (new SelectBuilder()).addMaximum("");
             },
             Error,
             "Field name for max cannot be empty or null.  Provide a field name for the builder.",
@@ -249,7 +259,7 @@ describe("SelectFunctionFactory", () => {
     </function>
 </test>`;
 
-        const fields = (new SelectBuilder()).sum("TOTALDUE").getFields();
+        const fields = (new SelectBuilder()).addSum("TOTALDUE").selects;
 
         const query = new Query("unittest");
         query.selectFields = fields;
@@ -260,7 +270,7 @@ describe("SelectFunctionFactory", () => {
     it("should throw exception when field name for sum is empty", () => {
         chai.assert.throws(
             () => {
-                (new SelectBuilder()).sum("").getFields();
+                (new SelectBuilder()).addSum("");
             },
             Error,
             "Field name for sum cannot be empty or null.  Provide a field name for the builder.",

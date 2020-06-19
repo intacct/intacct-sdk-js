@@ -1,5 +1,5 @@
 /**
- * @module Intacct/SDK/Functions/Common/NewQuery/QuerySelect
+ * @module Intacct/SDK/Functions/Common/NewQuery/QueryFilter
  */
 
 /**
@@ -17,16 +17,9 @@
  * permissions and limitations under the License.
  */
 
-import AbstractSelectFunction from "./AbstractSelectFunction";
+import IaXmlWriter from "../../../../Xml/IaXmlWriter";
 
-export default class Sum extends AbstractSelectFunction {
+export default interface IFilter {
 
-    /**
-     * Returns sum aggregate function name
-     *
-     * @return {string}
-     */
-    public getFunctionName(): string {
-        return AbstractSelectFunction.SUM;
-    }
+    writeXml(xml: IaXmlWriter): void;
 }

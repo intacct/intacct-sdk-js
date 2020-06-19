@@ -2,9 +2,6 @@
  * @module Intacct/SDK/Functions/Common/NewQuery/QueryOrderBy
  */
 
-import {OrderAscending, OrderDescending} from "./index";
-import IOrder from "./IOrder";
-
 /**
  * Copyright 2020 Sage Intacct, Inc.
  *
@@ -20,12 +17,13 @@ import IOrder from "./IOrder";
  * permissions and limitations under the License.
  */
 
+import IOrder from "./IOrder";
+import OrderAscending from "./OrderAscending";
+import OrderDescending from "./OrderDescending";
+
 export default class OrderBuilder {
 
-    /**
-     * @type {IOrder[]}
-     */
-    private readonly orders: IOrder[];
+    public orders: IOrder[];
 
     constructor() {
         this.orders = [] as IOrder[];
@@ -38,7 +36,7 @@ export default class OrderBuilder {
      *
      * @return OrderBuilder
      */
-    public ascending(fieldName: string): OrderBuilder {
+    public addAscending(fieldName: string): OrderBuilder {
         const currentOrderField = new OrderAscending(fieldName);
         this.orders.push(currentOrderField);
 
@@ -52,19 +50,10 @@ export default class OrderBuilder {
      *
      * @return OrderBuilder
      */
-    public descending(fieldName: string): OrderBuilder {
+    public addDescending(fieldName: string): OrderBuilder {
         const currentOrderField = new OrderDescending(fieldName);
         this.orders.push(currentOrderField);
 
         return this;
-    }
-
-    /**
-     * Returns all the orders that were set
-     *
-     * @return IOrder[]
-     */
-    public getOrders(): IOrder[] {
-        return this.orders;
     }
 }

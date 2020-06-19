@@ -22,7 +22,7 @@ import AbstractSelectFunction from "./AbstractSelectFunction";
 export default class Average extends AbstractSelectFunction {
 
     /**
-     * Returns aggregate function name
+     * Returns average aggregate function name
      *
      * @return {string}
      */

@@ -22,7 +22,7 @@ import AbstractSelectFunction from "./AbstractSelectFunction";
 export default class Maximum extends AbstractSelectFunction {
 
     /**
-     * Returns aggregate function name
+     * Returns maximum aggregate function name
      *
      * @return {string}
      */

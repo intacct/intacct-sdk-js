@@ -22,6 +22,8 @@ import AbstractOrderDirection from "./AbstractOrderDirection";
 export default class OrderDescending extends AbstractOrderDirection {
 
     /**
+     * Returns descending direction
+     *
      * @return string
      */
     public getDirection(): string {

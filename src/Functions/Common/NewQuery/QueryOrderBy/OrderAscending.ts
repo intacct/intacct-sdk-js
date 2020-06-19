@@ -22,7 +22,7 @@ import AbstractOrderDirection from "./AbstractOrderDirection";
 export default class OrderAscending extends AbstractOrderDirection {
 
     /**
-     * Returns Ascending direction
+     * Returns ascending direction
      *
      * @return string
      */

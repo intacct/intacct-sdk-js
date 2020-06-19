@@ -22,7 +22,7 @@ import AbstractSelectFunction from "./AbstractSelectFunction";
 export default class Count extends AbstractSelectFunction {
 
     /**
-     * Returns aggregate function name
+     * Returns count aggregate function name
      *
      * @return {string}
      */

@@ -20,125 +20,117 @@
 import IaXmlWriter from "../../../Xml/IaXmlWriter";
 import AbstractFunction from "../../AbstractFunction";
 import IQueryFunction from "./IQueryFunction";
-import {IOrder} from "./QueryOrderBy";
+import IFilter from "./QueryFilter/IFilter";
+import IOrder from "./QueryOrderBy/IOrder";
 import ISelect from "./QuerySelect/ISelect";
 
 export default class Query extends AbstractFunction implements IQueryFunction {
 
-    /**
-     * @type {ISelect[]}
-     */
     public selectFields: ISelect[];
 
-    /**
-     * @type {string}
-     */
     public fromObject: string;
 
-    /**
-     * @type {string}
-     */
+    public filter: IFilter;
+
     public docParId: string;
 
-    /**
-     * @type {IOrder[]}
-     */
     public orderBy: IOrder[];
 
-    /**
-     * @type {boolean}
-     */
     public caseInsensitive: boolean;
 
-    /**
-     * @type {number}
-     */
     public pageSize: number;
 
-    /**
-     * @type {number}
-     */
     public offset: number;
 
     /**
-     *
+     * Add Field list for this query
      * @param {ISelect[]} selectFields
      *
      * @return IQueryFunction
      */
-    public setSelectFields(selectFields: ISelect[]): IQueryFunction {
+    public addSelectFields(selectFields: ISelect[]): IQueryFunction {
         this.selectFields = selectFields;
 
         return this;
     }
 
     /**
-     *
+     * Add object name for given fromObject for this query
      * @param {string} fromObject
      *
      * @return IQueryFunction
      */
-    public setFromObject(fromObject: string): IQueryFunction {
+    public addFromObject(fromObject: string): IQueryFunction {
         this.fromObject = fromObject;
 
         return this;
     }
 
     /**
-     *
+     * Add docParId for this query
      * @param {string} docParId
      *
      * @return IQueryFunction
      */
-    public setDocParId(docParId: string): IQueryFunction {
+    public addDocParId(docParId: string): IQueryFunction {
         this.docParId = docParId;
 
         return this;
     }
 
     /**
-     *
+     * Add Filter for this query
+     * @param filter
+     */
+    public addFilter(filter: IFilter): IQueryFunction {
+        this.filter = filter;
+
+        return this;
+    }
+
+    /**
+     * Add Order by list for this query
      * @param {IOrder[]} orderBy
      *
      * @return IOrder[]
      */
-    public setOrderBy(orderBy: IOrder[]): IQueryFunction {
+    public addOrderBy(orderBy: IOrder[]): IQueryFunction {
         this.orderBy = orderBy;
 
         return this;
     }
 
     /**
-     *
+     * Add case insensitive for this query
      * @param {boolean} caseInsensitive
      *
      * @return IQueryFunction
      */
-    public setCaseInsensitive(caseInsensitive: boolean): IQueryFunction {
+    public addCaseInsensitive(caseInsensitive: boolean): IQueryFunction {
         this.caseInsensitive = caseInsensitive;
 
         return this;
     }
 
     /**
-     *
+     * Add page size for this query
      * @param {number} pageSize
      *
      * @return IQueryFunction
      */
-    public setPageSize(pageSize: number): IQueryFunction {
+    public addPageSize(pageSize: number): IQueryFunction {
         this.pageSize = pageSize;
 
         return this;
     }
 
     /**
-     *
+     * Add offset for this query
      * @param {number} offset
      *
      * @return IQueryFunction
      */
-    public setOffset(offset: number): IQueryFunction {
+    public addOffset(offset: number): IQueryFunction {
         this.offset = offset;
 
         return this;
@@ -160,6 +152,12 @@ export default class Query extends AbstractFunction implements IQueryFunction {
 
         xml.writeElement("object", this.fromObject, false);
         xml.writeElement("docparid", this.docParId);
+
+        if (this.filter) {
+            xml.writeStartElement("filter");
+            this.filter.writeXml(xml);
+            xml.writeEndElement(); // filter
+        }
 
         if (this.orderBy != null && this.orderBy.length > 0) {
             xml.writeStartElement("orderby");

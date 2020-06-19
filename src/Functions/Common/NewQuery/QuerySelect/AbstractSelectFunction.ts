@@ -32,19 +32,14 @@ export default abstract class AbstractSelectFunction implements ISelect {
 
     public static readonly SUM = "sum";
 
-    /**
-     * @type {string}
-     */
     public fieldName: string;
 
-    /**
-     *
-     * @param {string} fieldName
-     */
-    constructor(fieldName?: string) {
-        if (fieldName !== null) {
-            this.fieldName = fieldName;
+    constructor(fieldName: string) {
+        if (!fieldName) {
+            throw new Error("Field name for select cannot be empty or null.  " +
+                "Provide a field name for the builder.");
         }
+        this.fieldName = fieldName;
     }
 
     /**
