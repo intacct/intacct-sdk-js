@@ -40,19 +40,19 @@ export default interface IQueryFunction extends IXmlObject {
 
     offset: number;
 
-    addSelectFields(selectFields: ISelect[]): IQueryFunction;
+    assignSelectFields(selectFields: ISelect[]): IQueryFunction;
 
-    addFromObject(fromObject: string): IQueryFunction;
+    assignFromObject(fromObject: string): IQueryFunction;
 
-    addDocParId(docParId: string): IQueryFunction;
+    assignDocParId(docParId: string): IQueryFunction;
 
-    addFilter(filter: IFilter): IQueryFunction;
+    assignFilter(filter: IFilter): IQueryFunction;
 
-    addOrderBy(orderBy: IOrder[]): IQueryFunction;
+    assignOrderBy(orderBy: IOrder[]): IQueryFunction;
 
-    addCaseInsensitive(caseInsensitive: boolean): IQueryFunction;
+    assignCaseInsensitive(caseInsensitive: boolean): IQueryFunction;
 
-    addPageSize(pageSize: number): IQueryFunction;
+    assignPageSize(pageSize: number): IQueryFunction;
 
-    addOffset(offset: number): IQueryFunction;
+    assignOffset(offset: number): IQueryFunction;
 }

@@ -26,9 +26,7 @@ export default abstract class AbstractOperator implements IFilter {
 
     public static readonly AND = "and";
 
-    public filters: IFilter[];
-
-    protected constructor(filters?: IFilter[]) {
+    protected constructor(private readonly filters?: IFilter[]) {
         if (!filters) {
             this.filters = [];
         } else {
@@ -68,7 +66,7 @@ export default abstract class AbstractOperator implements IFilter {
             }
             xml.writeEndElement();  // filter
         } else {
-            throw new Error("Two or more FilterInterface objects required for " + this.getOperator());
+            throw new Error(`Two or more FilterInterface objects required for ${ this.getOperator() }`);
         }
     }
 }

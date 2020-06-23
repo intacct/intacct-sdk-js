@@ -49,13 +49,11 @@ export default class Filter implements IFilter {
 
     public static readonly IS_NOT_NULL = "isnotnull";
 
-    private readonly fieldName: string;
-
     private value: string|string[];
 
     private operation: string;
 
-    constructor(fieldName: string) {
+    constructor(private readonly fieldName: string) {
         if (!fieldName) {
             throw new Error("fieldName is required for Filter.");
         }
@@ -217,7 +215,7 @@ export default class Filter implements IFilter {
      */
     public like(value: string): IFilter {
         if (value == null) {
-            throw new Error("null not allowed. Provide string value for " + Filter.LIKE + " function.");
+            throw new Error("null not allowed. Provide string value for like function.");
         }
 
         this.value = value;

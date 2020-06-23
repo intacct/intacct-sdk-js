@@ -24,12 +24,12 @@ import SelectFunctionFactory from "./SelectFunctionFactory";
 
 export default class SelectBuilder {
 
-    public selects: ISelect[];
+    private selectList: ISelect[];
 
     private factory: SelectFunctionFactory;
 
     constructor() {
-        this.selects = [] as ISelect[];
+        this.selectList = [] as ISelect[];
         this.factory = new SelectFunctionFactory();
     }
 
@@ -41,7 +41,7 @@ export default class SelectBuilder {
      */
     public addField(fieldName: string): SelectBuilder {
         const currentSelectField = new Field(fieldName);
-        this.selects.push(currentSelectField);
+        this.selectList.push(currentSelectField);
 
         return this;
     }
@@ -71,7 +71,7 @@ export default class SelectBuilder {
      */
     public addAverage(fieldName: string): SelectBuilder {
         const currentSelectField = this.factory.create(AbstractSelectFunction.AVERAGE, fieldName);
-        this.selects.push(currentSelectField);
+        this.selectList.push(currentSelectField);
 
         return this;
     }
@@ -84,7 +84,7 @@ export default class SelectBuilder {
      */
     public addCount(fieldName: string): SelectBuilder {
         const currentSelectField = this.factory.create(AbstractSelectFunction.COUNT, fieldName);
-        this.selects.push(currentSelectField);
+        this.selectList.push(currentSelectField);
 
         return this;
     }
@@ -97,7 +97,7 @@ export default class SelectBuilder {
      */
     public addMinimum(fieldName: string): SelectBuilder {
         const currentSelectField = this.factory.create(AbstractSelectFunction.MINIMUM, fieldName);
-        this.selects.push(currentSelectField);
+        this.selectList.push(currentSelectField);
 
         return this;
     }
@@ -110,7 +110,7 @@ export default class SelectBuilder {
      */
     public addMaximum(fieldName: string): SelectBuilder {
         const currentSelectField = this.factory.create(AbstractSelectFunction.MAXIMUM, fieldName);
-        this.selects.push(currentSelectField);
+        this.selectList.push(currentSelectField);
 
         return this;
     }
@@ -123,8 +123,12 @@ export default class SelectBuilder {
      */
     public addSum(fieldName: string): SelectBuilder {
         const currentSelectField = this.factory.create(AbstractSelectFunction.SUM, fieldName);
-        this.selects.push(currentSelectField);
+        this.selectList.push(currentSelectField);
 
         return this;
+    }
+
+    get selects(): ISelect[] {
+        return this.selectList;
     }
 }

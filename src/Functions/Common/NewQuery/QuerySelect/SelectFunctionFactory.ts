@@ -39,8 +39,8 @@ export default class SelectFunctionFactory {
      */
     public create(functionName: string, fieldName: string): AbstractSelectFunction {
         if (!fieldName) {
-            throw new Error("Field name for " + functionName + " cannot be empty or null.  " +
-                "Provide a field name for the builder.");
+            throw new Error(
+                `Field name for ${ functionName } cannot be empty or null. Provide a field name for the builder.`);
         }
 
         switch (functionName) {

@@ -141,7 +141,7 @@ describe("SelectFunctionFactory", () => {
                 (new SelectBuilder()).addAverage("");
             },
             Error,
-            "Field name for avg cannot be empty or null.  Provide a field name for the builder.",
+            "Field name for avg cannot be empty or null. Provide a field name for the builder.",
         );
     });
 
@@ -174,7 +174,7 @@ describe("SelectFunctionFactory", () => {
                 (new SelectBuilder()).addCount("");
             },
             Error,
-            "Field name for count cannot be empty or null.  Provide a field name for the builder.",
+            "Field name for count cannot be empty or null. Provide a field name for the builder.",
         );
     });
 
@@ -207,7 +207,7 @@ describe("SelectFunctionFactory", () => {
                 (new SelectBuilder()).addMinimum("");
             },
             Error,
-            "Field name for min cannot be empty or null.  Provide a field name for the builder.",
+            "Field name for min cannot be empty or null. Provide a field name for the builder.",
         );
     });
 
@@ -240,7 +240,7 @@ describe("SelectFunctionFactory", () => {
                 (new SelectBuilder()).addMaximum("");
             },
             Error,
-            "Field name for max cannot be empty or null.  Provide a field name for the builder.",
+            "Field name for max cannot be empty or null. Provide a field name for the builder.",
         );
     });
 
@@ -273,7 +273,7 @@ describe("SelectFunctionFactory", () => {
                 (new SelectBuilder()).addSum("");
             },
             Error,
-            "Field name for sum cannot be empty or null.  Provide a field name for the builder.",
+            "Field name for sum cannot be empty or null. Provide a field name for the builder.",
         );
     });
 

@@ -312,14 +312,14 @@ describe("Query", () => {
         const filter = new OrOperator([apjAndState, rcptAndState]);
 
         const query = (new Query("unittest"))
-            .addFromObject("GLBATCH")
-            .addCaseInsensitive(false)
-            .addDocParId("123456")
-            .addFilter(filter)
-            .addOrderBy(orderBy)
-            .addSelectFields(fields)
-            .addPageSize(100)
-            .addOffset(0);
+            .assignFromObject("GLBATCH")
+            .assignCaseInsensitive(false)
+            .assignDocParId("123456")
+            .assignFilter(filter)
+            .assignOrderBy(orderBy)
+            .assignSelectFields(fields)
+            .assignPageSize(100)
+            .assignOffset(0);
 
         XmlObjectTestHelper.CompareXml(expected, query);
     });

@@ -48,7 +48,7 @@ export default class Query extends AbstractFunction implements IQueryFunction {
      *
      * @return IQueryFunction
      */
-    public addSelectFields(selectFields: ISelect[]): IQueryFunction {
+    public assignSelectFields(selectFields: ISelect[]): IQueryFunction {
         this.selectFields = selectFields;
 
         return this;
@@ -60,7 +60,7 @@ export default class Query extends AbstractFunction implements IQueryFunction {
      *
      * @return IQueryFunction
      */
-    public addFromObject(fromObject: string): IQueryFunction {
+    public assignFromObject(fromObject: string): IQueryFunction {
         this.fromObject = fromObject;
 
         return this;
@@ -72,7 +72,7 @@ export default class Query extends AbstractFunction implements IQueryFunction {
      *
      * @return IQueryFunction
      */
-    public addDocParId(docParId: string): IQueryFunction {
+    public assignDocParId(docParId: string): IQueryFunction {
         this.docParId = docParId;
 
         return this;
@@ -82,7 +82,7 @@ export default class Query extends AbstractFunction implements IQueryFunction {
      * Add Filter for this query
      * @param filter
      */
-    public addFilter(filter: IFilter): IQueryFunction {
+    public assignFilter(filter: IFilter): IQueryFunction {
         this.filter = filter;
 
         return this;
@@ -94,7 +94,7 @@ export default class Query extends AbstractFunction implements IQueryFunction {
      *
      * @return IOrder[]
      */
-    public addOrderBy(orderBy: IOrder[]): IQueryFunction {
+    public assignOrderBy(orderBy: IOrder[]): IQueryFunction {
         this.orderBy = orderBy;
 
         return this;
@@ -106,7 +106,7 @@ export default class Query extends AbstractFunction implements IQueryFunction {
      *
      * @return IQueryFunction
      */
-    public addCaseInsensitive(caseInsensitive: boolean): IQueryFunction {
+    public assignCaseInsensitive(caseInsensitive: boolean): IQueryFunction {
         this.caseInsensitive = caseInsensitive;
 
         return this;
@@ -118,7 +118,7 @@ export default class Query extends AbstractFunction implements IQueryFunction {
      *
      * @return IQueryFunction
      */
-    public addPageSize(pageSize: number): IQueryFunction {
+    public assignPageSize(pageSize: number): IQueryFunction {
         this.pageSize = pageSize;
 
         return this;
@@ -130,7 +130,7 @@ export default class Query extends AbstractFunction implements IQueryFunction {
      *
      * @return IQueryFunction
      */
-    public addOffset(offset: number): IQueryFunction {
+    public assignOffset(offset: number): IQueryFunction {
         this.offset = offset;
 
         return this;

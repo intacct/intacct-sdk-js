@@ -21,6 +21,10 @@ import AbstractOrderDirection from "./AbstractOrderDirection";
 
 export default class OrderDescending extends AbstractOrderDirection {
 
+    constructor(fieldName: string) {
+        super(fieldName);
+    }
+
     /**
      * Returns descending direction
      *

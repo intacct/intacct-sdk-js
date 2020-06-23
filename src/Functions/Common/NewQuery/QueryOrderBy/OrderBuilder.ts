@@ -22,11 +22,10 @@ import OrderAscending from "./OrderAscending";
 import OrderDescending from "./OrderDescending";
 
 export default class OrderBuilder {
-
-    public orders: IOrder[];
+    private orderList: IOrder[];
 
     constructor() {
-        this.orders = [] as IOrder[];
+        this.orderList = [] as IOrder[];
     }
 
     /**
@@ -38,7 +37,7 @@ export default class OrderBuilder {
      */
     public addAscending(fieldName: string): OrderBuilder {
         const currentOrderField = new OrderAscending(fieldName);
-        this.orders.push(currentOrderField);
+        this.orderList.push(currentOrderField);
 
         return this;
     }
@@ -52,8 +51,12 @@ export default class OrderBuilder {
      */
     public addDescending(fieldName: string): OrderBuilder {
         const currentOrderField = new OrderDescending(fieldName);
-        this.orders.push(currentOrderField);
+        this.orderList.push(currentOrderField);
 
         return this;
+    }
+
+    get orders() {
+        return this.orderList;
     }
 }
