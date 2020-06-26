@@ -15,6 +15,7 @@
 
 import * as chai from "chai";
 import Query from "../../../../../src/Functions/Common/NewQuery/Query";
+import Average from "../../../../../src/Functions/Common/NewQuery/QuerySelect/Average";
 import SelectBuilder from "../../../../../src/Functions/Common/NewQuery/QuerySelect/SelectBuilder";
 import SelectFunctionFactory from "../../../../../src/Functions/Common/NewQuery/QuerySelect/SelectFunctionFactory";
 import XmlObjectTestHelper from "../../../../Xml/XmlObjectTestHelper";
@@ -64,6 +65,17 @@ describe("SelectFunctionFactory", () => {
         Error,
         "Field name cannot be empty or null. Provide a field name for the builder.",
     );
+    });
+
+    it("should throw exception when field name is empty", () => {
+        chai.assert.throws(
+            () => {
+                const avg = new Average("");
+            },
+            Error,
+            "Field name for select cannot be empty or null. " +
+            "Provide a field name for the builder.",
+        );
     });
 
     it("should throw exception when field name is null", () => {

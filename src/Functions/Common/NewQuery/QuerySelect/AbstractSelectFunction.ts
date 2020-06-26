@@ -34,7 +34,7 @@ export default abstract class AbstractSelectFunction implements ISelect {
 
     constructor(private readonly fieldName: string) {
         if (!fieldName) {
-            throw new Error("Field name for select cannot be empty or null." +
+            throw new Error("Field name for select cannot be empty or null. " +
                 "Provide a field name for the builder.");
         }
         this.fieldName = fieldName;
