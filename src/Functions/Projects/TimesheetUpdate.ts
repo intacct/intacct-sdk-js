@@ -36,6 +36,14 @@ export default class TimesheetUpdate extends AbstractTimesheet {
     xml.writeElement("SUPDOCID", this.attachmentsId);
     xml.writeElement("STATE", this.action);
 
+    xml.writeStartElement("TIMESHEETENTRIES");
+    if (this.entries != null && this.entries.length > 0) {
+        for (const entry of this.entries) {
+            entry.writeXml(xml);
+        }
+    }
+    xml.writeEndElement(); // TIMESHEETENTRIES
+    
     xml.writeCustomFieldsImplicit(this.customFields);
 
     xml.writeEndElement(); // TIMESHEET
