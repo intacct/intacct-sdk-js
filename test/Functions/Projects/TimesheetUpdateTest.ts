@@ -16,6 +16,8 @@
 import TimesheetEntryUpdate from "../../../src/Functions/Projects/TimesheetEntryUpdate";
 import TimesheetUpdate from "../../../src/Functions/Projects/TimesheetUpdate";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
+import AbstractTimesheetEntry from "../../../src/Functions/Projects/AbstractTimesheetEntry";
+import TimesheetEntryCreate from "../../../src/Functions/Projects/TimesheetEntryCreate";
 
 describe("TimesheetUpdate", () => {
     before((done) => {
@@ -108,6 +110,7 @@ describe("TimesheetUpdate", () => {
                 <DESCRIPTION>desc</DESCRIPTION>
                 <SUPDOCID>A1234</SUPDOCID>
                 <STATE>Submitted</STATE>
+                <TIMESHEETENTRIES />
                 <customfield1>customvalue1</customfield1>
             </TIMESHEET>
         </update>
