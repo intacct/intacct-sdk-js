@@ -37,6 +37,9 @@ export default class TimesheetEntryCreate extends AbstractTimesheetEntry {
     if (!this._isEmbedded) {
       xml.writeElement("TIMESHEETKEY", this.timesheetRecordNo);
     }
+    if (this._isEmbedded && this.recordNo) {
+      xml.writeElement("RECORDNO", this.recordNo);
+    }
 
     xml.writeElementDate("ENTRYDATE", this.entryDate, IaXmlWriter.intacctDateFormat);
 
