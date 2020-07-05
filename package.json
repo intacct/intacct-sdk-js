@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/intacct/intacct-sdk-js.git"
+    "url": "https://github.com/intacct-thyme/intacct-sdk-js.git"
   },
   "author": {
     "name": "Sage Intacct, Inc.",
@@ -21,9 +21,6 @@
   },
   "license": "Apache-2.0",
   "homepage": "https://developer.intacct.com",
-  "bugs": {
-    "url": "https://github.com/intacct/intacct-sdk-js/issues"
-  },
   "engines": {
     "node": ">=12.18.1"
   },
