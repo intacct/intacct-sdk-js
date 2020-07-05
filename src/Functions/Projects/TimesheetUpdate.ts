@@ -43,7 +43,7 @@ export default class TimesheetUpdate extends AbstractTimesheet {
         }
     }
     xml.writeEndElement(); // TIMESHEETENTRIES
-    
+
     xml.writeCustomFieldsImplicit(this.customFields);
 
     xml.writeEndElement(); // TIMESHEET
