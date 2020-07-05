@@ -4,6 +4,7 @@
   "description": "Sage Intacct SDK for JavaScript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "keywords": [
     "sage intacct",
     "intacct",
