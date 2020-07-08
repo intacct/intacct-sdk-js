@@ -110,7 +110,6 @@ describe("TimesheetUpdate", () => {
                 <DESCRIPTION>desc</DESCRIPTION>
                 <SUPDOCID>A1234</SUPDOCID>
                 <STATE>Submitted</STATE>
-                <TIMESHEETENTRIES />
                 <customfield1>customvalue1</customfield1>
             </TIMESHEET>
         </update>
