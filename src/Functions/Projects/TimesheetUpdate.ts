@@ -21,32 +21,45 @@ import IaXmlWriter from "../../Xml/IaXmlWriter";
 import AbstractTimesheet from "./AbstractTimesheet";
 
 export default class TimesheetUpdate extends AbstractTimesheet {
+  private _updateHeader: boolean;
+  constructor(updateHeader = true) {
+    super(...arguments);
+    this._updateHeader = updateHeader;
+  }
+
   public writeXml(xml: IaXmlWriter): void {
     xml.writeStartElement("function");
     xml.writeAttribute("controlid", this.controlId, true);
 
     xml.writeStartElement("update");
-    xml.writeStartElement("TIMESHEET");
+    if (this._updateHeader) {
+      xml.writeStartElement("TIMESHEET");
 
-    xml.writeElement("RECORDNO", this.recordNo);
-    xml.writeElement("EMPLOYEEID", this.employeeId);
-    xml.writeElementDate("BEGINDATE", this.beginDate, IaXmlWriter.intacctDateFormat);
+      xml.writeElement("RECORDNO", this.recordNo);
+      xml.writeElement("EMPLOYEEID", this.employeeId);
+      xml.writeElementDate("BEGINDATE", this.beginDate, IaXmlWriter.intacctDateFormat);
 
-    xml.writeElement("DESCRIPTION", this.description);
-    xml.writeElement("SUPDOCID", this.attachmentsId);
-    xml.writeElement("STATE", this.action);
+      xml.writeElement("DESCRIPTION", this.description);
+      xml.writeElement("SUPDOCID", this.attachmentsId);
+      xml.writeElement("STATE", this.action);
+    }
 
     if (this.entries != null && this.entries.length > 0) {
-      xml.writeStartElement("TIMESHEETENTRIES");
+      if (this._updateHeader) {
+        xml.writeStartElement("TIMESHEETENTRIES");
+      }
       for (const entry of this.entries) {
           entry.writeXml(xml);
       }
-      xml.writeEndElement(); // TIMESHEETENTRIES
+      if (this._updateHeader) {
+        xml.writeEndElement(); // TIMESHEETENTRIES
+      }
     }
+    if (this._updateHeader) {
+      xml.writeCustomFieldsImplicit(this.customFields);
 
-    xml.writeCustomFieldsImplicit(this.customFields);
-
-    xml.writeEndElement(); // TIMESHEET
+      xml.writeEndElement(); // TIMESHEET
+    }
     xml.writeEndElement(); // update
 
     xml.writeEndElement(); // function

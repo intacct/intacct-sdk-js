@@ -57,9 +57,41 @@ describe("TimesheetUpdate", () => {
     record.beginDate = new Date("06/30/2016");
     const entry = new TimesheetEntryCreate(true);
     entry.recordNo = 1;
-    entry.quantity = 5,
-    entry.entryDate = new Date("06/30/2016")
+    entry.quantity = 5;
+    entry.entryDate = new Date("06/30/2016");
     record.entries = [entry];
+    XmlObjectTestHelper.CompareXml(expected, record);
+  });
+  it("should build update object for entries", () => {
+    const expected = `<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <function controlid="unittest">
+        <update>
+            <TIMESHEETENTRY>
+                <RECORDNO>1</RECORDNO>
+                <ENTRYDATE>06/30/2016</ENTRYDATE>
+                <QTY>5</QTY>
+            </TIMESHEETENTRY>
+            <TIMESHEETENTRY>
+                <RECORDNO>2</RECORDNO>
+                <ENTRYDATE>07/30/2016</ENTRYDATE>
+                <QTY>6</QTY>
+            </TIMESHEETENTRY>
+        </update>
+    </function>
+</test>`;
+
+    const record = new TimesheetUpdate(false);
+    record.controlId = "unittest";
+    const entry1 = new TimesheetEntryCreate(true);
+    entry1.recordNo = 1;
+    entry1.quantity = 5;
+    entry1.entryDate = new Date("06/30/2016");
+    const entry2 = new TimesheetEntryCreate(true);
+    entry2.recordNo = 2;
+    entry2.quantity = 6;
+    entry2.entryDate = new Date("07/30/2016");
+    record.entries = [entry1, entry2];
     XmlObjectTestHelper.CompareXml(expected, record);
   });
   it("should build TimesheetUpdate object with all fields", () => {
