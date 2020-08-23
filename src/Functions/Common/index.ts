@@ -7,6 +7,7 @@ export { default as GetList } from "./GetList";
 export { default as GetDimensions } from "./GetDimensions";
 export { default as GetDimensionRelationships } from "./GetDimensionRelationships";
 export { default as Inspect } from "./Inspect";
+export { default as Lookup } from "./Lookup";
 
 import * as Query from "./Query/index";
 export { Query };
