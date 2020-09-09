@@ -44,6 +44,7 @@ describe("SelectFunctionFactory", () => {
             </select>
             <options>
                 <caseinsensitive>false</caseinsensitive>
+                <showprivate>false</showprivate>
             </options>
         </query>
     </function>
@@ -100,6 +101,7 @@ describe("SelectFunctionFactory", () => {
             </select>
             <options>
                 <caseinsensitive>false</caseinsensitive>
+                <showprivate>false</showprivate>
             </options>
         </query>
     </function>
@@ -134,6 +136,7 @@ describe("SelectFunctionFactory", () => {
             </select>
             <options>
                 <caseinsensitive>false</caseinsensitive>
+                <showprivate>false</showprivate>
             </options>
         </query>
     </function>
@@ -167,6 +170,7 @@ describe("SelectFunctionFactory", () => {
             </select>
             <options>
                 <caseinsensitive>false</caseinsensitive>
+                <showprivate>false</showprivate>
             </options>
         </query>
     </function>
@@ -200,6 +204,7 @@ describe("SelectFunctionFactory", () => {
             </select>
             <options>
                 <caseinsensitive>false</caseinsensitive>
+                <showprivate>false</showprivate>
             </options>
         </query>
     </function>
@@ -233,6 +238,7 @@ describe("SelectFunctionFactory", () => {
             </select>
             <options>
                 <caseinsensitive>false</caseinsensitive>
+                <showprivate>false</showprivate>
             </options>
         </query>
     </function>
@@ -266,6 +272,7 @@ describe("SelectFunctionFactory", () => {
             </select>
             <options>
                 <caseinsensitive>false</caseinsensitive>
+                <showprivate>false</showprivate>
             </options>
         </query>
     </function>

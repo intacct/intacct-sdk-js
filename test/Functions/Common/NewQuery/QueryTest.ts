@@ -43,6 +43,7 @@ describe("Query", () => {
             <object>CLASS</object>
             <options>
                 <caseinsensitive>false</caseinsensitive>
+                <showprivate>false</showprivate>
             </options>
         </query>
     </function>
@@ -64,6 +65,7 @@ describe("Query", () => {
             </select>
             <options>
                 <caseinsensitive>false</caseinsensitive>
+                <showprivate>false</showprivate>
             </options>
         </query>
     </function>
@@ -86,6 +88,7 @@ describe("Query", () => {
         <query>
             <options>
                 <caseinsensitive>false</caseinsensitive>
+                <showprivate>false</showprivate>
             </options>
             <pagesize>1</pagesize>
         </query>
@@ -105,6 +108,7 @@ describe("Query", () => {
         <query>
             <options>
                 <caseinsensitive>false</caseinsensitive>
+                <showprivate>false</showprivate>
             </options>
             <offset>1</offset>
         </query>
@@ -124,6 +128,7 @@ describe("Query", () => {
         <query>
             <options>
                 <caseinsensitive>true</caseinsensitive>
+                <showprivate>false</showprivate>
             </options>
         </query>
     </function>
@@ -147,6 +152,7 @@ describe("Query", () => {
             <docparid>255252235</docparid>
             <options>
                 <caseinsensitive>false</caseinsensitive>
+                <showprivate>false</showprivate>
             </options>
             <pagesize>-1</pagesize>
             <offset>-1</offset>
@@ -191,6 +197,7 @@ describe("Query", () => {
             </orderby>
             <options>
                 <caseinsensitive>false</caseinsensitive>
+                <showprivate>false</showprivate>
             </options>
         </query>
     </function>
@@ -270,6 +277,7 @@ describe("Query", () => {
             </orderby>
             <options>
                 <caseinsensitive>false</caseinsensitive>
+                <showprivate>true</showprivate>
             </options>
             <pagesize>100</pagesize>
             <offset>0</offset>
@@ -314,6 +322,7 @@ describe("Query", () => {
         const query = (new Query("unittest"))
             .assignFromObject("GLBATCH")
             .assignCaseInsensitive(false)
+            .assignShowPrivate(true)
             .assignDocParId("123456")
             .assignFilter(filter)
             .assignOrderBy(orderBy)

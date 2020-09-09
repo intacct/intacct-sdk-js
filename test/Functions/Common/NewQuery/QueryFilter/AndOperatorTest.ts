@@ -54,6 +54,7 @@ describe("AndOperator", () => {
             </filter>
             <options>
                 <caseinsensitive>false</caseinsensitive>
+                <showprivate>false</showprivate>
             </options>
         </query>
     </function>
@@ -143,6 +144,7 @@ describe("AndOperator", () => {
             </filter>
             <options>
                 <caseinsensitive>false</caseinsensitive>
+                <showprivate>false</showprivate>
             </options>
         </query>
     </function>
