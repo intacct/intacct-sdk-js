@@ -942,6 +942,9 @@ img { max-width: 100%; }
 				<li class=" tsd-kind-property tsd-parent-kind-class">
 					<a href="intacct_sdk_functions_common_newquery.query.html#selectfields" class="tsd-kind-icon">select<wbr>Fields</a>
 				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class">
+					<a href="intacct_sdk_functions_common_newquery.query.html#showprivate" class="tsd-kind-icon">show<wbr>Private</a>
+				</li>
 				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited">
 					<a href="intacct_sdk_functions_common_newquery.query.html#controlid" class="tsd-kind-icon">control<wbr>Id</a>
 				</li>
@@ -968,6 +971,9 @@ img { max-width: 100%; }
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class">
 					<a href="intacct_sdk_functions_common_newquery.query.html#assignselectfields" class="tsd-kind-icon">assign<wbr>Select<wbr>Fields</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class">
+					<a href="intacct_sdk_functions_common_newquery.query.html#assignshowprivate" class="tsd-kind-icon">assign<wbr>Show<wbr>Private</a>
 				</li>
 				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
 					<a href="intacct_sdk_functions_common_newquery.query.html#writexml" class="tsd-kind-icon">write<wbr>Xml</a>
@@ -1023,6 +1029,7 @@ img { max-width: 100%; }
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="intacct_sdk_functions_common_newquery.query.html#orderby" class="tsd-kind-icon">order<wbr>By</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="intacct_sdk_functions_common_newquery.query.html#pagesize" class="tsd-kind-icon">page<wbr>Size</a></li>
 							<li class="tsd-kind-property tsd-parent-kind-class"><a href="intacct_sdk_functions_common_newquery.query.html#selectfields" class="tsd-kind-icon">select<wbr>Fields</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class"><a href="intacct_sdk_functions_common_newquery.query.html#showprivate" class="tsd-kind-icon">show<wbr>Private</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section tsd-is-inherited">
@@ -1042,6 +1049,7 @@ img { max-width: 100%; }
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="intacct_sdk_functions_common_newquery.query.html#assignorderby" class="tsd-kind-icon">assign<wbr>Order<wbr>By</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="intacct_sdk_functions_common_newquery.query.html#assignpagesize" class="tsd-kind-icon">assign<wbr>Page<wbr>Size</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class"><a href="intacct_sdk_functions_common_newquery.query.html#assignselectfields" class="tsd-kind-icon">assign<wbr>Select<wbr>Fields</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class"><a href="intacct_sdk_functions_common_newquery.query.html#assignshowprivate" class="tsd-kind-icon">assign<wbr>Show<wbr>Private</a></li>
 							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="intacct_sdk_functions_common_newquery.query.html#writexml" class="tsd-kind-icon">write<wbr>Xml</a></li>
 						</ul>
 					</section>
@@ -1054,14 +1062,14 @@ img { max-width: 100%; }
 				<a name="constructor" class="tsd-anchor"></a>
 				<h3>constructor</h3>
 				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Query<span class="tsd-signature-symbol">(</span>controlId<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="intacct_sdk_functions_common_newquery.query.html" class="tsd-signature-type">Query</a></li>
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Query<span class="tsd-signature-symbol">(</span>controlId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="intacct_sdk_functions_common_newquery.query.html" class="tsd-signature-type">Query</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<p>Inherited from <a href="intacct_sdk_functions.abstractfunction.html">AbstractFunction</a>.<a href="intacct_sdk_functions.abstractfunction.html#constructor">constructor</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/AbstractFunction.ts#L39">Functions/AbstractFunction.ts:39</a></li>
+								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/AbstractFunction.ts#L39">Functions/AbstractFunction.ts:39</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1084,7 +1092,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Inherited from <a href="intacct_sdk_functions.abstractfunction.html">AbstractFunction</a>.<a href="intacct_sdk_functions.abstractfunction.html#_controlid">_controlId</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/AbstractFunction.ts#L26">Functions/AbstractFunction.ts:26</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/AbstractFunction.ts#L26">Functions/AbstractFunction.ts:26</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1095,7 +1103,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#caseinsensitive">caseInsensitive</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L39">Functions/Common/NewQuery/Query.ts:39</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L39">Functions/Common/NewQuery/Query.ts:39</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1106,7 +1114,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#docparid">docParId</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L35">Functions/Common/NewQuery/Query.ts:35</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L35">Functions/Common/NewQuery/Query.ts:35</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1117,7 +1125,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#filter">filter</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L33">Functions/Common/NewQuery/Query.ts:33</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L33">Functions/Common/NewQuery/Query.ts:33</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1128,7 +1136,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#fromobject">fromObject</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L31">Functions/Common/NewQuery/Query.ts:31</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L31">Functions/Common/NewQuery/Query.ts:31</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1139,7 +1147,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#offset">offset</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L43">Functions/Common/NewQuery/Query.ts:43</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L45">Functions/Common/NewQuery/Query.ts:45</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1150,7 +1158,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#orderby">orderBy</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L37">Functions/Common/NewQuery/Query.ts:37</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L37">Functions/Common/NewQuery/Query.ts:37</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1161,7 +1169,7 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#pagesize">pageSize</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L41">Functions/Common/NewQuery/Query.ts:41</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L43">Functions/Common/NewQuery/Query.ts:43</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1172,7 +1180,18 @@ img { max-width: 100%; }
 				<aside class="tsd-sources">
 					<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#selectfields">selectFields</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L29">Functions/Common/NewQuery/Query.ts:29</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L29">Functions/Common/NewQuery/Query.ts:29</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+				<a name="showprivate" class="tsd-anchor"></a>
+				<h3>show<wbr>Private</h3>
+				<div class="tsd-signature tsd-kind-icon">show<wbr>Private<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+				<aside class="tsd-sources">
+					<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#showprivate">showPrivate</a></p>
+					<ul>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L41">Functions/Common/NewQuery/Query.ts:41</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1187,8 +1206,8 @@ img { max-width: 100%; }
 					<p>Implementation of <a href="../interfaces/intacct_sdk_functions.ifunction.html">IFunction</a>.<a href="../interfaces/intacct_sdk_functions.ifunction.html#controlid">controlId</a></p>
 					<p>Inherited from <a href="intacct_sdk_functions.abstractfunction.html">AbstractFunction</a>.<a href="intacct_sdk_functions.abstractfunction.html#controlid">controlId</a></p>
 					<ul>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/AbstractFunction.ts#L28">Functions/AbstractFunction.ts:28</a></li>
-						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/AbstractFunction.ts#L31">Functions/AbstractFunction.ts:31</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/AbstractFunction.ts#L28">Functions/AbstractFunction.ts:28</a></li>
+						<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/AbstractFunction.ts#L31">Functions/AbstractFunction.ts:31</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -1206,20 +1225,13 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#assigncaseinsensitive">assignCaseInsensitive</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L109">Functions/Common/NewQuery/Query.ts:109</a></li>
+								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L111">Functions/Common/NewQuery/Query.ts:111</a></li>
 							</ul>
 						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Add case insensitive for this query</p>
-							</div>
-						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>caseInsensitive: <span class="tsd-signature-type">boolean</span></h5>
-								<div class="tsd-comment tsd-typography">
-								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html" class="tsd-signature-type">IQueryFunction</a></h4>
@@ -1238,20 +1250,13 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#assigndocparid">assignDocParId</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L75">Functions/Common/NewQuery/Query.ts:75</a></li>
+								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L77">Functions/Common/NewQuery/Query.ts:77</a></li>
 							</ul>
 						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Add docParId for this query</p>
-							</div>
-						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>docParId: <span class="tsd-signature-type">string</span></h5>
-								<div class="tsd-comment tsd-typography">
-								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html" class="tsd-signature-type">IQueryFunction</a></h4>
@@ -1270,20 +1275,13 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#assignfilter">assignFilter</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L85">Functions/Common/NewQuery/Query.ts:85</a></li>
+								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L87">Functions/Common/NewQuery/Query.ts:87</a></li>
 							</ul>
 						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Add Filter for this query</p>
-							</div>
-						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>filter: <a href="../interfaces/intacct_sdk_functions_common_newquery_queryfilter.ifilter.html" class="tsd-signature-type">IFilter</a></h5>
-								<div class="tsd-comment tsd-typography">
-								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html" class="tsd-signature-type">IQueryFunction</a></h4>
@@ -1301,20 +1299,13 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#assignfromobject">assignFromObject</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L63">Functions/Common/NewQuery/Query.ts:63</a></li>
+								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L65">Functions/Common/NewQuery/Query.ts:65</a></li>
 							</ul>
 						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Add object name for given fromObject for this query</p>
-							</div>
-						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>fromObject: <span class="tsd-signature-type">string</span></h5>
-								<div class="tsd-comment tsd-typography">
-								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html" class="tsd-signature-type">IQueryFunction</a></h4>
@@ -1333,20 +1324,13 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#assignoffset">assignOffset</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L133">Functions/Common/NewQuery/Query.ts:133</a></li>
+								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L147">Functions/Common/NewQuery/Query.ts:147</a></li>
 							</ul>
 						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Add offset for this query</p>
-							</div>
-						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>offset: <span class="tsd-signature-type">number</span></h5>
-								<div class="tsd-comment tsd-typography">
-								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html" class="tsd-signature-type">IQueryFunction</a></h4>
@@ -1365,20 +1349,13 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#assignorderby">assignOrderBy</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L97">Functions/Common/NewQuery/Query.ts:97</a></li>
+								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L99">Functions/Common/NewQuery/Query.ts:99</a></li>
 							</ul>
 						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Add Order by list for this query</p>
-							</div>
-						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>orderBy: <a href="../interfaces/intacct_sdk_functions_common_newquery_queryorderby.iorder.html" class="tsd-signature-type">IOrder</a><span class="tsd-signature-symbol">[]</span></h5>
-								<div class="tsd-comment tsd-typography">
-								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html" class="tsd-signature-type">IQueryFunction</a></h4>
@@ -1397,20 +1374,13 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#assignpagesize">assignPageSize</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L121">Functions/Common/NewQuery/Query.ts:121</a></li>
+								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L135">Functions/Common/NewQuery/Query.ts:135</a></li>
 							</ul>
 						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Add page size for this query</p>
-							</div>
-						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>pageSize: <span class="tsd-signature-type">number</span></h5>
-								<div class="tsd-comment tsd-typography">
-								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html" class="tsd-signature-type">IQueryFunction</a></h4>
@@ -1429,20 +1399,38 @@ img { max-width: 100%; }
 						<aside class="tsd-sources">
 							<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#assignselectfields">assignSelectFields</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L51">Functions/Common/NewQuery/Query.ts:51</a></li>
+								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L53">Functions/Common/NewQuery/Query.ts:53</a></li>
 							</ul>
 						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Add Field list for this query</p>
-							</div>
-						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
 								<h5>selectFields: <a href="../interfaces/intacct_sdk_functions_common_newquery_queryselect.iselect.html" class="tsd-signature-type">ISelect</a><span class="tsd-signature-symbol">[]</span></h5>
-								<div class="tsd-comment tsd-typography">
-								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html" class="tsd-signature-type">IQueryFunction</a></h4>
+						<p>IQueryFunction</p>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+				<a name="assignshowprivate" class="tsd-anchor"></a>
+				<h3>assign<wbr>Show<wbr>Private</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+					<li class="tsd-signature tsd-kind-icon">assign<wbr>Show<wbr>Private<span class="tsd-signature-symbol">(</span>showPrivate<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html" class="tsd-signature-type">IQueryFunction</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#assignshowprivate">assignShowPrivate</a></p>
+							<ul>
+								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L123">Functions/Common/NewQuery/Query.ts:123</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>showPrivate: <span class="tsd-signature-type">boolean</span></h5>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html" class="tsd-signature-type">IQueryFunction</a></h4>
@@ -1462,7 +1450,7 @@ img { max-width: 100%; }
 							<p>Implementation of <a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html">IQueryFunction</a>.<a href="../interfaces/intacct_sdk_functions_common_newquery.iqueryfunction.html#writexml">writeXml</a></p>
 							<p>Overrides <a href="intacct_sdk_functions.abstractfunction.html">AbstractFunction</a>.<a href="intacct_sdk_functions.abstractfunction.html#writexml">writeXml</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/d10d3fd/src/Functions/Common/NewQuery/Query.ts#L139">Functions/Common/NewQuery/Query.ts:139</a></li>
+								<li>Defined in <a href="https://github.com/Intacct/intacct-sdk-js/blob/36d7d57/src/Functions/Common/NewQuery/Query.ts#L153">Functions/Common/NewQuery/Query.ts:153</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
