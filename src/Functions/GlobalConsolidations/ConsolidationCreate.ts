@@ -32,7 +32,12 @@ export default class ConsolidationCreate extends AbstractConsolidation {
 
         xml.writeElement("reportingperiodname", this.reportingPeriodName, true);
 
-        xml.writeElement("offline", this.processOffline);
+        if (this.processOffline === true) {
+            xml.writeElement("offline", "T");
+        } else if (this.processOffline === false) {
+            xml.writeElement("offline", "F");
+        }
+
         xml.writeElement("updatesucceedingperiods", this.updateSucceedingPeriods);
         xml.writeElement("changesonly", this.changesOnly);
         xml.writeElement("email", this.notificationEmail);

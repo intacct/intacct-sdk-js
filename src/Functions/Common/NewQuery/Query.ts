@@ -38,6 +38,8 @@ export default class Query extends AbstractFunction implements IQueryFunction {
 
     public caseInsensitive: boolean;
 
+    public showPrivate: boolean;
+
     public pageSize: number;
 
     public offset: number;
@@ -113,6 +115,18 @@ export default class Query extends AbstractFunction implements IQueryFunction {
     }
 
     /**
+     * Add show private for this query
+     * @param showPrivate
+     *
+     * @return IQueryFunction
+     */
+    public assignShowPrivate(showPrivate: boolean): IQueryFunction {
+        this.showPrivate = showPrivate;
+
+        return this;
+    }
+
+    /**
      * Add page size for this query
      * @param {number} pageSize
      *
@@ -169,6 +183,7 @@ export default class Query extends AbstractFunction implements IQueryFunction {
 
         xml.writeStartElement("options");
         xml.writeElement("caseinsensitive", this.caseInsensitive == null ? false : this.caseInsensitive, false);
+        xml.writeElement("showprivate", this.showPrivate == null ? false : this.showPrivate, false);
         xml.writeEndElement(); // options
 
         xml.writeElement("pagesize", this.pageSize);

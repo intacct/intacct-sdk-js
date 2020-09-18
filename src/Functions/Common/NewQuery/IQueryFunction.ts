@@ -36,6 +36,8 @@ export default interface IQueryFunction extends IXmlObject {
 
     caseInsensitive: boolean;
 
+    showPrivate: boolean;
+
     pageSize: number;
 
     offset: number;
@@ -51,6 +53,8 @@ export default interface IQueryFunction extends IXmlObject {
     assignOrderBy(orderBy: IOrder[]): IQueryFunction;
 
     assignCaseInsensitive(caseInsensitive: boolean): IQueryFunction;
+
+    assignShowPrivate(showPrivate: boolean): IQueryFunction;
 
     assignPageSize(pageSize: number): IQueryFunction;
 

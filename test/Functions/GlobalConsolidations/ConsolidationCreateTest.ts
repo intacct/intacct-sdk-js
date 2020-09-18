@@ -55,7 +55,7 @@ describe("ConsolidationCreate", () => {
         <consolidate>
             <bookid>USD Books</bookid>
             <reportingperiodname>Month Ended June 2016</reportingperiodname>
-            <offline>true</offline>
+            <offline>T</offline>
             <updatesucceedingperiods>false</updatesucceedingperiods>
             <changesonly>true</changesonly>
             <email>noreply@intacct.com</email>

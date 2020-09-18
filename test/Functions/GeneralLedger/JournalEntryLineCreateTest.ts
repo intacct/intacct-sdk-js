@@ -73,6 +73,7 @@ describe("JornalEntryLineCreate", () => {
         <LOCATION>100</LOCATION>
         <DEPARTMENT>ADM</DEPARTMENT>
         <PROJECTID>P100</PROJECTID>
+        <TASKID>T123</TASKID>
         <CUSTOMERID>C100</CUSTOMERID>
         <VENDORID>V100</VENDORID>
         <EMPLOYEEID>E100</EMPLOYEEID>
@@ -95,6 +96,7 @@ describe("JornalEntryLineCreate", () => {
         record.locationId = "100";
         record.departmentId = "ADM";
         record.projectId = "P100";
+        record.taskId = "T123";
         record.customerId = "C100";
         record.vendorId = "V100";
         record.employeeId = "E100";
