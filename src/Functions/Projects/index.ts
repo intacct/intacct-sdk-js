@@ -8,6 +8,8 @@ export { default as ProjectUpdate } from "./ProjectUpdate";
 export { default as TaskCreate } from "./TaskCreate";
 export { default as TaskDelete } from "./TaskDelete";
 export { default as TaskUpdate } from "./TaskUpdate";
+export { default as TimesheetApprove } from "./TimesheetApprove";
+export { default as TimesheetDecline } from "./TimesheetDecline";
 export { default as TimesheetCreate } from "./TimesheetCreate";
 export { default as TimesheetUpdate } from "./TimesheetUpdate";
 export { default as TimesheetDelete } from "./TimesheetDelete";
