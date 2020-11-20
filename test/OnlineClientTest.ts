@@ -146,7 +146,8 @@ describe("OnlineClient", () => {
             chai.assert.isOk(false, "Expected exception not thrown");
         } catch (ex) {
             chai.assert.instanceOf(ex, ResultException);
-            chai.assert.equal(ex.message, "Result status: failure for Control ID: func1UnitTest - Get API Session Failed Something went wrong");
+            chai.assert.equal(ex.message,
+                "Result status: failure for Control ID: func1UnitTest - Get API Session Failed Something went wrong");
         }
     });
     it("should execute a batch transaction request and return ResultException", async () => {
@@ -233,7 +234,10 @@ describe("OnlineClient", () => {
             chai.assert.isOk(false, "Expected exception not thrown");
         } catch (ex) {
             chai.assert.instanceOf(ex, ResultException);
-            chai.assert.equal(ex.message, "Result status: failure for Control ID: func2UnitTest - Get API Session Failed Something went wrong - XL03000009 The entire transaction in this operation has been rolled back due to an error.");
+            chai.assert.equal(ex.message,
+                "Result status: failure for Control ID: func2UnitTest - " +
+                "Get API Session Failed Something went wrong - " +
+                "XL03000009 The entire transaction in this operation has been rolled back due to an error.");
         }
     });
     it("should log the request and response", async () => {

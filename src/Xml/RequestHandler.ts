@@ -18,8 +18,7 @@
  */
 
 import contentType = require("content-type");
-import {RequestResponse} from "request";
-import {StatusCodeError} from "request-promise-native/errors";
+import {FetchError} from "node-fetch";
 import ClientConfig from "../ClientConfig";
 import Endpoint from "../Credentials/Endpoint";
 import SessionCredentials from "../Credentials/SessionCredentials";
@@ -64,7 +63,7 @@ export default class RequestHandler {
         const request = new RequestBlock(this.clientConfig, this.requestConfig, content);
         const response = await this.execute(request.writeXml());
 
-        return new OnlineResponse(response.body);
+        return new OnlineResponse(await response.clone().text());
     }
 
     public async executeOffline(content: IFunction[]): Promise<OfflineResponse> {
@@ -86,7 +85,7 @@ export default class RequestHandler {
         const request = new RequestBlock(this.clientConfig, this.requestConfig, content);
         const response = await this.execute(request.writeXml());
 
-        return new OfflineResponse(response.body);
+        return new OfflineResponse(await response.clone().text());
     }
 
     private getHttpClient(options: object): HttpClientHandler {
@@ -102,7 +101,7 @@ export default class RequestHandler {
         }
     }
 
-    private async execute(xml: string): Promise<RequestResponse> {
+    private async execute(xml: string): Promise<Response> {
         const httpClient = this.getHttpClient({
             url: this.endpointUrl,
             method: "POST",
@@ -127,25 +126,25 @@ export default class RequestHandler {
             const response = await httpClient.postAsync();
 
             let ok = true;
-            if (response.statusCode >= 400 && response.statusCode < 600) {
+            if (response.status >= 400 && response.status < 600) {
                 ok = false;
             }
             if (ok === true) {
                 return response;
-            } else if (this.requestConfig.noRetryServerErrorCodes.indexOf(response.statusCode) !== -1) {
+            } else if (this.requestConfig.noRetryServerErrorCodes.indexOf(response.status) !== -1) {
                 // Do not retry this explicitly set 500 level server error
-                throw new StatusCodeError(response.statusCode, response.body, httpClient.options, response);
-            } else if (response.statusCode >= 500 && response.statusCode <= 599) {
+                throw new FetchError(response.status, response.text(), httpClient.options, response);
+            } else if (response.status >= 500 && response.status <= 599) {
                 // Retry 500 level server errors
                 continue;
             } else {
-                const contentTypeObj = contentType.parse(response.headers["content-type"]);
+                const contentTypeObj = contentType.parse(response.headers.get("content-type"));
                 const mimeType = contentTypeObj.type;
                 if (mimeType === "text/xml" || mimeType === "application/xml") {
                     return response;
                 }
 
-                throw new StatusCodeError(response.statusCode, response.body, httpClient.options, response);
+                throw new FetchError(response.status, response.text(), httpClient.options, response);
             }
         }
         throw new Error("Request retry count exceeded max retry count: " + this.requestConfig.maxRetries.toString());

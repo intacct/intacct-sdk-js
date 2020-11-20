@@ -16,8 +16,7 @@
  * express or implied. See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
-import {RequestResponse} from "request";
+import {Response} from "node-fetch";
 import {LoggerInstance} from "winston";
 import MessageFormatter from "../Logging/MessageFormatter";
 import HttpClientHandler from "./HttpClientHandler";
@@ -36,14 +35,19 @@ export default class LoggingHandler extends HttpClientHandler {
         this.logLevel = logLevel;
     }
 
-    public async postAsync(): Promise<RequestResponse> {
-        let response = null;
+    public async postAsync(): Promise<Response> {
+        let response;
         try {
+            this.logger.log(this.logLevel, this.logMessageFormatter.formatRequest(this.options));
+
             response = await super.postAsync();
 
-            this.logger.log(this.logLevel, this.logMessageFormatter.format(response));
+            this.logger.log(this.logLevel,
+                    this.logMessageFormatter.formatResponse(response,
+                        await response.clone().text()));
+
         } catch (error) {
-            this.logger.log(this.logLevel, this.logMessageFormatter.format(response, error));
+            this.logger.log(this.logLevel, error);
             throw error;
         }
         return response;
