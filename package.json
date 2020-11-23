@@ -24,7 +24,7 @@
     "url": "https://github.com/intacct/intacct-sdk-js/issues"
   },
   "engines": {
-    "node": ">=8.17.0"
+    "node": ">=10.21.0"
   },
   "files": [
     "/dist"
