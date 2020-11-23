@@ -68,7 +68,7 @@
     "rimraf": "^2.6.2",
     "ts-node": "^4.1.0",
     "tslint": "^5.12.1",
-    "typedoc": "^0.14.2",
+    "typedoc": "^0.17.8",
     "typedoc-plugin-external-module-name": "^2.1.0",
     "typescript": "^3.9.7"
   },
