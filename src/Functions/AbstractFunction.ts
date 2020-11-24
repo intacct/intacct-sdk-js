@@ -17,7 +17,7 @@
  * permissions and limitations under the License.
  */
 
-import * as uuid from "uuid/v4";
+import { v4 as uuidv4} from "uuid";
 import IaXmlWriter from "../Xml/IaXmlWriter";
 import IFunction from "./IFunction";
 
@@ -30,7 +30,7 @@ export default abstract class AbstractFunction implements IFunction {
     }
     set controlId(controlId: string) {
         if (controlId == null || controlId === "") {
-            controlId = uuid();
+            controlId = uuidv4();
         }
         if (controlId.length < 1 || controlId.length > 256) {
             throw new Error("Function control ID must be between 1 and 256 characters in length.");
