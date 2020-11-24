@@ -17,17 +17,17 @@
  * permissions and limitations under the License.
  */
 import {Response} from "node-fetch";
-import {LoggerInstance} from "winston";
+import {Logger} from "winston";
 import MessageFormatter from "../Logging/MessageFormatter";
 import HttpClientHandler from "./HttpClientHandler";
 
 export default class LoggingHandler extends HttpClientHandler {
 
-    private logger: LoggerInstance;
+    private logger: Logger;
     private logMessageFormatter: MessageFormatter;
     private logLevel: string;
 
-    constructor(options, logger: LoggerInstance, logMessageFormat: MessageFormatter, logLevel: string) {
+    constructor(options, logger: Logger, logMessageFormat: MessageFormatter, logLevel: string) {
         super(options);
 
         this.logger = logger;

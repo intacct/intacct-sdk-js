@@ -379,7 +379,8 @@ describe("RequestHandler", () => {
             .post("/ia/xml/xmlgw.phtml")
             .reply(200, xml, headers);
 
-        const logger = new winston.Logger({
+        const logger = winston.createLogger({
+            format: winston.format.printf((info) => info.message),
             transports: [
                 new winston.transports.Console({ level: "debug" }),
             ],
@@ -426,7 +427,8 @@ describe("RequestHandler", () => {
             .post("/ia/xml/xmlgw.phtml")
             .reply(200, xml, headers);
 
-        const logger = new winston.Logger({
+        const logger = winston.createLogger({
+            format: winston.format.printf((info) => info.message),
             transports: [
                 new winston.transports.Console({ level: "debug" }),
             ],
