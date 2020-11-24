@@ -17,7 +17,7 @@
  * permissions and limitations under the License.
  */
 
-import { v4 as uuidv4} from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import IaXmlWriter from "../Xml/IaXmlWriter";
 import IFunction from "./IFunction";
 
