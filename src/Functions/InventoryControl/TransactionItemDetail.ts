@@ -28,7 +28,8 @@ export default class TransactionItemDetail extends AbstractTransactionItemDetail
         xml.writeElement("quantity", this.quantity);
         if (this.serialNumber != null) {
             xml.writeElement("serialno", this.serialNumber);
-        } else if (this.lotNumber != null) {
+        }
+        if (this.lotNumber != null) {
             xml.writeElement("lotno", this.lotNumber);
         }
 

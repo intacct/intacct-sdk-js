@@ -56,6 +56,7 @@ describe("TransactionItemDetail", () => {
     <itemdetail>
         <quantity>15325</quantity>
         <serialno>S2355235</serialno>
+        <lotno>L5</lotno>
         <aisle>55</aisle>
         <row>1</row>
         <bin>12</bin>
@@ -65,6 +66,7 @@ describe("TransactionItemDetail", () => {
         const record = new TransactionItemDetail();
         record.quantity = 15325;
         record.serialNumber = "S2355235";
+        record.lotNumber = "L5";
         record.aisle = "55";
         record.row = "1";
         record.bin = "12";
