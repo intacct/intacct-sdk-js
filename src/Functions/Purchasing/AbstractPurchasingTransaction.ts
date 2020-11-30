@@ -50,6 +50,7 @@ export default abstract class AbstractPurchasingTransaction extends AbstractFunc
     public vsoePriceList: string;
     public state: string;
     public projectId: string;
+    public comment: string;
     public subtotals: AbstractTransactionSubtotal[];
     public lines: AbstractPurchasingTransactionLine[];
 
