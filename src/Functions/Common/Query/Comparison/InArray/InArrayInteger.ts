@@ -23,12 +23,13 @@ export default class InArrayInteger extends AbstractArrayInteger {
 
     public toString(): string {
         let clause = "";
+        let notClause = "";
 
         if (this.negate === true) {
-            clause = "NOT ";
+            notClause = "NOT ";
         }
 
-        clause = clause + this.field + " IN (" + this.valuesList.join(",") + ")";
+        clause = this.field + notClause + " IN (" + this.valuesList.join(",") + ")";
 
         return clause;
     }

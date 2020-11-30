@@ -50,7 +50,7 @@ describe("InArrayString", () => {
             "V0003",
         ];
 
-        chai.assert.equal(condition.toString(), "NOT VENDORID IN ('V0001','V0002','V0003')");
+        chai.assert.equal(condition.toString(), "VENDORID NOT IN ('V0001','V0002','V0003')");
     });
     it("output the condition to an escaped string", () => {
         const condition = new InArrayString();
