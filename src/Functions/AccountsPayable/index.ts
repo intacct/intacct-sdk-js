@@ -14,6 +14,7 @@ export { default as ApAdjustmentSummaryCreate } from "./ApAdjustmentSummaryCreat
 export { default as ApPaymentRequestApprove } from "./ApPaymentRequestApprove";
 export { default as ApPaymentRequestConfirm } from "./ApPaymentRequestConfirm";
 export { default as ApPaymentRequestCreate } from "./ApPaymentRequestCreate";
+export { default as ApPaymentRequestDecline } from "./ApPaymentRequestDecline";
 export { default as ApPaymentRequestDelete } from "./ApPaymentRequestDelete";
 export { default as ApPaymentRequestItem } from "./ApPaymentRequestItem";
 export { default as ApPaymentRequestSend } from "./ApPaymentRequestSend";
