@@ -13,11 +13,11 @@
  * permissions and limitations under the License.
  */
 
-import ApPaymentRequestConfirm from "../../../src/Functions/AccountsPayable/ApPaymentRequestConfirm";
-import ApPaymentRequestDecline from "../../../src/Functions/AccountsPayable/ApPaymentRequestDecline";
+import AbstractApPaymentFunction from "../../../src/Functions/AccountsPayable/AbstractApPaymentFunction";
+import ApPaymentFactory from "../../../src/Functions/AccountsPayable/ApPaymentFactory";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
-describe("ApPaymentRequestDecline", () => {
+describe("ApPaymentApprove", () => {
     before((done) => {
         return done();
     });
@@ -34,17 +34,16 @@ describe("ApPaymentRequestDecline", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
-        <decline_appaymentrequest>
+        <approve_appaymentrequest>
             <appaymentkeys>
                 <appaymentkey>1234</appaymentkey>
             </appaymentkeys>
-        </decline_appaymentrequest>
+        </approve_appaymentrequest>
     </function>
 </test>`;
 
-        const record = new ApPaymentRequestDecline();
-        record.controlId = "unittest";
-        record.recordNo = 1234;
+        let record: AbstractApPaymentFunction;
+        record = ApPaymentFactory.create(AbstractApPaymentFunction.APPROVE, 1234, "unittest");
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });

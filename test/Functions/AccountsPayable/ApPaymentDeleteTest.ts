@@ -13,10 +13,11 @@
  * permissions and limitations under the License.
  */
 
-import ApPaymentVoid from "../../../src/Functions/AccountsPayable/ApPaymentVoid";
+import AbstractApPaymentFunction from "../../../src/Functions/AccountsPayable/AbstractApPaymentFunction";
+import ApPaymentFactory from "../../../src/Functions/AccountsPayable/ApPaymentFactory";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
-describe("ApPaymentRequestVoid", () => {
+describe("ApPaymentDelete", () => {
     before((done) => {
         return done();
     });
@@ -33,17 +34,15 @@ describe("ApPaymentRequestVoid", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
-        <void_appaymentrequest>
-            <appaymentkeys>
-                <appaymentkey>1234</appaymentkey>
-            </appaymentkeys>
-        </void_appaymentrequest>
+        <delete>
+            <object>APPYMT</object>
+            <keys>1234</keys>
+        </delete>
     </function>
 </test>`;
 
-        const record = new ApPaymentVoid();
-        record.controlId = "unittest";
-        record.recordNo = 1234;
+        let record: AbstractApPaymentFunction;
+        record = ApPaymentFactory.create(AbstractApPaymentFunction.DELETE, 1234, "unittest");
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });

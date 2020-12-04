@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright 2020 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
@@ -13,10 +13,11 @@
  * permissions and limitations under the License.
  */
 
-import ApPaymentRequestSend from "../../../src/Functions/AccountsPayable/ApPaymentRequestSend";
+import AbstractApPaymentFunction from "../../../src/Functions/AccountsPayable/AbstractApPaymentFunction";
+import ApPaymentFactory from "../../../src/Functions/AccountsPayable/ApPaymentFactory";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
-describe("ApPaymentRequestSend", () => {
+describe("ApPaymentConfirm", () => {
     before((done) => {
         return done();
     });
@@ -33,17 +34,16 @@ describe("ApPaymentRequestSend", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
-        <send_appaymentrequest>
+        <confirm_appaymentrequest>
             <appaymentkeys>
                 <appaymentkey>1234</appaymentkey>
             </appaymentkeys>
-        </send_appaymentrequest>
+        </confirm_appaymentrequest>
     </function>
 </test>`;
 
-        const record = new ApPaymentRequestSend();
-        record.controlId = "unittest";
-        record.recordNo = 1234;
+        let record: AbstractApPaymentFunction;
+        record = ApPaymentFactory.create(AbstractApPaymentFunction.CONFIRM, 1234, "unittest");
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });

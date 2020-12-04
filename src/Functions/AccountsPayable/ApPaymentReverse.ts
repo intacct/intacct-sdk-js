@@ -18,12 +18,17 @@
  */
 
 import IaXmlWriter from "../../Xml/IaXmlWriter";
-import AbstractApPayment from "./AbstractApPayment";
+import AbstractFunction from "../AbstractFunction";
 
-export default class ApPaymentReverse extends AbstractApPayment {
+export default class ApPaymentReverse extends AbstractFunction {
 
+    public recordNo: number;
     public reverseDate: Date;
     public memo: string;
+
+    constructor(controlId?: string) {
+        super(controlId);
+    }
 
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");

@@ -17,21 +17,18 @@
  * permissions and limitations under the License.
  */
 
-import IaXmlWriter from "../../Xml/IaXmlWriter";
-import AbstractApPaymentRequest from "./AbstractApPaymentRequest";
+import AbstractApPaymentDetailCredit from "./AbstractApPaymentDetailCredit";
 
-export default class ApPaymentRequestDelete extends AbstractApPaymentRequest {
+export default class ApPaymentDetailAdvance extends AbstractApPaymentDetailCredit {
+    protected getKeyType(): string {
+        return "ADVANCEKEY";
+    }
 
-    public writeXml(xml: IaXmlWriter): void {
-        xml.writeStartElement("function");
-        xml.writeAttribute("controlid", this.controlId, true);
+    protected getEntryKeyType(): string {
+        return "ADVANCEENTRYKEY";
+    }
 
-        xml.writeStartElement("delete_paymentrequest");
-
-        xml.writeAttribute("key", this.recordNo, true);
-
-        xml.writeEndElement(); // delete_paymentrequest
-
-        xml.writeEndElement(); // function
+    protected getTransactionType(): string {
+        return "TRX_POSTEDADVANCEAMOUNT";
     }
 }
