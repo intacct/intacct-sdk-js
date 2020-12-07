@@ -48,6 +48,7 @@ describe("Authentication", () => {
                   <companyid>fakecompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-10-24T18:56:52-07:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>
@@ -90,6 +91,7 @@ describe("Authentication", () => {
                   <companyid>fakecompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-10-24T18:56:52-07:00</sessiontimestamp>
+                  <sessiontimeout>2015-10-25T18:56:52-07:00</sessiontimeout>
             </authentication>
             <result/>
       </operation>
@@ -119,6 +121,7 @@ describe("Authentication", () => {
                   <companyid>fakecompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-10-24T18:56:52-07:00</sessiontimestamp>
+                  <sessiontimeout>2015-10-25T18:56:52-07:00</sessiontimeout>
             </authentication>
             <result/>
       </operation>
@@ -148,6 +151,7 @@ describe("Authentication", () => {
                   <!--<companyid>fakecompany</companyid>-->
                   <locationid></locationid>
                   <sessiontimestamp>2015-10-24T18:56:52-07:00</sessiontimestamp>
+                  <sessiontimeout>2015-10-25T18:56:52-07:00</sessiontimeout>
             </authentication>
             <result/>
       </operation>

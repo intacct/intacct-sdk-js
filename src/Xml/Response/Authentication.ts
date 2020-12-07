@@ -41,6 +41,16 @@ export default class Authentication {
         return this._entityId;
     }
 
+    private _sessionTimestamp: string;
+    get sessionTimestamp(): string {
+        return this._sessionTimestamp;
+    }
+
+    private _sessionTimeout: string;
+    get sessionTimeout(): string {
+        return this._sessionTimeout;
+    }
+
     constructor(authentication: object) {
         if (!authentication.hasOwnProperty("status")) {
             throw new IntacctException("Authentication block is missing status element");
@@ -56,7 +66,9 @@ export default class Authentication {
         this._userId = authentication["userid"];
         this._companyId = authentication["companyid"];
         this._entityId = authentication["locationid"];
+        this._sessionTimestamp = authentication["sessiontimestamp"];
+        this._sessionTimeout = authentication["sessiontimeout"];
 
-        // TODO add getter/setter for elements: clientstatus, clientid, sessiontimestamp
+        // TODO add getter/setter for elements: clientstatus, clientid
     }
 }

@@ -49,6 +49,7 @@ describe("OnlineResponse", () => {
                   <companyid>fakecompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-10-22T20:58:27-07:00</sessiontimestamp>
+                  <sessiontimeout>2015-10-23T20:58:27-07:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>
@@ -163,6 +164,7 @@ describe("OnlineResponse", () => {
                   <companyid>fakecompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-10-22T20:58:27-07:00</sessiontimestamp>
+                  <sessiontimeout>2015-10-23T20:58:27-07:00</sessiontimeout>
             </authentication>
       </operation>
 </response>`;

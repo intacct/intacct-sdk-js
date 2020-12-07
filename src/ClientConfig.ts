@@ -35,6 +35,10 @@ export default class ClientConfig {
 
     public sessionId: string;
 
+    public sessionTimestamp: string;
+
+    public sessionTimeout: string;
+
     public companyId: string;
 
     public entityId: string;

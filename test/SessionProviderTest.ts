@@ -48,6 +48,7 @@ describe("SessionProvider", () => {
                   <companyid>testcompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>
@@ -86,6 +87,8 @@ describe("SessionProvider", () => {
         chai.assert.equal(sessionCreds.sessionId, "fAkESesSiOnId..");
         chai.assert.equal(sessionCreds.endpointUrl, "https://unittest.intacct.com/ia/xml/xmlgw.phtml");
         chai.assert.equal(sessionCreds.entityId, "");
+        chai.assert.equal(sessionCreds.sessionTimeout, "2015-12-07T15:57:08-08:00");
+        chai.assert.equal(sessionCreds.sessionTimestamp, "2015-12-06T15:57:08-08:00");
     });
     it("should execute from login credentials with entity", async () => {
         const xmlResponse = `<?xml version="1.0" encoding="utf-8" ?>
@@ -104,6 +107,7 @@ describe("SessionProvider", () => {
                   <companyid>testcompany</companyid>
                   <locationid>testentity</locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>
@@ -161,6 +165,7 @@ describe("SessionProvider", () => {
                   <companyid>testcompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>
@@ -215,6 +220,7 @@ describe("SessionProvider", () => {
                   <companyid>testcompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>
@@ -270,6 +276,7 @@ describe("SessionProvider", () => {
                   <companyid>testcompany</companyid>
                   <locationid>entityA</locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>
@@ -325,6 +332,7 @@ describe("SessionProvider", () => {
                   <companyid>testcompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>

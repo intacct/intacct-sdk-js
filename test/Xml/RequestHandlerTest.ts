@@ -55,6 +55,7 @@ describe("RequestHandler", () => {
                   <companyid>testcompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>
@@ -176,6 +177,7 @@ describe("RequestHandler", () => {
                   <companyid>testcompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>
@@ -354,6 +356,7 @@ describe("RequestHandler", () => {
                   <companyid>testcompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>

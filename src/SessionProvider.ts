@@ -62,6 +62,8 @@ export default class SessionProvider {
 
         config.companyId = authentication.companyId;
         config.userId = authentication.userId;
+        config.sessionTimestamp = authentication.sessionTimestamp;
+        config.sessionTimeout = authentication.sessionTimeout;
 
         config.credentials = new SessionCredentials(config, new SenderCredentials(config));
 
