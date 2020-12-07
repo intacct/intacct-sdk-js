@@ -4,7 +4,6 @@ export { default as AbstractApAdjustmentSummary } from "./AbstractApAdjustmentSu
 export { default as AbstractApPayment } from "./AbstractApPayment";
 export { default as AbstractApPaymentDetailCredit } from "./AbstractApPaymentDetailCredit";
 export { default as AbstractApPaymentFunction } from "./AbstractApPaymentFunction";
-export { default as AbstractApPaymentRequest } from "./AbstractApPaymentRequest";
 export { default as AbstractBill } from "./AbstractBill";
 export { default as AbstractBillLine } from "./AbstractBillLine";
 export { default as AbstractBillSummary } from "./AbstractBillSummary";
@@ -29,7 +28,6 @@ export { default as ApPaymentFactory } from "./ApPaymentFactory";
 export { default as ApPaymentInfo } from "./ApPaymentInfo";
 export { default as ApPaymentDecline } from "./ApPaymentDecline";
 export { default as ApPaymentDelete } from "./ApPaymentDelete";
-export { default as ApPaymentRequestItem } from "./ApPaymentRequestItem";
 export { default as ApPaymentSend } from "./ApPaymentSend";
 export { default as ApPaymentVoid } from "./ApPaymentVoid";
 export { default as ApPaymentReverse } from "./ApPaymentReverse";
