@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright 2020 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
@@ -13,10 +13,11 @@
  * permissions and limitations under the License.
  */
 
-import TimesheetDelete from "../../../src/Functions/Projects/TimesheetDelete";
+import * as chai from "chai";
+import Inspect from "../../../src/Functions/PlatformServices/Inspect";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
-describe("TimesheetDelete", () => {
+describe("Inspect", () => {
     before((done) => {
         return done();
     });
@@ -29,20 +30,32 @@ describe("TimesheetDelete", () => {
     after((done) => {
         return done();
     });
-    it("should build TimesheetDelete object", () => {
+    it("should run inpect with object name", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
-        <delete>
-            <object>TIMESHEET</object>
-            <keys>1234</keys>
-        </delete>
+        <inspect>
+            <object>TEST</object>
+        </inspect>
     </function>
 </test>`;
 
-        const record = new TimesheetDelete();
-        record.controlId = "unittest";
-        record.recordNo = 1234;
+        const record = new Inspect("unittest");
+        record.objectName = "TEST";
+
+        XmlObjectTestHelper.CompareXml(expected, record);
+    });
+    it("should run inpect for all object", () => {
+        const expected = `<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <function controlid="unittest">
+        <inspect>
+            <object>*</object>
+        </inspect>
+    </function>
+</test>`;
+
+        const record = new Inspect("unittest");
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });

@@ -1,5 +1,5 @@
 /**
- * @module Intacct/SDK/Functions/Projects
+ * @module Intacct/SDK/Functions/PlatformServices
  */
 
 /**
@@ -18,20 +18,21 @@
  */
 
 import IaXmlWriter from "../../Xml/IaXmlWriter";
-import AbstractTimesheet from "./AbstractTimesheet";
+import AbstractFunction from "../AbstractFunction";
 
-export default class TimesheetDelete extends AbstractTimesheet {
+export default class Lookup extends AbstractFunction {
+
+    public objectName: string;
 
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");
         xml.writeAttribute("controlid", this.controlId, true);
 
-        xml.writeStartElement("delete");
+        xml.writeStartElement("lookup");
 
-        xml.writeElement("object", "TIMESHEET");
-        xml.writeElement("keys", this.recordNo);
+        xml.writeElement("object", this.objectName, true);
 
-        xml.writeEndElement(); // delete
+        xml.writeEndElement(); // lookup
 
         xml.writeEndElement(); // function
     }

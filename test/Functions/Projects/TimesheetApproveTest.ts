@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright 2020 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
@@ -13,10 +13,11 @@
  * permissions and limitations under the License.
  */
 
-import TimesheetDelete from "../../../src/Functions/Projects/TimesheetDelete";
+import * as chai from "chai";
+import TimesheetApprove from "../../../src/Functions/Projects/TimesheetApprove";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
-describe("TimesheetDelete", () => {
+describe("TimesheetApprove", () => {
     before((done) => {
         return done();
     });
@@ -29,20 +30,26 @@ describe("TimesheetDelete", () => {
     after((done) => {
         return done();
     });
-    it("should build TimesheetDelete object", () => {
+    it("should approve timesheet", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
-        <delete>
-            <object>TIMESHEET</object>
-            <keys>1234</keys>
-        </delete>
+        <approve>
+            <TIMESHEET>
+                <RECORDNO>2</RECORDNO>
+                <ENTRYKEYS>497,323</ENTRYKEYS>
+                <APPROVEDBY>John</APPROVEDBY>
+                <COMMENT>Approved by John</COMMENT>
+            </TIMESHEET>
+        </approve>
     </function>
 </test>`;
 
-        const record = new TimesheetDelete();
-        record.controlId = "unittest";
-        record.recordNo = 1234;
+        const record = new TimesheetApprove("unittest");
+        record.recordNo = 2;
+        record.approvedBy = "John";
+        record.comment = "Approved by John";
+        record.lineRecordNo = [497, 323];
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });

@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright 2020 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
@@ -13,10 +13,11 @@
  * permissions and limitations under the License.
  */
 
-import TimesheetDelete from "../../../src/Functions/Projects/TimesheetDelete";
+import * as chai from "chai";
+import GetList from "../../../src/Functions/PlatformServices/GetList";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
-describe("TimesheetDelete", () => {
+describe("GetList", () => {
     before((done) => {
         return done();
     });
@@ -29,20 +30,16 @@ describe("TimesheetDelete", () => {
     after((done) => {
         return done();
     });
-    it("should build TimesheetDelete object", () => {
+    it("should get company info", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
-        <delete>
-            <object>TIMESHEET</object>
-            <keys>1234</keys>
-        </delete>
+        <get_list object="company_info" />
     </function>
 </test>`;
 
-        const record = new TimesheetDelete();
-        record.controlId = "unittest";
-        record.recordNo = 1234;
+        const record = new GetList("unittest");
+        record.object = "company_info";
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });

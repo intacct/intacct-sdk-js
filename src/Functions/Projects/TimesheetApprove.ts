@@ -18,21 +18,28 @@
  */
 
 import IaXmlWriter from "../../Xml/IaXmlWriter";
-import AbstractTimesheet from "./AbstractTimesheet";
+import AbstractFunction from "../AbstractFunction";
 
-export default class TimesheetDelete extends AbstractTimesheet {
+export default class TimesheetApprove extends AbstractFunction {
+
+    public recordNo: number;
+    public lineRecordNo: number[];
+    public approvedBy: string;
+    public comment: string;
 
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");
         xml.writeAttribute("controlid", this.controlId, true);
+        xml.writeStartElement("approve");
+        xml.writeStartElement("TIMESHEET");
 
-        xml.writeStartElement("delete");
+        xml.writeElement("RECORDNO", this.recordNo, true);
+        xml.writeElement("ENTRYKEYS", (this.lineRecordNo || []).join(","), true);
+        xml.writeElement("APPROVEDBY", this.approvedBy, true);
+        xml.writeElement("COMMENT", this.comment, true);
 
-        xml.writeElement("object", "TIMESHEET");
-        xml.writeElement("keys", this.recordNo);
-
-        xml.writeEndElement(); // delete
-
+        xml.writeEndElement(); // TIMESHEET
+        xml.writeEndElement(); // approve
         xml.writeEndElement(); // function
     }
 }

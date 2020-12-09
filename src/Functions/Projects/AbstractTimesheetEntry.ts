@@ -19,9 +19,11 @@
 
 import IaXmlWriter from "../../Xml/IaXmlWriter";
 import IXmlObject from "../../Xml/IXmlObject";
+import AbstractFunction from "../AbstractFunction";
 
-export default abstract class AbstractTimesheetEntry implements IXmlObject {
+export default abstract class AbstractTimesheetEntry extends AbstractFunction implements IXmlObject {
 
+    public lineRecordNo: number;
     public entryDate: Date;
     public quantity: number;
     public description: string;
