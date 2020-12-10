@@ -14,8 +14,8 @@
  */
 
 import * as chai from "chai";
-import GetList from "../../../src/Functions/PlatformServices/GetList";
-import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
+import GetList from "../../../../src/Functions/Common/GetList/GetList";
+import XmlObjectTestHelper from "../../../Xml/XmlObjectTestHelper";
 
 describe("GetList", () => {
     before((done) => {

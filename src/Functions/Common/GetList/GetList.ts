@@ -1,5 +1,5 @@
 /**
- * @module Intacct/SDK/Functions/PlatformServices
+ * @module Intacct/SDK/Functions/Common/GetList
  */
 
 /**
@@ -17,8 +17,8 @@
  * permissions and limitations under the License.
  */
 
-import IaXmlWriter from "../../Xml/IaXmlWriter";
-import AbstractFunction from "../AbstractFunction";
+import IaXmlWriter from "../../../Xml/IaXmlWriter";
+import AbstractFunction from "../../AbstractFunction";
 
 export default class GetList extends AbstractFunction {
     public object: string;

@@ -14,7 +14,7 @@
  */
 
 import * as chai from "chai";
-import Inspect from "../../../src/Functions/PlatformServices/Inspect";
+import Inspect from "../../../src/Functions/Common/Inspect";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
 describe("Inspect", () => {

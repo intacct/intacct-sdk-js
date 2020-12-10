@@ -14,7 +14,7 @@
  */
 
 import * as chai from "chai";
-import Lookup from "../../../src/Functions/PlatformServices/Lookup";
+import Lookup from "../../../src/Functions/Common/Lookup";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
 describe("Lookup", () => {
