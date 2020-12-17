@@ -52,6 +52,7 @@ describe("TimesheetEntryCreate", () => {
         <DESCRIPTION>desc</DESCRIPTION>
         <NOTES>my note</NOTES>
         <TASKKEY>1234</TASKKEY>
+        <TASKID>100</TASKID>
         <TIMETYPE>Salary</TIMETYPE>
         <BILLABLE>true</BILLABLE>
         <EXTBILLRATE>200</EXTBILLRATE>
@@ -74,6 +75,7 @@ describe("TimesheetEntryCreate", () => {
         record.quantity = 1.75;
         record.description = "desc";
         record.notes = "my note";
+        record.taskId = "100";
         record.taskRecordNo = 1234;
         record.timeTypeName = "Salary";
         record.billable = true;

@@ -26,6 +26,7 @@ export default abstract class AbstractTimesheetEntry extends AbstractFunction {
   public quantity: number;
   public description: string;
   public notes: string;
+  public taskId: string;
   public taskRecordNo: number;
   public timeTypeName: string;
   public billable: boolean;

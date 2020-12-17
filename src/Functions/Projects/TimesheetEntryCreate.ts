@@ -48,6 +48,7 @@ export default class TimesheetEntryCreate extends AbstractTimesheetEntry {
     xml.writeElement("DESCRIPTION", this.description);
     xml.writeElement("NOTES", this.notes);
     xml.writeElement("TASKKEY", this.taskRecordNo);
+    xml.writeElement("TASKID", this.taskId);
     xml.writeElement("TIMETYPE", this.timeTypeName);
     xml.writeElement("BILLABLE", this.billable);
 
