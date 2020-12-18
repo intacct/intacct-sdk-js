@@ -15,15 +15,15 @@
 
 import * as chai from "chai";
 import * as nock from "nock";
-import {StatusCodeError} from "request-promise-native/errors";
+import {FetchError} from "node-fetch";
 import * as winston from "winston";
 import ClientConfig from "../../src/ClientConfig";
+import ResponseException from "../../src/Exceptions/ResponseException";
 import ApiSessionCreate from "../../src/Functions/ApiSessionCreate";
 import RequestConfig from "../../src/RequestConfig";
 import OfflineResponse from "../../src/Xml/OfflineResponse";
 import OnlineResponse from "../../src/Xml/OnlineResponse";
 import RequestHandler from "../../src/Xml/RequestHandler";
-import ResponseException from "../../src/Exceptions/ResponseException";
 
 describe("RequestHandler", () => {
     before((done) => {
@@ -55,6 +55,7 @@ describe("RequestHandler", () => {
                   <companyid>testcompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>
@@ -176,6 +177,7 @@ describe("RequestHandler", () => {
                   <companyid>testcompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>
@@ -304,7 +306,8 @@ describe("RequestHandler", () => {
             chai.assert.isOk(false, "Expected exception not thrown");
         } catch (ex) {
             chai.assert.instanceOf(ex, ResponseException);
-            chai.assert.equal(ex.message, "Response control status failure - XMLGW_JPP0002 Sign-in information is incorrect. Please check your request.");
+            chai.assert.equal(ex.message, "Response control status failure - " +
+                "XMLGW_JPP0002 Sign-in information is incorrect. Please check your request.");
         }
     }).timeout(3000);
     it("should throw exception for 524 server error", async () => {
@@ -332,8 +335,8 @@ describe("RequestHandler", () => {
             await requestHandler.executeOnline(contentBlock);
             chai.assert.isOk(false, "Expected exception not thrown");
         } catch (ex) {
-            chai.assert.instanceOf(ex, StatusCodeError);
-            chai.assert.equal(ex.message, "524 - \"\"");
+            chai.assert.instanceOf(ex, FetchError);
+            chai.assert.equal(ex.message, "524");
         }
     });
     it("should execute with a debug logger", async () => {
@@ -353,6 +356,7 @@ describe("RequestHandler", () => {
                   <companyid>testcompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>
@@ -378,7 +382,8 @@ describe("RequestHandler", () => {
             .post("/ia/xml/xmlgw.phtml")
             .reply(200, xml, headers);
 
-        const logger = new winston.Logger({
+        const logger = winston.createLogger({
+            format: winston.format.printf((info) => info.message),
             transports: [
                 new winston.transports.Console({ level: "debug" }),
             ],
@@ -425,7 +430,8 @@ describe("RequestHandler", () => {
             .post("/ia/xml/xmlgw.phtml")
             .reply(200, xml, headers);
 
-        const logger = new winston.Logger({
+        const logger = winston.createLogger({
+            format: winston.format.printf((info) => info.message),
             transports: [
                 new winston.transports.Console({ level: "debug" }),
             ],

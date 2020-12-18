@@ -1,5 +1,5 @@
 /**
- * @module Intacct/SDK/Functions/AccountsPayable
+ * @module Intacct/SDK/Functions/Common/GetList
  */
 
 /**
@@ -17,24 +17,20 @@
  * permissions and limitations under the License.
  */
 
-import IaXmlWriter from "../../Xml/IaXmlWriter";
-import AbstractApPaymentRequest from "./AbstractApPaymentRequest";
+import IaXmlWriter from "../../../Xml/IaXmlWriter";
+import AbstractFunction from "../../AbstractFunction";
 
-export default class ApPaymentRequestVoid extends AbstractApPaymentRequest {
+export default class GetList extends AbstractFunction {
+    public object: string;
 
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");
         xml.writeAttribute("controlid", this.controlId, true);
 
-        xml.writeStartElement("void_appaymentrequest");
+        xml.writeStartElement("get_list");
+        xml.writeAttribute("object", this.object);
 
-        xml.writeStartElement("appaymentkeys");
-
-        xml.writeElement("appaymentkey", this.recordNo, true);
-
-        xml.writeEndElement(); // appaymentkeys
-
-        xml.writeEndElement(); // void_appaymentrequest
+        xml.writeEndElement(); // get_list
 
         xml.writeEndElement(); // function
     }

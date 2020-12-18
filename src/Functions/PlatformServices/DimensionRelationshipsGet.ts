@@ -1,5 +1,5 @@
 /**
- * @module Intacct/SDK/Functions/AccountsPayable
+ * @module Intacct/SDK/Functions/PlatformServices
  */
 
 /**
@@ -18,23 +18,16 @@
  */
 
 import IaXmlWriter from "../../Xml/IaXmlWriter";
-import AbstractApPaymentRequest from "./AbstractApPaymentRequest";
+import AbstractFunction from "../AbstractFunction";
 
-export default class ApPaymentRequestSend extends AbstractApPaymentRequest {
-
+export default class DimensionRelationshipsGet extends AbstractFunction {
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");
         xml.writeAttribute("controlid", this.controlId, true);
 
-        xml.writeStartElement("send_appaymentrequest");
+        xml.writeStartElement("getDimensionRelationships");
 
-        xml.writeStartElement("appaymentkeys");
-
-        xml.writeElement("appaymentkey", this.recordNo, true);
-
-        xml.writeEndElement(); // appaymentkeys
-
-        xml.writeEndElement(); // send_appaymentrequest
+        xml.writeEndElement(); // getDimensionRelationships
 
         xml.writeEndElement(); // function
     }

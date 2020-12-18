@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright 2020 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
@@ -13,10 +13,11 @@
  * permissions and limitations under the License.
  */
 
-import ApPaymentRequestVoid from "../../../src/Functions/AccountsPayable/ApPaymentRequestVoid";
+import * as chai from "chai";
+import TimesheetDecline from "../../../src/Functions/Projects/TimesheetDecline";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
-describe("ApPaymentRequestVoid", () => {
+describe("TimesheetDecline", () => {
     before((done) => {
         return done();
     });
@@ -29,21 +30,26 @@ describe("ApPaymentRequestVoid", () => {
     after((done) => {
         return done();
     });
-    it("should generate XML", () => {
+    it("should decline timesheet", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
-        <void_appaymentrequest>
-            <appaymentkeys>
-                <appaymentkey>1234</appaymentkey>
-            </appaymentkeys>
-        </void_appaymentrequest>
+        <decline>
+            <TIMESHEET>
+                <RECORDNO>2</RECORDNO>
+                <ENTRYKEYS>497,323</ENTRYKEYS>
+                <DECLINEDBY>John</DECLINEDBY>
+                <COMMENT>Declined by John</COMMENT>
+            </TIMESHEET>
+        </decline>
     </function>
 </test>`;
 
-        const record = new ApPaymentRequestVoid();
-        record.controlId = "unittest";
-        record.recordNo = 1234;
+        const record = new TimesheetDecline("unittest");
+        record.recordNo = 2;
+        record.declinedBy = "John";
+        record.comment = "Declined by John";
+        record.lineRecordNo = [497, 323];
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });

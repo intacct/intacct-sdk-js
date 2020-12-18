@@ -17,8 +17,7 @@
  * permissions and limitations under the License.
  */
 
-import {RequestResponse} from "request";
-import * as client from "request-promise-native";
+import * as fetch from "node-fetch";
 
 export default class HttpClientHandler {
 
@@ -28,7 +27,7 @@ export default class HttpClientHandler {
         this.options = options;
     }
 
-    public async postAsync(): Promise<RequestResponse> {
-        return await client(this.options);
+    public async postAsync(): Promise<Response> {
+        return await fetch(this.options.url, this.options);
     }
 }

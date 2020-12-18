@@ -14,6 +14,7 @@ import * as GeneralLedger from "./GeneralLedger/index";
 import * as GlobalConsolidations from "./GlobalConsolidations/index";
 import * as InventoryControl from "./InventoryControl/index";
 import * as OrderEntry from "./OrderEntry/index";
+import * as PlatformServices from "./PlatformServices/index";
 import * as Projects from "./Projects/index";
 import * as Purchasing from "./Purchasing/index";
 export {
@@ -29,6 +30,7 @@ export {
     GlobalConsolidations,
     InventoryControl,
     OrderEntry,
+    PlatformServices,
     Projects,
     Purchasing,
 };

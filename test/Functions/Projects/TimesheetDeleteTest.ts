@@ -33,7 +33,10 @@ describe("TimesheetDelete", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
-        <delete_timesheet key="1234" />
+        <delete>
+            <object>TIMESHEET</object>
+            <keys>1234</keys>
+        </delete>
     </function>
 </test>`;
 

@@ -55,6 +55,7 @@ describe("OnlineClient", () => {
                   <companyid>testcompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>
@@ -108,6 +109,7 @@ describe("OnlineClient", () => {
                   <companyid>testcompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                   <status>failure</status>
@@ -146,7 +148,8 @@ describe("OnlineClient", () => {
             chai.assert.isOk(false, "Expected exception not thrown");
         } catch (ex) {
             chai.assert.instanceOf(ex, ResultException);
-            chai.assert.equal(ex.message, "Result status: failure for Control ID: func1UnitTest - Get API Session Failed Something went wrong");
+            chai.assert.equal(ex.message,
+                "Result status: failure for Control ID: func1UnitTest - Get API Session Failed Something went wrong");
         }
     });
     it("should execute a batch transaction request and return ResultException", async () => {
@@ -167,6 +170,7 @@ describe("OnlineClient", () => {
                   <companyid>testcompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                   <status>aborted</status>
@@ -233,7 +237,10 @@ describe("OnlineClient", () => {
             chai.assert.isOk(false, "Expected exception not thrown");
         } catch (ex) {
             chai.assert.instanceOf(ex, ResultException);
-            chai.assert.equal(ex.message, "Result status: failure for Control ID: func2UnitTest - Get API Session Failed Something went wrong - XL03000009 The entire transaction in this operation has been rolled back due to an error.");
+            chai.assert.equal(ex.message,
+                "Result status: failure for Control ID: func2UnitTest - " +
+                "Get API Session Failed Something went wrong - " +
+                "XL03000009 The entire transaction in this operation has been rolled back due to an error.");
         }
     });
     it("should log the request and response", async () => {
@@ -253,6 +260,7 @@ describe("OnlineClient", () => {
                   <companyid>testcompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                  <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
             </authentication>
             <result>
                 <status>success</status>

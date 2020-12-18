@@ -1,5 +1,5 @@
 /**
- * @module Intacct/SDK/Functions/AccountsPayable
+ * @module Intacct/SDK/Functions/Purchasing
  */
 
 /**
@@ -18,23 +18,26 @@
  */
 
 import IaXmlWriter from "../../Xml/IaXmlWriter";
-import IXmlObject from "../../Xml/IXmlObject";
+import AbstractPurchasingTransaction from "./AbstractPurchasingTransaction";
 
-export default class ApPaymentRequestItem implements IXmlObject {
-
-    public applyToRecordId: number;
-    public amountToApply: number;
-    public creditToApply: number;
-    public discountToApply: number;
+export default class PurchasingTransactionDecline extends AbstractPurchasingTransaction {
 
     public writeXml(xml: IaXmlWriter): void {
-        xml.writeStartElement("paymentrequestitem");
+        xml.writeStartElement("function");
+        xml.writeAttribute("controlid", this.controlId, true);
 
-        xml.writeElement("key", this.applyToRecordId, true);
-        xml.writeElement("paymentamount", this.amountToApply, true);
-        xml.writeElement("credittoapply", this.creditToApply);
-        xml.writeElement("discounttoapply", this.discountToApply);
+        xml.writeStartElement("decline");
 
-        xml.writeEndElement(); // paymentrequestitem
+        xml.writeStartElement("PODOCUMENT");
+
+        xml.writeElement("DOCID", External);
+
+        xml.writeElement("COMMENT", Comment);
+
+        xml.writeEndElement(); // PODOCUMENT
+
+        xml.writeEndElement(); // decline
+
+        xml.writeEndElement(); // function
     }
 }

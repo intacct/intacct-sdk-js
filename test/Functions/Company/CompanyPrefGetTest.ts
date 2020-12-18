@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright 2020 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
@@ -13,10 +13,11 @@
  * permissions and limitations under the License.
  */
 
-import ApPaymentRequestSend from "../../../src/Functions/AccountsPayable/ApPaymentRequestSend";
+import * as chai from "chai";
+import GetCompanyPrefs from "../../../src/Functions/Company/CompanyPrefsGet";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
-describe("ApPaymentRequestSend", () => {
+describe("CompanyPrefsGet", () => {
     before((done) => {
         return done();
     });
@@ -29,21 +30,16 @@ describe("ApPaymentRequestSend", () => {
     after((done) => {
         return done();
     });
-    it("should generate XML", () => {
+    it("should get company prefs", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
-        <send_appaymentrequest>
-            <appaymentkeys>
-                <appaymentkey>1234</appaymentkey>
-            </appaymentkeys>
-        </send_appaymentrequest>
+        <get_companyprefs application="PA" />
     </function>
 </test>`;
 
-        const record = new ApPaymentRequestSend();
-        record.controlId = "unittest";
-        record.recordNo = 1234;
+        const record = new GetCompanyPrefs("unittest");
+        record.application = "PA";
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });

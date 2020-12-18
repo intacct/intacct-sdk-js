@@ -13,11 +13,10 @@
  * permissions and limitations under the License.
  */
 
-import ApPaymentRequestConfirm from "../../../src/Functions/AccountsPayable/ApPaymentRequestConfirm";
-import ApPaymentRequestDecline from "../../../src/Functions/AccountsPayable/ApPaymentRequestDecline";
+import PurchasingTransactionDecline from "../../../src/Functions/Purchasing/PurchasingTransactionDecline";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
-describe("ApPaymentRequestDecline", () => {
+describe("PurchasingTransactionDecline", () => {
     before((done) => {
         return done();
     });
@@ -30,21 +29,23 @@ describe("ApPaymentRequestDecline", () => {
     after((done) => {
         return done();
     });
-    it("should generate XML", () => {
+    it("should build PurchasingTransactionDecline", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
-        <decline_appaymentrequest>
-            <appaymentkeys>
-                <appaymentkey>1234</appaymentkey>
-            </appaymentkeys>
-        </decline_appaymentrequest>
+        <decline>
+            <PODOCUMENT>
+                <DOCID>Purchase Order-PO0213</DOCID>
+                <COMMENT>Need to wait on this</COMMENT>
+            </PODOCUMENT>
+        </decline>
     </function>
 </test>`;
 
-        const record = new ApPaymentRequestDecline();
+        const record = new PurchasingTransactionDecline();
         record.controlId = "unittest";
-        record.recordNo = 1234;
+        record.externalId = "Vendor Invoice-VI4321";
+        record.comment = "Need to wait on this";
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });

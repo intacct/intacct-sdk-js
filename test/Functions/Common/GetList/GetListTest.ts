@@ -13,10 +13,11 @@
  * permissions and limitations under the License.
  */
 
-import ApPaymentRequestApprove from "../../../src/Functions/AccountsPayable/ApPaymentRequestApprove";
-import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
+import * as chai from "chai";
+import GetList from "../../../../src/Functions/Common/GetList/GetList";
+import XmlObjectTestHelper from "../../../Xml/XmlObjectTestHelper";
 
-describe("ApPaymentRequestApprove", () => {
+describe("GetList", () => {
     before((done) => {
         return done();
     });
@@ -29,21 +30,16 @@ describe("ApPaymentRequestApprove", () => {
     after((done) => {
         return done();
     });
-    it("should generate XML", () => {
+    it("should get company info", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
-        <approve_appaymentrequest>
-            <appaymentkeys>
-                <appaymentkey>1234</appaymentkey>
-            </appaymentkeys>
-        </approve_appaymentrequest>
+        <get_list object="company_info" />
     </function>
 </test>`;
 
-        const record = new ApPaymentRequestApprove();
-        record.controlId = "unittest";
-        record.recordNo = 1234;
+        const record = new GetList("unittest");
+        record.object = "company_info";
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });

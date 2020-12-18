@@ -46,7 +46,6 @@ export default class OnlineClient extends AbstractClient {
 
         return response;
     }
-
     /**
      * Execute multiple Sage Intacct API functions
      *

@@ -26,11 +26,12 @@ export default class TimesheetDelete extends AbstractTimesheet {
         xml.writeStartElement("function");
         xml.writeAttribute("controlid", this.controlId, true);
 
-        xml.writeStartElement("delete_timesheet");
+        xml.writeStartElement("delete");
 
-        xml.writeAttribute("key", this.recordNo, true);
+        xml.writeElement("object", "TIMESHEET");
+        xml.writeElement("keys", this.recordNo);
 
-        xml.writeEndElement(); // delete_timesheet
+        xml.writeEndElement(); // delete
 
         xml.writeEndElement(); // function
     }

@@ -49,6 +49,7 @@ describe("Result", () => {
                   <companyid>fakecompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
+                  <sessiontimeout>2015-10-26T10:08:34-07:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>
@@ -85,6 +86,7 @@ describe("Result", () => {
                   <companyid>fakecompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-10-25T11:07:22-07:00</sessiontimestamp>
+                  <sessiontimeout>2015-10-26T10:08:34-07:00</sessiontimeout>
             </authentication>
             <result>
                   <status>failure</status>
@@ -127,6 +129,7 @@ describe("Result", () => {
                   <companyid>fakecompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
+                  <sessiontimeout>2015-10-26T10:08:34-07:00</sessiontimeout>
             </authentication>
             <result>
                   <!--<status>success</status>-->
@@ -162,6 +165,7 @@ describe("Result", () => {
                   <companyid>fakecompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
+                  <sessiontimeout>2015-10-26T10:08:34-07:00</sessiontimeout>
             </authentication>
             <result>
                   <status>success</status>
@@ -197,6 +201,7 @@ describe("Result", () => {
             <companyid>fakecompany</companyid>
             <locationid></locationid>
             <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
+            <sessiontimeout>2015-10-26T10:08:34-07:00</sessiontimeout>
         </authentication>
         <result>
             <status>success</status>
@@ -232,6 +237,7 @@ describe("Result", () => {
             <companyid>fakecompany</companyid>
             <locationid></locationid>
             <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
+            <sessiontimeout>2015-10-26T10:08:34-07:00</sessiontimeout>
         </authentication>
         <result>
             <status>failure</status>
@@ -277,6 +283,7 @@ describe("Result", () => {
             <companyid>fakecompany</companyid>
             <locationid></locationid>
             <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
+            <sessiontimeout>2015-10-26T10:08:34-07:00</sessiontimeout>
         </authentication>
         <result>
             <status>aborted</status>
@@ -327,6 +334,7 @@ describe("Result", () => {
             <companyid>fakecompany</companyid>
             <locationid></locationid>
             <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
+            <sessiontimeout>2015-10-26T10:08:34-07:00</sessiontimeout>
         </authentication>
         <result>
             <status>aborted</status>
@@ -374,6 +382,7 @@ describe("Result", () => {
             <companyid>fakecompany</companyid>
             <locationid></locationid>
             <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
+            <sessiontimeout>2015-10-26T10:08:34-07:00</sessiontimeout>
         </authentication>
         <result>
             <status>success</status>
@@ -427,6 +436,7 @@ describe("Result", () => {
                   <companyid>fakecompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
+                  <sessiontimeout>2015-10-26T10:08:34-07:00</sessiontimeout>
             </authentication>
             <result>
                 <status>success</status>
@@ -481,6 +491,7 @@ describe("Result", () => {
                   <companyid>fakecompany</companyid>
                   <locationid></locationid>
                   <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
+                  <sessiontimeout>2015-10-26T10:08:34-07:00</sessiontimeout>
             </authentication>
             <result>
                 <status>success</status>
@@ -552,6 +563,7 @@ describe("Result", () => {
             <companyid>fakecompany</companyid>
             <locationid></locationid>
             <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
+            <sessiontimeout>2015-10-26T10:08:34-07:00</sessiontimeout>
         </authentication>
         <result>
             <status>success</status>

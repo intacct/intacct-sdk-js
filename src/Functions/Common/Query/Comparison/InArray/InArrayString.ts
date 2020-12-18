@@ -23,9 +23,10 @@ export default class InArrayString extends AbstractArrayString {
 
     public toString(): string {
         let clause = "";
+        let notClause = "";
 
         if (this.negate === true) {
-            clause = "NOT ";
+            notClause = "NOT ";
         }
 
         const pieces = [];
@@ -33,7 +34,7 @@ export default class InArrayString extends AbstractArrayString {
             pieces.push("'" + piece.replace("'", "\\'") + "'");
         }
 
-        clause = clause + this.field + " IN (" + pieces.join(",") + ")";
+        clause = this.field + notClause + " IN (" + pieces.join(",") + ")";
 
         return clause;
     }

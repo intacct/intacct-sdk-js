@@ -1,5 +1,5 @@
 /**
- * @module Intacct/SDK/Functions/AccountsPayable
+ * @module Intacct/SDK/Functions/PlatformServices
  */
 
 /**
@@ -18,23 +18,21 @@
  */
 
 import IaXmlWriter from "../../Xml/IaXmlWriter";
-import AbstractApPaymentRequest from "./AbstractApPaymentRequest";
+import AbstractFunction from "../AbstractFunction";
 
-export default class ApPaymentRequestDecline extends AbstractApPaymentRequest {
+export default class Inspect extends AbstractFunction {
+
+    public objectName: string;
 
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");
         xml.writeAttribute("controlid", this.controlId, true);
 
-        xml.writeStartElement("decline_appaymentrequest");
+        xml.writeStartElement("inspect");
 
-        xml.writeStartElement("appaymentkeys");
+        xml.writeElement("object", this.objectName || "*", true);
 
-        xml.writeElement("appaymentkey", this.recordNo, true);
-
-        xml.writeEndElement(); // appaymentkeys
-
-        xml.writeEndElement(); // decline_appaymentrequest
+        xml.writeEndElement(); // inspect
 
         xml.writeEndElement(); // function
     }

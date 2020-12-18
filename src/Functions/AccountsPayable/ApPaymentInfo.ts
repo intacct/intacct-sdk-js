@@ -17,22 +17,24 @@
  * permissions and limitations under the License.
  */
 
-import AbstractFunction from "../AbstractFunction";
-import ApPaymentRequestItem from "./ApPaymentRequestItem";
+import IApPaymentDetail from "./IApPaymentDetail";
 
-export default abstract class AbstractApPaymentRequest extends AbstractFunction {
+export default class ApPaymentInfo {
 
-    public recordNo: number;
     public paymentMethod: string;
-    public bankAccountId: string;
-    public chargeCardId: string;
+    public financialEntityId: string;
     public vendorId: string;
     public mergeOption: string;
     public groupPayments: boolean;
     public paymentDate: Date;
-    public transactionAmount: number;
+    public baseCurrency: string;
+    public transactionCurrency: string;
+    public transactionAmountPaid: number;
+    public exchangeRateDate: Date;
+    public exchangeRateType: string;
     public documentNo: string;
     public memo: string;
     public notificationContactName: string;
-    public applyToTransactions: ApPaymentRequestItem[];
+    public action: string;
+    public apPaymentDetails: IApPaymentDetail[];
 }

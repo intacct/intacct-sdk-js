@@ -17,7 +17,7 @@
  * permissions and limitations under the License.
  */
 
-import {LoggerInstance} from "winston";
+import {Logger} from "winston";
 import ICredentials from "./Credentials/ICredentials";
 import MessageFormatter from "./Logging/MessageFormatter";
 
@@ -35,6 +35,10 @@ export default class ClientConfig {
 
     public sessionId: string;
 
+    public sessionTimestamp: string;
+
+    public sessionTimeout: string;
+
     public companyId: string;
 
     public entityId: string;
@@ -45,7 +49,7 @@ export default class ClientConfig {
 
     public credentials: ICredentials;
 
-    public logger: LoggerInstance;
+    public logger: Logger;
 
     public logLevel: string;
 

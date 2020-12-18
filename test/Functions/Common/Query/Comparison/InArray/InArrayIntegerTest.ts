@@ -50,7 +50,7 @@ describe("InArrayInteger", () => {
             9012,
         ];
 
-        chai.assert.equal(condition.toString(), "NOT RECORDNO IN (1234,5678,9012)");
+        chai.assert.equal(condition.toString(), "RECORDNO NOT IN (1234,5678,9012)");
     });
     it("output the singular condition to a string", () => {
         const condition = new InArrayInteger();
