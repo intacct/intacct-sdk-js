@@ -26,7 +26,7 @@ export default class InArrayInteger extends AbstractArrayInteger {
         let notClause = "";
 
         if (this.negate === true) {
-            notClause = "NOT ";
+            notClause = " NOT";
         }
 
         clause = this.field + notClause + " IN (" + this.valuesList.join(",") + ")";

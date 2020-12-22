@@ -112,36 +112,4 @@ describe("ArPaymentCreate", () => {
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });
-    it("should generate XML to Create Payment against invoice header", () => {
-        const expected = `<?xml version="1.0" encoding="utf-8" ?>
-<test>
-    <function controlid="unittest">
-        <create>
-            <ARPYMT>
-                <FINANCIALENTITY>BOA</FINANCIALENTITY>
-                <PAYMENTMETHOD>Cash</PAYMENTMETHOD>
-                <CUSTOMERID>JHC</CUSTOMERID>
-                <DOCNUMBER>INV-007</DOCNUMBER>
-                <RECEIPTDATE>05/15/2019</RECEIPTDATE>
-                <PAYMENTDATE>05/16/2019</PAYMENTDATE>
-                <ARPYMTDETAILS>
-                    <ARPYMTDETAIL>
-                        <RECORDKEY>101</RECORDKEY>
-                        <TRX_PAYMENTAMOUNT>125</TRX_PAYMENTAMOUNT>
-                    </ARPYMTDETAIL>
-                </ARPYMTDETAILS>
-            </ARPYMT>
-        </create>
-    </function>
-</test>`;
-
-        const record = new ArPaymentCreate();
-        record.controlId = "unittest";
-        record.customerId = "C0020";
-        record.transactionPaymentAmount = 1922.12;
-        record.receivedDate = new Date("6/30/2016");
-        record.paymentMethod = "Printed Check";
-
-        XmlObjectTestHelper.CompareXml(expected, record);
-    });
 });

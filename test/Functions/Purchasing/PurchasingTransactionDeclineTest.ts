@@ -35,7 +35,7 @@ describe("PurchasingTransactionDecline", () => {
     <function controlid="unittest">
         <decline>
             <PODOCUMENT>
-                <DOCID>Purchase Order-PO0213</DOCID>
+                <DOCID>Vendor Invoice-VI4321</DOCID>
                 <COMMENT>Need to wait on this</COMMENT>
             </PODOCUMENT>
         </decline>

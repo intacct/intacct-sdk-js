@@ -62,7 +62,7 @@ describe("Filter", () => {
             () => {
                 const xml = new IaXmlWriter(xmlbuilder.create("request", {
                     "version": "1.0",
-                    "encoding": this.encoding,
+                    "encoding": "utf-8",
                     "standalone": null,
                 }));
                 const filter = (new Filter("CLASSID"));
@@ -106,7 +106,7 @@ describe("Filter", () => {
             () => {
                 const xml = new IaXmlWriter(xmlbuilder.create("request", {
                     "version": "1.0",
-                    "encoding": this.encoding,
+                    "encoding": "utf-8",
                     "standalone": null,
                 }));
                 const filter = new Filter("VENDORNAME").equalTo(null);
@@ -150,7 +150,7 @@ describe("Filter", () => {
             () => {
                 const xml = new IaXmlWriter(xmlbuilder.create("request", {
                     "version": "1.0",
-                    "encoding": this.encoding,
+                    "encoding": "utf-8",
                     "standalone": null,
                 }));
                 const filter = new Filter("VENDORNAME").notEqualTo(null);
@@ -194,7 +194,7 @@ describe("Filter", () => {
             () => {
                 const xml = new IaXmlWriter(xmlbuilder.create("request", {
                     "version": "1.0",
-                    "encoding": this.encoding,
+                    "encoding": "utf-8",
                     "standalone": null,
                 }));
                 const filter = new Filter("VENDORNAME").lessThan(null);
@@ -238,7 +238,7 @@ describe("Filter", () => {
             () => {
                 const xml = new IaXmlWriter(xmlbuilder.create("request", {
                     "version": "1.0",
-                    "encoding": this.encoding,
+                    "encoding": "utf-8",
                     "standalone": null,
                 }));
                 const filter = new Filter("VENDORNAME").lessThanOrEqualTo(null);
@@ -282,7 +282,7 @@ describe("Filter", () => {
             () => {
                 const xml = new IaXmlWriter(xmlbuilder.create("request", {
                     "version": "1.0",
-                    "encoding": this.encoding,
+                    "encoding": "utf-8",
                     "standalone": null,
                 }));
                 const filter = new Filter("VENDORNAME").greaterThan(null);
@@ -326,7 +326,7 @@ describe("Filter", () => {
             () => {
                 const xml = new IaXmlWriter(xmlbuilder.create("request", {
                     "version": "1.0",
-                    "encoding": this.encoding,
+                    "encoding": "utf-8",
                     "standalone": null,
                 }));
                 const filter = new Filter("VENDORNAME").greaterThanOrEqualTo(null);
@@ -357,7 +357,7 @@ describe("Filter", () => {
             () => {
                 const xml = new IaXmlWriter(xmlbuilder.create("request", {
                     "version": "1.0",
-                    "encoding": this.encoding,
+                    "encoding": "utf-8",
                     "standalone": null,
                 }));
                 const filter = new Filter("WHENDUE").between(null, "10/01/2019");
@@ -373,7 +373,7 @@ describe("Filter", () => {
             () => {
                 const xml = new IaXmlWriter(xmlbuilder.create("request", {
                     "version": "1.0",
-                    "encoding": this.encoding,
+                    "encoding": "utf-8",
                     "standalone": null,
                 }));
                 const filter = new Filter("WHENDUE").between("10/01/2019", null);
@@ -534,7 +534,7 @@ describe("Filter", () => {
             () => {
                 const xml = new IaXmlWriter(xmlbuilder.create("request", {
                     "version": "1.0",
-                    "encoding": this.encoding,
+                    "encoding": "utf-8",
                     "standalone": null,
                 }));
                 const filter = new Filter("VENDORNAME").like(null);
@@ -578,7 +578,7 @@ describe("Filter", () => {
             () => {
                 const xml = new IaXmlWriter(xmlbuilder.create("request", {
                     "version": "1.0",
-                    "encoding": this.encoding,
+                    "encoding": "utf-8",
                     "standalone": null,
                 }));
                 const filter = new Filter("VENDORNAME").notLike(null);

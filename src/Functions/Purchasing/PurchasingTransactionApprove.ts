@@ -30,9 +30,9 @@ export default class PurchasingTransactionApprove extends AbstractPurchasingTran
 
         xml.writeStartElement("PODOCUMENT");
 
-        xml.writeElement("DOCID", External);
+        xml.writeElement("DOCID", this.externalId);
 
-        xml.writeElement("COMMENT", Comment);
+        xml.writeElement("COMMENT", this.comment);
 
         xml.writeEndElement(); // PODOCUMENT
 

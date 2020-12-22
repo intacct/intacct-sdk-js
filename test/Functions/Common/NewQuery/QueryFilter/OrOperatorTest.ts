@@ -78,7 +78,7 @@ describe("OrOperator", () => {
             () => {
                 const xml = new IaXmlWriter(xmlbuilder.create("request", {
                     "version": "1.0",
-                    "encoding": this.encoding,
+                    "encoding": "utf-8",
                     "standalone": null,
                 }));
                 const filter = (new OrOperator(
@@ -98,7 +98,7 @@ describe("OrOperator", () => {
             () => {
                 const xml = new IaXmlWriter(xmlbuilder.create("request", {
                     "version": "1.0",
-                    "encoding": this.encoding,
+                    "encoding": "utf-8",
                     "standalone": null,
                 }));
                 const filter = new OrOperator([]);
@@ -114,7 +114,7 @@ describe("OrOperator", () => {
             () => {
                 const xml = new IaXmlWriter(xmlbuilder.create("request", {
                     "version": "1.0",
-                    "encoding": this.encoding,
+                    "encoding": "utf-8",
                     "standalone": null,
                 }));
                 const filter = new OrOperator(null);
@@ -165,7 +165,7 @@ describe("OrOperator", () => {
             () => {
                 const xml = new IaXmlWriter(xmlbuilder.create("request", {
                     "version": "1.0",
-                    "encoding": this.encoding,
+                    "encoding": "utf-8",
                     "standalone": null,
                 }));
                 const filter = new OrOperator();

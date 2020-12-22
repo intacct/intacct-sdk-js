@@ -61,9 +61,10 @@ export default class RequestHandler {
         }
 
         const request = new RequestBlock(this.clientConfig, this.requestConfig, content);
-        const response = await this.execute(request.writeXml());
 
-        return new OnlineResponse(await response.clone().text());
+        return await this.execute(request.writeXml()).then((body) => {
+            return new OnlineResponse(body);
+        });
     }
 
     public async executeOffline(content: IFunction[]): Promise<OfflineResponse> {
@@ -83,9 +84,9 @@ export default class RequestHandler {
         }
 
         const request = new RequestBlock(this.clientConfig, this.requestConfig, content);
-        const response = await this.execute(request.writeXml());
-
-        return new OfflineResponse(await response.clone().text());
+        return await this.execute(request.writeXml()).then((body) => {
+            return new OfflineResponse(body);
+        });
     }
 
     private getHttpClient(options: object): HttpClientHandler {
@@ -101,7 +102,7 @@ export default class RequestHandler {
         }
     }
 
-    private async execute(xml: string): Promise<Response> {
+    private async execute(xml: string): Promise<string> {
         const httpClient = this.getHttpClient({
             url: this.endpointUrl,
             method: "POST",
@@ -115,6 +116,7 @@ export default class RequestHandler {
                 "Accept-Encoding": "gzip",
                 "User-Agent": "intacct-sdk-js-client/" + this.version,
             },
+            size: 0,
         });
 
         for (let attempt = 0; attempt <= this.requestConfig.maxRetries; attempt++) {
@@ -123,17 +125,19 @@ export default class RequestHandler {
                 await this.exponentialDelay(attempt);
             }
 
-            const response = await httpClient.postAsync();
+            const result = await httpClient.postAsync();
+            const response = result[0];
+            const body = result[1];
 
             let ok = true;
             if (response.status >= 400 && response.status < 600) {
                 ok = false;
             }
             if (ok === true) {
-                return response;
+                return body;
             } else if (this.requestConfig.noRetryServerErrorCodes.indexOf(response.status) !== -1) {
                 // Do not retry this explicitly set 500 level server error
-                throw new FetchError(response.status, response.text(), httpClient.options, response);
+                throw new FetchError(response.status, body, httpClient.options, response);
             } else if (response.status >= 500 && response.status <= 599) {
                 // Retry 500 level server errors
                 continue;
@@ -141,10 +145,9 @@ export default class RequestHandler {
                 const contentTypeObj = contentType.parse(response.headers.get("content-type"));
                 const mimeType = contentTypeObj.type;
                 if (mimeType === "text/xml" || mimeType === "application/xml") {
-                    return response;
+                    return body;
                 }
-
-                throw new FetchError(response.status, response.text(), httpClient.options, response);
+                throw new FetchError(response.status, body, httpClient.options, response);
             }
         }
         throw new Error("Request retry count exceeded max retry count: " + this.requestConfig.maxRetries.toString());

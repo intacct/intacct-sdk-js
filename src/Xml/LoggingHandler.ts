@@ -35,21 +35,18 @@ export default class LoggingHandler extends HttpClientHandler {
         this.logLevel = logLevel;
     }
 
-    public async postAsync(): Promise<Response> {
-        let response;
+    public async postAsync(): Promise<[Response, string]> {
+
         try {
             this.logger.log(this.logLevel, this.logMessageFormatter.formatRequest(this.options));
-
-            response = await super.postAsync();
-
-            this.logger.log(this.logLevel,
-                    this.logMessageFormatter.formatResponse(response,
-                        await response.clone().text()));
-
+            return await super.postAsync().then(([response, body]) => {
+                this.logger.log(this.logLevel,
+                    this.logMessageFormatter.formatResponse(response, body));
+                return Promise.all([response, body]);
+            });
         } catch (error) {
             this.logger.log(this.logLevel, error);
             throw error;
         }
-        return response;
     }
 }
