@@ -1,7 +1,6 @@
 export { default as AbstractApAdjustment } from "./AbstractApAdjustment";
 export { default as AbstractApAdjustmentLine } from "./AbstractApAdjustmentLine";
 export { default as AbstractApAdjustmentSummary } from "./AbstractApAdjustmentSummary";
-export { default as AbstractApPayment } from "./AbstractApPayment";
 export { default as AbstractApPaymentDetailCredit } from "./AbstractApPaymentDetailCredit";
 export { default as AbstractApPaymentFunction } from "./AbstractApPaymentFunction";
 export { default as AbstractBill } from "./AbstractBill";

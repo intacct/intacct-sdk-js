@@ -24,7 +24,7 @@ export default class ApPaymentConfirm extends AbstractApPaymentFunction {
         super(recordNo, controlId);
     }
 
-protected getFunction(): string {
+    protected getFunction(): string {
         return AbstractApPaymentFunction.CONFIRM;
     }
 }

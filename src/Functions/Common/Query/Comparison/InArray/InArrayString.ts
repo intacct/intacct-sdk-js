@@ -26,7 +26,7 @@ export default class InArrayString extends AbstractArrayString {
         let notClause = "";
 
         if (this.negate === true) {
-            notClause = "NOT ";
+            notClause = " NOT";
         }
 
         const pieces = [];

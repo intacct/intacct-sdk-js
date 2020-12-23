@@ -35,7 +35,7 @@ describe("PurchasingTransactionApprove", () => {
     <function controlid="unittest">
         <approve>
             <PODOCUMENT>
-                <DOCID>Purchase Order-PO0213</DOCID>
+                <DOCID>Vendor Invoice-VI4321</DOCID>
                 <COMMENT>Final approval for the quarter</COMMENT>
             </PODOCUMENT>
         </approve>

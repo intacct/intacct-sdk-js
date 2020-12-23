@@ -27,7 +27,14 @@ export default class HttpClientHandler {
         this.options = options;
     }
 
-    public async postAsync(): Promise<Response> {
-        return await fetch(this.options.url, this.options);
+    public async postAsync(): Promise<[Response, string]> {
+        try {
+            const response = await fetch(this.options.url, this.options);
+            const body = await response.text();
+
+            return Promise.all([response, body]);
+        } catch (error) {
+            throw new Error(error);
+        }
     }
 }

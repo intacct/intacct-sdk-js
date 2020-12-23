@@ -286,7 +286,7 @@ describe("OnlineClient", () => {
             .post("/ia/xml/xmlgw.phtml")
             .reply(200, xmlResponse, headers);
 
-        const logger = new winston.Logger({
+        const logger = winston.createLogger({
             transports: [
                 new winston.transports.Console({ level: "debug" }),
             ],

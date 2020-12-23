@@ -100,10 +100,10 @@ export default class IaXmlWriter {
         } else {
             if (value == null) {
                 if (writeNull === true) {
-                    this._writer.element(localName, value).up();
+                    this._writer.element(localName, "").up();
                 }
             } else {
-                this._writer.element(localName, value).up();
+                this._writer.element(localName, "").up();
             }
         }
     }

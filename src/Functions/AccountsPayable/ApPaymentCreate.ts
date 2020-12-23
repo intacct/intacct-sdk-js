@@ -29,6 +29,7 @@ export default class ApPaymentCreate extends AbstractFunction {
         super(controlId);
         this.apPaymentInfo = apPaymentInfo;
     }
+
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");
         xml.writeAttribute("controlid", this.controlId, true);
