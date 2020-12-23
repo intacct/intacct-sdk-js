@@ -29,8 +29,6 @@ export default class ApPaymentDetailBill implements IApPaymentDetail {
     }
 
     public writeXml(xml: IaXmlWriter): void {
-    {
-
         xml.writeStartElement("APPYMTDETAIL");
 
         xml.writeElement("RECORDKEY", this.info.recordNo, true);
@@ -52,5 +50,4 @@ export default class ApPaymentDetailBill implements IApPaymentDetail {
 
         xml.writeEndElement(); // APPYMTDETAIL
     }
-}
 }
