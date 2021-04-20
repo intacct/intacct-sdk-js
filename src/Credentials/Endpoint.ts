@@ -28,23 +28,30 @@ export default class Endpoint {
 
     public static readonly DOMAIN_NAME = "intacct.com";
 
+    public static readonly FULL_QUALIFIED_DOMAIN_NAME = Endpoint.DOMAIN_NAME + ".";
+
+    private static isDomainValid(hostname: string): boolean {
+        const checkMainDomain = "." + Endpoint.DOMAIN_NAME;
+        const checkFQDNDomain = "." + Endpoint.FULL_QUALIFIED_DOMAIN_NAME;
+        return (hostname.substr(-checkMainDomain.length) === checkMainDomain) ||
+            (hostname.substr(-checkFQDNDomain.length) === checkFQDNDomain);
+    }
     private _url: string;
     get url(): string {
         return this._url;
     }
+
     set url(address: string) {
         if (address == null || address === "") {
             address = Endpoint.DEFAULT_ENDPOINT;
         }
 
-        const test = url.parse(address);
-        const check = "." + Endpoint.DOMAIN_NAME;
-        if (test.hostname.substr(-check.length) !== check) {
+        const parsedUrl = url.parse(address);
+        if (!Endpoint.isDomainValid(parsedUrl.hostname)) {
             throw new Error("Endpoint URL is not a valid " + Endpoint.DOMAIN_NAME + " domain name.");
         }
         this._url = address;
     }
-
     constructor(config: ClientConfig) {
         if (config.endpointUrl == null) {
             this.url = process.env[Endpoint.ENDPOINT_URL_ENV_NAME];
