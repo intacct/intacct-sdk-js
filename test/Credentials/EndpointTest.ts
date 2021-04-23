@@ -78,4 +78,12 @@ describe("Endpoint", () => {
             "Endpoint URL is not a valid intacct.com domain name.",
         );
     });
+
+    it("should allow FQDN Endpoint URL", () => {
+        const config = new ClientConfig();
+        config.endpointUrl = "https://api.intacct.com./ia/xml/xmlgw.phtml";
+        const endpoint = new Endpoint(config);
+
+        chai.assert.equal(endpoint.url, "https://api.intacct.com./ia/xml/xmlgw.phtml");
+    });
 });
