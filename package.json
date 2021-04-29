@@ -1,6 +1,6 @@
 {
   "name": "@intacct-thyme/intacct-sdk",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Sage Intacct SDK for JavaScript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
