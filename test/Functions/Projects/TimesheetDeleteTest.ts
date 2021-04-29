@@ -17,17 +17,17 @@ import TimesheetDelete from "../../../src/Functions/Projects/TimesheetDelete";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
 describe("TimesheetDelete", () => {
-    before(done => {
-      return done();
+    before((done) => {
+        return done();
     });
-    beforeEach(done => {
-      return done();
+    beforeEach((done) => {
+        return done();
     });
-    afterEach(done => {
-      return done();
+    afterEach((done) => {
+        return done();
     });
-    after(done => {
-      return done();
+    after((done) => {
+        return done();
     });
     it("should build TimesheetDelete object", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
