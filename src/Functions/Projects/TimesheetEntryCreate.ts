@@ -28,49 +28,49 @@ export default class TimesheetEntryCreate extends AbstractTimesheetEntry {
     }
 
     public writeXml(xml: IaXmlWriter): void {
-      if (!this._isEmbedded) {
-        xml.writeStartElement("function");
-        xml.writeAttribute("controlid", this.controlId, true);
-        xml.writeStartElement("create");
-      }
-      xml.writeStartElement("TIMESHEETENTRY");
-      if (!this._isEmbedded) {
-        xml.writeElement("TIMESHEETKEY", this.timesheetRecordNo);
-      }
-      if (this._isEmbedded && this.recordNo) {
-        xml.writeElement("RECORDNO", this.recordNo);
-      }
+        if (!this._isEmbedded) {
+          xml.writeStartElement("function");
+          xml.writeAttribute("controlid", this.controlId, true);
+          xml.writeStartElement("create");
+        }
+        xml.writeStartElement("TIMESHEETENTRY");
+        if (!this._isEmbedded) {
+          xml.writeElement("TIMESHEETKEY", this.timesheetRecordNo);
+        }
+        if (this._isEmbedded && this.recordNo) {
+          xml.writeElement("RECORDNO", this.recordNo);
+        }
 
-      xml.writeElementDate("ENTRYDATE", this.entryDate, IaXmlWriter.intacctDateFormat);
+        xml.writeElementDate("ENTRYDATE", this.entryDate, IaXmlWriter.intacctDateFormat);
 
-      xml.writeElement("QTY", this.quantity, true);
+        xml.writeElement("QTY", this.quantity, true);
 
-      xml.writeElement("DESCRIPTION", this.description);
-      xml.writeElement("NOTES", this.notes);
-      xml.writeElement("TASKKEY", this.taskRecordNo);
-      xml.writeElement("TASKID", this.taskId);
-      xml.writeElement("TIMETYPE", this.timeTypeName);
-      xml.writeElement("BILLABLE", this.billable);
+        xml.writeElement("DESCRIPTION", this.description);
+        xml.writeElement("NOTES", this.notes);
+        xml.writeElement("TASKKEY", this.taskRecordNo);
+        xml.writeElement("TASKID", this.taskId);
+        xml.writeElement("TIMETYPE", this.timeTypeName);
+        xml.writeElement("BILLABLE", this.billable);
 
-      xml.writeElement("EXTBILLRATE", this.overrideBillingRate);
-      xml.writeElement("EXTCOSTRATE", this.overrideLaborCostRate);
+        xml.writeElement("EXTBILLRATE", this.overrideBillingRate);
+        xml.writeElement("EXTCOSTRATE", this.overrideLaborCostRate);
 
-      xml.writeElement("DEPARTMENTID", this.departmentId);
-      xml.writeElement("LOCATIONID", this.locationId);
-      xml.writeElement("PROJECTID", this.projectId);
-      xml.writeElement("CUSTOMERID", this.customerId);
-      xml.writeElement("VENDORID", this.vendorId);
-      xml.writeElement("ITEMID", this.itemId);
-      xml.writeElement("CLASSID", this.classId);
-      xml.writeElement("CONTRACTID", this.contractId);
-      xml.writeElement("WAREHOUSEID", this.warehouseId);
+        xml.writeElement("DEPARTMENTID", this.departmentId);
+        xml.writeElement("LOCATIONID", this.locationId);
+        xml.writeElement("PROJECTID", this.projectId);
+        xml.writeElement("CUSTOMERID", this.customerId);
+        xml.writeElement("VENDORID", this.vendorId);
+        xml.writeElement("ITEMID", this.itemId);
+        xml.writeElement("CLASSID", this.classId);
+        xml.writeElement("CONTRACTID", this.contractId);
+        xml.writeElement("WAREHOUSEID", this.warehouseId);
 
-      xml.writeCustomFieldsImplicit(this.customFields);
+        xml.writeCustomFieldsImplicit(this.customFields);
 
-      xml.writeEndElement(); // TIMESHEETENTRY
-      if (!this._isEmbedded) {
-        xml.writeEndElement(); // create
-        xml.writeEndElement(); // function
-      }
+        xml.writeEndElement(); // TIMESHEETENTRY
+        if (!this._isEmbedded) {
+          xml.writeEndElement(); // create
+          xml.writeEndElement(); // function
+        }
     }
 }
