@@ -17,20 +17,20 @@ import TimesheetDelete from "../../../src/Functions/Projects/TimesheetDelete";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
 describe("TimesheetDelete", () => {
-  before(done => {
-    return done();
-  });
-  beforeEach(done => {
-    return done();
-  });
-  afterEach(done => {
-    return done();
-  });
-  after(done => {
-    return done();
-  });
-  it("should build TimesheetDelete object", () => {
-    const expected = `<?xml version="1.0" encoding="utf-8" ?>
+    before(done => {
+      return done();
+    });
+    beforeEach(done => {
+      return done();
+    });
+    afterEach(done => {
+      return done();
+    });
+    after(done => {
+      return done();
+    });
+    it("should build TimesheetDelete object", () => {
+        const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
         <delete>
@@ -40,10 +40,10 @@ describe("TimesheetDelete", () => {
     </function>
 </test>`;
 
-    const record = new TimesheetDelete();
-    record.controlId = "unittest";
-    record.recordNo = 1234;
+        const record = new TimesheetDelete();
+        record.controlId = "unittest";
+        record.recordNo = 1234;
 
-    XmlObjectTestHelper.CompareXml(expected, record);
-  });
+        XmlObjectTestHelper.CompareXml(expected, record);
+    });
 });

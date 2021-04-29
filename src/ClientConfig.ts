@@ -22,6 +22,7 @@ import ICredentials from "./Credentials/ICredentials";
 import MessageFormatter from "./Logging/MessageFormatter";
 
 export default class ClientConfig {
+  
     public profileFile: string;
 
     public profileName: string;

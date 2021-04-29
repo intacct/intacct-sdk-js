@@ -32,7 +32,7 @@ export default class SessionProvider {
      */
     public static async factory(config?: ClientConfig): Promise<ClientConfig> {
         if (!config) {
-          config = new ClientConfig();
+            config = new ClientConfig();
         }
 
         const requestConfig = new RequestConfig();
@@ -42,7 +42,7 @@ export default class SessionProvider {
         const apiFunction = new ApiSessionCreate();
 
         if (config.sessionId != null && config.entityId != null) {
-          apiFunction.entityId = config.entityId;
+            apiFunction.entityId = config.entityId;
         }
 
         const client = new OnlineClient(config);

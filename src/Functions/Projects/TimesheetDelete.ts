@@ -21,6 +21,7 @@ import IaXmlWriter from "../../Xml/IaXmlWriter";
 import AbstractTimesheet from "./AbstractTimesheet";
 
 export default class TimesheetDelete extends AbstractTimesheet {
+  
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");
         xml.writeAttribute("controlid", this.controlId, true);
