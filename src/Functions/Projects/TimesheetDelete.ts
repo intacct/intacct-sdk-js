@@ -21,17 +21,17 @@ import IaXmlWriter from "../../Xml/IaXmlWriter";
 import AbstractTimesheet from "./AbstractTimesheet";
 
 export default class TimesheetDelete extends AbstractTimesheet {
-  public writeXml(xml: IaXmlWriter): void {
-    xml.writeStartElement("function");
-    xml.writeAttribute("controlid", this.controlId, true);
+    public writeXml(xml: IaXmlWriter): void {
+      xml.writeStartElement("function");
+      xml.writeAttribute("controlid", this.controlId, true);
 
-    xml.writeStartElement("delete");
+      xml.writeStartElement("delete");
 
-    xml.writeElement("object", "TIMESHEET");
-    xml.writeElement("keys", this.recordNo);
+      xml.writeElement("object", "TIMESHEET");
+      xml.writeElement("keys", this.recordNo);
 
-    xml.writeEndElement(); // delete
+      xml.writeEndElement(); // delete
 
-    xml.writeEndElement(); // function
-  }
+      xml.writeEndElement(); // function
+    }
 }

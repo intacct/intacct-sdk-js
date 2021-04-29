@@ -20,24 +20,25 @@
 import IntacctException from "../../Exceptions/IntacctException";
 
 export default class Authentication {
+
     private _status: string;
     get status(): string {
-      return this._status;
+        return this._status;
     }
 
     private _userId: string;
     get userId(): string {
-      return this._userId;
+        return this._userId;
     }
 
     private _companyId: string;
     get companyId(): string {
-      return this._companyId;
+        return this._companyId;
     }
 
     private _entityId: string;
     get entityId(): string {
-      return this._entityId;
+        return this._entityId;
     }
 
     private _sessionTimestamp: string;
