@@ -25,8 +25,6 @@ export default class TimesheetUpdate extends AbstractTimesheet {
     constructor() {
         super();
     }
-    if (this._updateHeader) {
-      xml.writeCustomFieldsImplicit(this.customFields);
 
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");

@@ -34,13 +34,11 @@ export default class ClientConfig {
 
   public sessionId: string;
 
-  public sessionTimeout: Date;
+  public sessionTimestamp: string;
 
-    public sessionTimestamp: string;
+  public sessionTimeout: string;
 
-    public sessionTimeout: string;
-
-    public companyId: string;
+  public companyId: string;
 
   public entityId: string;
 
@@ -50,7 +48,7 @@ export default class ClientConfig {
 
   public credentials: ICredentials;
 
-    public logger: Logger;
+  public logger: Logger;
 
   public logLevel: string;
 

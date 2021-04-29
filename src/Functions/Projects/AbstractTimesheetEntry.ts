@@ -23,11 +23,14 @@ import AbstractFunction from "../AbstractFunction";
 
 export default abstract class AbstractTimesheetEntry extends AbstractFunction implements IXmlObject {
 
+    public recordNo: number;
+    public timesheetRecordNo: number;
     public lineRecordNo: number;
     public entryDate: Date;
     public quantity: number;
     public description: string;
     public notes: string;
+    public taskId: string;
     public taskRecordNo: number;
     public timeTypeName: string;
     public billable: boolean;
