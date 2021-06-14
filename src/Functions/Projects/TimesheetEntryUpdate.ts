@@ -21,8 +21,18 @@ import IaXmlWriter from "../../Xml/IaXmlWriter";
 import AbstractTimesheetEntry from "./AbstractTimesheetEntry";
 
 export default class TimesheetEntryUpdate extends AbstractTimesheetEntry {
-
+    private _isEmbedded: boolean;
+    constructor(isEmbedded = true) {
+        super(...arguments);
+        this._isEmbedded = isEmbedded;
+    }
     public writeXml(xml: IaXmlWriter): void {
+        if (!this._isEmbedded) {
+            xml.writeStartElement("function");
+            xml.writeAttribute("controlid", this.controlId, true);
+            xml.writeStartElement("update");
+        }
+
         xml.writeStartElement("TIMESHEETENTRY");
         xml.writeElement("RECORDNO", this.lineRecordNo);
 
@@ -52,5 +62,10 @@ export default class TimesheetEntryUpdate extends AbstractTimesheetEntry {
         xml.writeCustomFieldsImplicit(this.customFields);
 
         xml.writeEndElement(); // TIMESHEETENTRY
+
+        if (!this._isEmbedded) {
+            xml.writeEndElement(); // update
+            xml.writeEndElement(); // function
+        }
     }
 }

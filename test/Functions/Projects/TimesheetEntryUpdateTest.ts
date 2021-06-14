@@ -32,12 +32,16 @@ describe("TimesheetEntryUpdate", () => {
     it("should build TimesheetEntryUpdate object", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
-    <TIMESHEETENTRY>
-        <ENTRYDATE>06/30/2016</ENTRYDATE>
-    </TIMESHEETENTRY>
+    <function controlid="unittest">
+        <update>
+            <TIMESHEETENTRY>
+                <ENTRYDATE>06/30/2016</ENTRYDATE>
+            </TIMESHEETENTRY>
+        </update>
+    </function>
 </test>`;
 
-        const record = new TimesheetEntryUpdate();
+        const record = new TimesheetEntryUpdate(false);
         record.controlId = "unittest";
 
         record.entryDate = new Date("06/30/2016");
@@ -47,30 +51,34 @@ describe("TimesheetEntryUpdate", () => {
     it("should build TimesheetEntryUpdate object with all fields", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
-    <TIMESHEETENTRY>
-        <ENTRYDATE>06/30/2016</ENTRYDATE>
-        <QTY>1.75</QTY>
-        <DESCRIPTION>desc</DESCRIPTION>
-        <NOTES>my note</NOTES>
-        <TASKKEY>1234</TASKKEY>
-        <TIMETYPE>Salary</TIMETYPE>
-        <BILLABLE>true</BILLABLE>
-        <EXTBILLRATE>200</EXTBILLRATE>
-        <EXTCOSTRATE>175</EXTCOSTRATE>
-        <DEPARTMENTID>ADM</DEPARTMENTID>
-        <LOCATIONID>100</LOCATIONID>
-        <PROJECTID>P100</PROJECTID>
-        <CUSTOMERID>C100</CUSTOMERID>
-        <VENDORID>V100</VENDORID>
-        <ITEMID>I100</ITEMID>
-        <CLASSID>C200</CLASSID>
-        <CONTRACTID>C300</CONTRACTID>
-        <WAREHOUSEID>W100</WAREHOUSEID>
-        <customfield1>customvalue1</customfield1>
-    </TIMESHEETENTRY>
+    <function controlid="unittest">
+        <update>
+            <TIMESHEETENTRY>
+                <ENTRYDATE>06/30/2016</ENTRYDATE>
+                <QTY>1.75</QTY>
+                <DESCRIPTION>desc</DESCRIPTION>
+                <NOTES>my note</NOTES>
+                <TASKKEY>1234</TASKKEY>
+                <TIMETYPE>Salary</TIMETYPE>
+                <BILLABLE>true</BILLABLE>
+                <EXTBILLRATE>200</EXTBILLRATE>
+                <EXTCOSTRATE>175</EXTCOSTRATE>
+                <DEPARTMENTID>ADM</DEPARTMENTID>
+                <LOCATIONID>100</LOCATIONID>
+                <PROJECTID>P100</PROJECTID>
+                <CUSTOMERID>C100</CUSTOMERID>
+                <VENDORID>V100</VENDORID>
+                <ITEMID>I100</ITEMID>
+                <CLASSID>C200</CLASSID>
+                <CONTRACTID>C300</CONTRACTID>
+                <WAREHOUSEID>W100</WAREHOUSEID>
+                <customfield1>customvalue1</customfield1>
+            </TIMESHEETENTRY>
+        </update>
+    </function>
 </test>`;
 
-        const record = new TimesheetEntryUpdate();
+        const record = new TimesheetEntryUpdate(false);
         record.controlId = "unittest";
         record.entryDate = new Date("06/30/2016");
         record.quantity = 1.75;
