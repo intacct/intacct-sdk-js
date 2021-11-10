@@ -23,12 +23,23 @@ import AbstractFunction from "../../AbstractFunction";
 export default class GetList extends AbstractFunction {
     public object: string;
 
+    public fields: string[];
+
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");
         xml.writeAttribute("controlid", this.controlId, true);
 
         xml.writeStartElement("get_list");
         xml.writeAttribute("object", this.object);
+
+        // optionally add fields to include in list
+        if (this.fields !== undefined) {
+            xml.writeStartElement("fields");
+            this.fields.forEach((field) => {
+                xml.writeElement("field", field);
+            });
+            xml.writeEndElement(); // fields
+        }
 
         xml.writeEndElement(); // get_list
 

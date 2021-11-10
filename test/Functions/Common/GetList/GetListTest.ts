@@ -30,6 +30,7 @@ describe("GetList", () => {
     after((done) => {
         return done();
     });
+
     it("should get company info", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
@@ -40,6 +41,27 @@ describe("GetList", () => {
 
         const record = new GetList("unittest");
         record.object = "company_info";
+
+        XmlObjectTestHelper.CompareXml(expected, record);
+    });
+
+    it("should get company info fields", () => {
+        const expected = `<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <function controlid="unittest">
+        <get_list object="supdoc">
+            <fields>
+                <field>supdocname</field>
+                <field>description</field>
+                <field>folder</field>
+            </fields>
+        </get_list>
+    </function>
+</test>`;
+
+        const record = new GetList("unittest");
+        record.object = "supdoc";
+        record.fields = ["supdocname", "description", "folder"];
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });
