@@ -45,6 +45,7 @@ export default abstract class AbstractTimesheetEntry extends AbstractFunction im
     public classId: string;
     public contractId: string;
     public warehouseId: string;
+    public costtypeId: string;
 
     public customFields: Array<[string, any]> = [];
 

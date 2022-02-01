@@ -66,6 +66,7 @@ describe("TimesheetEntryCreate", () => {
         <CLASSID>C200</CLASSID>
         <CONTRACTID>C300</CONTRACTID>
         <WAREHOUSEID>W100</WAREHOUSEID>
+        <COSTTYPEID>C101</COSTTYPEID>
         <customfield1>customvalue1</customfield1>
     </TIMESHEETENTRY>
 </test>`;
@@ -90,6 +91,7 @@ describe("TimesheetEntryCreate", () => {
         record.classId = "C200";
         record.contractId = "C300";
         record.warehouseId = "W100";
+        record.costtypeId = "C101";
         record.customFields = [
             [ "customfield1", "customvalue1" ],
         ];

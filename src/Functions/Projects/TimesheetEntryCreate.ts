@@ -64,6 +64,7 @@ export default class TimesheetEntryCreate extends AbstractTimesheetEntry {
         xml.writeElement("CLASSID", this.classId);
         xml.writeElement("CONTRACTID", this.contractId);
         xml.writeElement("WAREHOUSEID", this.warehouseId);
+        xml.writeElement("COSTTYPEID", this.costtypeId);
 
         xml.writeCustomFieldsImplicit(this.customFields);
 
