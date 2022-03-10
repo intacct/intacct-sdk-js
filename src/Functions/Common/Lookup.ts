@@ -23,6 +23,7 @@ import AbstractFunction from "../AbstractFunction";
 export default class Lookup extends AbstractFunction {
 
     public objectName: string;
+    public docParId: string;
 
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");
@@ -31,6 +32,10 @@ export default class Lookup extends AbstractFunction {
         xml.writeStartElement("lookup");
 
         xml.writeElement("object", this.objectName, true);
+
+        if (this.docParId !== undefined) {
+        xml.writeElement("docparid", this.docParId, true);
+        }
 
         xml.writeEndElement(); // lookup
 
