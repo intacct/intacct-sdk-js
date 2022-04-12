@@ -13,11 +13,10 @@
  * permissions and limitations under the License.
  */
 
-import * as chai from "chai";
-import Lookup from "../../../src/Functions/Common/Lookup";
+import GetUserPermissions from "../../../src/Functions/Company/GetUserPermissions";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
-describe("Lookup", () => {
+describe("GetUserPermissions", () => {
     before((done) => {
         return done();
     });
@@ -30,35 +29,19 @@ describe("Lookup", () => {
     after((done) => {
         return done();
     });
-    it("should run lookup with object name", () => {
+    it("should build GetUserPermissions object", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
-        <lookup>
-            <object>TEST</object>
-        </lookup>
+        <getUserPermissions>
+            <userId>U1234</userId>
+        </getUserPermissions>
     </function>
 </test>`;
 
-        const record = new Lookup("unittest");
-        record.objectName = "TEST";
-
-        XmlObjectTestHelper.CompareXml(expected, record);
-    });
-    it("should run lookup with object name and docparid", () => {
-        const expected = `<?xml version="1.0" encoding="utf-8" ?>
-<test>
-    <function controlid="unittest">
-        <lookup>
-            <object>TEST</object>
-            <docparid>Sales Invoice</docparid>
-        </lookup>
-    </function>
-</test>`;
-
-        const record = new Lookup("unittest");
-        record.objectName = "TEST";
-        record.docParId = "Sales Invoice"
+        const record = new GetUserPermissions();
+        record.controlId = "unittest";
+        record.userId = "U1234";
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });

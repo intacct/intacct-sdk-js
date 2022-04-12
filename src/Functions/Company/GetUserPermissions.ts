@@ -1,5 +1,5 @@
 /**
- * @module Intacct/SDK/Functions/PlatformServices
+ * @module Intacct/SDK/Functions/Company
  */
 
 /**
@@ -18,27 +18,30 @@
  */
 
 import IaXmlWriter from "../../Xml/IaXmlWriter";
-import AbstractFunction from "../AbstractFunction";
+import AbstractUser from "./AbstractUser";
 
-export default class Lookup extends AbstractFunction {
-
-    public objectName: string;
-    public docParId: string;
+export default class GetUserPermissions extends AbstractUser {
 
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");
         xml.writeAttribute("controlid", this.controlId, true);
 
-        xml.writeStartElement("lookup");
+        // create open tag for <getUserPermissions>
+        xml.writeStartElement("getUserPermissions");
 
-        xml.writeElement("object", this.objectName, true);
-
-        if (this.docParId !== undefined) {
-        xml.writeElement("docparid", this.docParId, true);
+        // required userId to run
+        if (this.userId == null) {
+            throw new Error("User Id is required");
         }
 
-        xml.writeEndElement(); // lookup
+        // add userId element and dynamic value
+        xml.writeElement("userId", this.userId);
 
-        xml.writeEndElement(); // function
+        // closing tag for </getUserPermissions>
+        xml.writeEndElement();
+
+        // closing tag for </function>
+        xml.writeEndElement();
+
     }
 }
