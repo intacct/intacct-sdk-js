@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Sage Intacct, Inc.
+ * Copyright 2021 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -13,11 +13,10 @@
  * permissions and limitations under the License.
  */
 
-import * as chai from "chai";
-import Lookup from "../../../src/Functions/Common/Lookup";
+import OrderEntryRetrievePDF from "../../../src/Functions/OrderEntry/OrderEntryRetrievePDF";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
-describe("Lookup", () => {
+describe("OrderEntryRetreivePDF", () => {
     before((done) => {
         return done();
     });
@@ -30,35 +29,21 @@ describe("Lookup", () => {
     after((done) => {
         return done();
     });
-    it("should run lookup with object name", () => {
+    it("should build XML", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
-        <lookup>
-            <object>TEST</object>
-        </lookup>
+        <retrievepdf>
+            <SODOCUMENT>
+                <DOCID>Sales Order-SO1234</DOCID>
+            </SODOCUMENT>
+        </retrievepdf>
     </function>
 </test>`;
 
-        const record = new Lookup("unittest");
-        record.objectName = "TEST";
-
-        XmlObjectTestHelper.CompareXml(expected, record);
-    });
-    it("should run lookup with object name and docparid", () => {
-        const expected = `<?xml version="1.0" encoding="utf-8" ?>
-<test>
-    <function controlid="unittest">
-        <lookup>
-            <object>TEST</object>
-            <docparid>Sales Invoice</docparid>
-        </lookup>
-    </function>
-</test>`;
-
-        const record = new Lookup("unittest");
-        record.objectName = "TEST";
-        record.docParId = "Sales Invoice"
+        const record = new OrderEntryRetrievePDF();
+        record.controlId = "unittest";
+        record.documentId = "Sales Order-SO1234";
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });
