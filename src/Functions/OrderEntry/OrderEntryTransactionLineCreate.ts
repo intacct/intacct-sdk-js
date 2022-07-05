@@ -71,7 +71,13 @@ export default class OrderEntryTransactionLineCreate extends AbstractOrderEntryT
         xml.writeElement("employeeid", this.employeeId);
         xml.writeElement("classid", this.classId);
         xml.writeElement("contractid", this.contractId);
-        xml.writeElement("fulfillmentstatus", this.fulfillmentStatus);
+
+        if (this.fulfillmentStatus) {
+            xml.writeStartElement("fulfillmentstatus");
+            xml.writeElement("deliverystatus", this.fulfillmentStatus);
+            xml.writeEndElement(); // fulfillmentstatus
+        }
+
         xml.writeElement("taskno", this.taskNumber);
         xml.writeElement("billingtemplate", this.billingTemplate);
 
