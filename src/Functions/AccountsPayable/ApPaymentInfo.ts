@@ -21,6 +21,7 @@ import IApPaymentDetail from "./IApPaymentDetail";
 
 export default class ApPaymentInfo {
 
+    public recordNo: number;
     public paymentMethod: string;
     public financialEntityId: string;
     public vendorId: string;

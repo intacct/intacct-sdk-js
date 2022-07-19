@@ -41,3 +41,4 @@ export { default as BillSummaryCreate } from "./BillSummaryCreate";
 export { default as VendorCreate } from "./VendorCreate";
 export { default as VendorDelete } from "./VendorDelete";
 export { default as VendorUpdate } from "./VendorUpdate";
+export { default as ApPaymentUpdate } from "./ApPaymentUpdate";

@@ -137,7 +137,9 @@ export default class RequestHandler {
                 return body;
             } else if (this.requestConfig.noRetryServerErrorCodes.indexOf(response.status) !== -1) {
                 // Do not retry this explicitly set 500 level server error
-                throw new FetchError(response.status, body, httpClient.options, response);
+                const status = response.status;
+                const resp: Record<string, unknown> = {status: response};
+                throw new FetchError(body, httpClient.options, resp);
             } else if (response.status >= 500 && response.status <= 599) {
                 // Retry 500 level server errors
                 continue;
@@ -147,7 +149,9 @@ export default class RequestHandler {
                 if (mimeType === "text/xml" || mimeType === "application/xml") {
                     return body;
                 }
-                throw new FetchError(response.status, body, httpClient.options, response);
+                const status = response.status;
+                const resp: Record<string, unknown> = {status: response};
+                throw new FetchError(body, httpClient.options, resp);
             }
         }
         throw new Error("Request retry count exceeded max retry count: " + this.requestConfig.maxRetries.toString());

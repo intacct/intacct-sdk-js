@@ -17,7 +17,7 @@
  * permissions and limitations under the License.
  */
 
-import * as fetch from "node-fetch";
+import fetch, {Response} from "node-fetch";
 
 export default class HttpClientHandler {
 
