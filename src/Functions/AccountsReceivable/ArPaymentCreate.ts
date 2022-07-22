@@ -77,7 +77,13 @@ export default class ArPaymentCreate extends AbstractArPayment {
             }
         }
 
-        // TODO online payment methods
+        if (this.paymentMethod != null && this.paymentMethod === "Online Charge Card") {
+            this.onlineCardPayment.writeXml(xml);
+        }
+
+        if (this.paymentMethod != null && this.paymentMethod === "Online ACH Debit") {
+            this.onlineAchPayment.writeXml(xml);
+        }
 
         xml.writeEndElement(); // create_arpayment
 
