@@ -80,60 +80,116 @@ export default class MessageFormatter {
         this.template = formatTemplate;
     }
 
-    public formatRequest(options, error: Error = null): string {
+    public format(response, error: Error = null): string {
         const regex = new RegExp(/{\s*([A-Za-z_\-\.0-9]+)\s*}/, "g");
         let message = "";
         message = this.template.replace(regex, (match) => {
-            let result = "{request}" + os.EOL;
-            result = result + options.method + " "
-                + options.url + " "
-                + os.EOL;
-            for (const key in options.headers) {
-                if (options.headers.hasOwnProperty(key)) {
-                    result = result + os.EOL + " {" + key + "}: " + options.headers[key];
-                }
-            }
-            result = result + os.EOL + os.EOL + options.body;
-            return result;
-        });
-
-        const redacted = "$1REDACTED$3";
-        const replacements = [
-            "password",
-            "accountnumber",
-            "cardnum",
-            "ssn",
-            "achaccountnumber",
-            "wireaccountnumber",
-            "taxid",
-            "sessionid",
-        ];
-        for (const replacement of replacements) {
-            message = message.replace(
-                new RegExp("(<" + replacement + "[^>]*>)(.*?)(<\/" + replacement + ">)", "gi"),
-                redacted,
-            );
-        }
-
-        return message;
-    }
-
-    public formatResponse(response, body, error: Error = null): string {
-        const regex = new RegExp(/{\s*([A-Za-z_\-\.0-9]+)\s*}/, "g");
-        let message = "";
-        message = this.template.replace(regex, (match) => {
-            let result = "{response}" + os.EOL;
-            if (response != null) {
-                result =  result + "HTTP/1.1 " +
-                    + response.status + " " + response.statusText;
-                for (const key in response.headers) {
-                    if (response.headers.hasOwnProperty(key)) {
-                        result = result + os.EOL + " {" + key + "}: " + response.headers.get(key);
+            let result = "";
+            switch (match) {
+                case "{request}":
+                    if (response != null) {
+                        result = response.request.method + " "
+                            + response.request.uri.path
+                            + (response.request.uri.query != null ? "?" + response.request.uri.query : "")
+                            + " HTTP/" + (response.request.httpVersion != null ? response.request.httpVersion : "1.1")
+                            + os.EOL + "Host:" + response.request.host;
+                        for (const key in response.request.headers) {
+                            if (response.request.headers.hasOwnProperty(key)) {
+                                result = result + os.EOL + " {" + key + "}: " + response.request.headers[key];
+                            }
+                        }
+                        result = result + os.EOL + os.EOL + response.request.body;
+                    } else {
+                        result = "";
                     }
-                }
-                result = result + os.EOL + os.EOL + body;
-            } else {
-                result = "";
+                    break;
+                case "{response}":
+                    if (response != null) {
+                        result = " HTTP/" + response.httpVersion
+                            + " " + response.statusCode + " " + response.statusMessage;
+                        for (const key in response.headers) {
+                            if (response.headers.hasOwnProperty(key)) {
+                                result = result + os.EOL + " {" + key + "}: " + response.headers[key];
+                            }
+                        }
+                        result = result + os.EOL + os.EOL + response.body;
+                    } else {
+                        result = "";
+                    }
+                    break;
+                case "{req_headers}":
+                    result = response.request.method + " "
+                        + response.request.uri.path
+                        + (response.request.uri.query != null ? "?" + response.request.uri.query : "")
+                        + " HTTP/" + (response.request.httpVersion != null ? response.request.httpVersion : "1.1")
+                        + MessageFormatter.headers(response.request.headers);
+                    break;
+                case "{res_headers}":
+                    if (response != null) {
+                        result = " HTTP/" + response.httpVersion
+                            + " " + response.statusCode + " " + response.statusMessage
+                            + os.EOL + MessageFormatter.headers(response.headers);
+                    } else {
+                        result = "NULL";
+                    }
+                    break;
+                case "{req_header_User-Agent}":
+                    result = response.request.headers["User-Agent"];
+                    break;
+                case "{res_header_Content-Length":
+                    result = response.headers["Content-Length"];
+                    break;
+                case "{req_body}":
+                    result = response.request.body;
+                    break;
+                case "{res_body}":
+                    result = response.body;
+                    break;
+                case "{ts}":
+                case "{date_iso_8601}":
+                    result = new Date().toISOString();
+                    break;
+                case "{date_common_log}":
+                    result = dateFormat(new Date(), "dd/mm/yyyy HH:MM:ss o");
+                    break;
+                case "{method}":
+                    result = response.request.method;
+                    break;
+                case "{version}":
+                    result = (response.request.httpVersion != null ? response.request.httpVersion : "1.1");
+                    break;
+                case "{uri}":
+                    result = response.request.uri.path
+                        + (response.request.uri.query != null ? "?" + response.request.uri.query : "");
+                    break;
+                case "{url}":
+                    result = response.request.uri.href;
+                    break;
+                case "{target}":
+                    result = response.request.uri.path
+                        + (response.request.uri.query != null ? "?" + response.request.uri.query : "");
+                    break;
+                case "{req_version}":
+                    result = (response.request.httpVersion != null ? response.request.httpVersion : "1.1");
+                    break;
+                case "{res_version}":
+                    result = response.httpVersion;
+                    break;
+                case "{host}":
+                    result = process.env.host;
+                    break;
+                case "{code}":
+                    result = (response.statusCode != null ? response.statusCode : "NULL");
+                    break;
+                case "{phrase}":
+                    result = (response.statusMessage != null ? response.statusMessage : "NULL");
+                    break;
+                case "{error}":
+                    result = (error != null ? error.message : "NULL");
+                    break;
+                default:
+                    // Nothing to see here
+                    break;
             }
             return result;
         });

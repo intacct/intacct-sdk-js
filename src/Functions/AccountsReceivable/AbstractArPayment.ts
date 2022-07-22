@@ -19,6 +19,8 @@
 
 import AbstractFunction from "../AbstractFunction";
 import ArPaymentItem from "./ArPaymentItem";
+import OnlineCardPayment from "./OnlineCardPayment";
+import OnlineAchPayment from "./OnlineAchPayment";
 
 export default abstract class AbstractArPayment extends AbstractFunction {
 
@@ -43,4 +45,6 @@ export default abstract class AbstractArPayment extends AbstractFunction {
     public referenceNumber: string;
 
     public applyToTransactions: ArPaymentItem[];
+    public onlineCardPayment: OnlineCardPayment;
+    public onlineAchPayment: OnlineAchPayment;
 }
