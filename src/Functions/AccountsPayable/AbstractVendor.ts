@@ -94,6 +94,8 @@ export default abstract class AbstractVendor extends AbstractFunction {
 
     public defaultExpenseGlAccountNo: string;
 
+    public offsetGlAccountNo: string;
+
     public taxable: boolean;
 
     public contactTaxGroupName: string;

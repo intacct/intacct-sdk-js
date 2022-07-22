@@ -76,6 +76,7 @@ export default class VendorUpdate extends AbstractVendor {
         xml.writeElement("FORM1099BOX", this.form1099Box);
         xml.writeElement("SUPDOCID", this.attachmentsId);
         xml.writeElement("APACCOUNT", this.defaultExpenseGlAccountNo);
+        xml.writeElement("OFFSETGLACCOUNT", this.offsetGlAccountNo);
         xml.writeElement("CREDITLIMIT", this.creditLimit);
         xml.writeElement("ONHOLD", this.onHold);
         xml.writeElement("DONOTCUTCHECK", this.doNotPay);
