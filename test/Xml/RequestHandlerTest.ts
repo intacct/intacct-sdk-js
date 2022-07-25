@@ -336,7 +336,7 @@ describe("RequestHandler", () => {
             chai.assert.isOk(false, "Expected exception not thrown");
         } catch (ex) {
             chai.assert.instanceOf(ex, FetchError);
-            chai.assert.equal(ex.message, "524");
+            chai.assert.equal(ex.code, "524");
         }
     });
     it("should execute with a debug logger", async () => {

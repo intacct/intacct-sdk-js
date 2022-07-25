@@ -19,8 +19,8 @@
 
 import AbstractFunction from "../AbstractFunction";
 import ArPaymentItem from "./ArPaymentItem";
-import OnlineCardPayment from "./OnlineCardPayment";
 import OnlineAchPayment from "./OnlineAchPayment";
+import OnlineCardPayment from "./OnlineCardPayment";
 
 export default abstract class AbstractArPayment extends AbstractFunction {
 

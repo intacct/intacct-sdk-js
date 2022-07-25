@@ -137,9 +137,8 @@ export default class RequestHandler {
                 return body;
             } else if (this.requestConfig.noRetryServerErrorCodes.indexOf(response.status) !== -1) {
                 // Do not retry this explicitly set 500 level server error
-                const status = response.status;
-                const resp: Record<string, unknown> = {status: response};
-                throw new FetchError(body, httpClient.options, resp);
+                const error = {code: response.status};
+                throw new FetchError(body, httpClient.options, error);
             } else if (response.status >= 500 && response.status <= 599) {
                 // Retry 500 level server errors
                 continue;
