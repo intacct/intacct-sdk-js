@@ -579,4 +579,50 @@ describe("Result", () => {
 
         chai.assert.equal(result.key, "C1234");
     });
+    it("should unflatten responses containing flattened fields in the response", () => {
+        const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<response>
+      <control>
+            <status>success</status>
+            <senderid>testsenderid</senderid>
+            <controlid>ControlIdHere</controlid>
+            <uniqueid>false</uniqueid>
+            <dtdversion>3.0</dtdversion>
+      </control>
+      <operation>
+            <authentication>
+                  <status>success</status>
+                  <userid>fakeuser</userid>
+                  <companyid>fakecompany</companyid>
+                  <locationid></locationid>
+                  <sessiontimestamp>2015-10-25T10:08:34-07:00</sessiontimestamp>
+                  <sessiontimeout>2015-10-26T10:08:34-07:00</sessiontimeout>
+            </authentication>
+            <result>
+                <status>success</status>
+                <function>readByQuery</function>
+                <controlid>818b0a96-3faf-4931-97e6-1cf05818ea44</controlid>
+                <data listtype="customer" totalcount="1" offset="0" count="1" numremaining="0">
+					<customer>
+						<displaycontact.mailaddress.address1>111 One Way</displaycontact.mailaddress.address1>
+						<displaycontact.mailaddress.city>Somewhere</displaycontact.mailaddress.city>
+					</customer>
+				</data>
+            </result>
+      </operation>
+</response>`;
+
+        const response = new OnlineResponse(xml);
+        const result = response.results[0];
+
+        chai.assert.equal(result.data.length, 1);
+        chai.assert.deepEqual(result.data[0], {
+            displaycontact: {
+                mailaddress: {
+                    address1: "111 One Way",
+                    city: "Somewhere",
+                },
+            },
+        });
+    });
 });
