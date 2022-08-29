@@ -54,7 +54,7 @@ describe("ApAdjustmentCreate", () => {
         const record = new ApAdjustmentCreate();
         record.controlId = "unittest";
         record.vendorId = "VENDOR1";
-        record.transactionDate = new Date("6/30/2015");
+        record.transactionDate = new Date("6/30/2016");
 
         const line1 = new ApAdjustmentLineCreate();
         line1.transactionAmount = 76343.43;
