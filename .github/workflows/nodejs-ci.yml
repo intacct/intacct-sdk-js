@@ -1,4 +1,4 @@
-name: Intacct JS SDK CI
+name: Intacct Node.js SDK CI
 
 on:
   push:
@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          cache: npm-${{ matrix.node-version }}
           
       - run: npm ci
       
