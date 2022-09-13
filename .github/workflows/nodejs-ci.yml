@@ -2,7 +2,7 @@ name: Intacct Node.js SDK CI
 
 on:
   push:
-    branches: [ "v2.2.0" ]
+    branches: [ "master" ]
   pull_request:
   workflow_dispatch:
 
