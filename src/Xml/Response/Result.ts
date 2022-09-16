@@ -17,6 +17,7 @@
  * permissions and limitations under the License.
  */
 
+import {unflatten} from "flat";
 import {isArray} from "util";
 import IntacctException from "../../Exceptions/IntacctException";
 import ResultException from "../../Exceptions/ResultException";
@@ -162,10 +163,10 @@ export default class Result {
                     if (key !== "$" && result["data"].hasOwnProperty(key)) {
                         if (isArray(result["data"][key])) {
                             for (const child of result["data"][key]) {
-                                data.push(child);
+                                data.push(unflatten(child, { object: true }));
                             }
                         } else {
-                            data.push(result["data"][key]);
+                            data.push(unflatten(result["data"][key], { object: true }));
                         }
                     }
                 }
