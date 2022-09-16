@@ -3,7 +3,7 @@
  */
 
 /**
- * Copyright 2020 Sage Intacct, Inc.
+ * Copyright 2022 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -77,7 +77,13 @@ export default class ArPaymentCreate extends AbstractArPayment {
             }
         }
 
-        // TODO online payment methods
+        if (this.paymentMethod != null && this.paymentMethod === "Online Charge Card") {
+            this.onlineCardPayment.writeXml(xml);
+        }
+
+        if (this.paymentMethod != null && this.paymentMethod === "Online ACH Debit") {
+            this.onlineAchPayment.writeXml(xml);
+        }
 
         xml.writeEndElement(); // create_arpayment
 

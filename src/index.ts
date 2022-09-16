@@ -1,3 +1,4 @@
+export { default as AbstractClient } from "./AbstractClient";
 export { default as ClientConfig } from "./ClientConfig";
 export { default as OfflineClient } from "./OfflineClient";
 export { default as OnlineClient } from "./OnlineClient";

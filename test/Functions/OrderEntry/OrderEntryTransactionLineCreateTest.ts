@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Sage Intacct, Inc.
+ * Copyright 2022 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -92,7 +92,9 @@ describe("OrderEntryTransactionLineCreate", () => {
         <employeeid>90295</employeeid>
         <classid>243609</classid>
         <contractid>9062</contractid>
-        <fulfillmentstatus>Complete</fulfillmentstatus>
+        <fulfillmentstatus>
+            <deliverystatus>Undelivered</deliverystatus>
+        </fulfillmentstatus>
         <taskno>9850</taskno>
         <billingtemplate>3525</billingtemplate>
     </sotransitem>
@@ -114,7 +116,7 @@ describe("OrderEntryTransactionLineCreate", () => {
         record.revRecStartDate = new Date(2015, 5, 30);
         record.revRecEndDate = new Date(2015, 6, 31);
         record.renewalMacro = "Quarterly";
-        record.fulfillmentStatus = "Complete";
+        record.fulfillmentStatus = "Undelivered";
         record.taskNumber = "9850";
         record.billingTemplate = "3525";
         record.locationId = "SF";

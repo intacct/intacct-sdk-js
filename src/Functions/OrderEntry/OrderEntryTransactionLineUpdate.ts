@@ -3,7 +3,7 @@
  */
 
 /**
- * Copyright 2020 Sage Intacct, Inc.
+ * Copyright 2022 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -73,7 +73,13 @@ export default class OrderEntryTransactionLineUpdate extends AbstractOrderEntryT
         xml.writeElement("employeeid", this.employeeId);
         xml.writeElement("classid", this.classId);
         xml.writeElement("contractid", this.contractId);
-        xml.writeElement("fulfillmentstatus", this.fulfillmentStatus);
+
+        if (this.fulfillmentStatus) {
+            xml.writeStartElement("fulfillmentstatus");
+            xml.writeElement("deliverystatus", this.fulfillmentStatus);
+            xml.writeEndElement(); // fulfillmentstatus
+        }
+
         xml.writeElement("taskno", this.taskNumber);
         xml.writeElement("billingtemplate", this.billingTemplate);
 

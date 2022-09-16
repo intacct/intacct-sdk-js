@@ -1,6 +1,5 @@
 # Sage Intacct SDK for JavaScript
 
-[![Travis Build Status](https://travis-ci.com/Intacct/intacct-sdk-js.svg)](https://travis-ci.com/Intacct/intacct-sdk-js)
 [![npm version](https://badge.fury.io/js/%40intacct%2Fintacct-sdk.svg)](https://badge.fury.io/js/%40intacct%2Fintacct-sdk)
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.npmjs.com/package/@sage-intact/intacct-sdk)
 
@@ -16,7 +15,7 @@
 ## System Requirements
 
 * You must have an active Sage Intacct Web Services Developer license
-* Node.js >= 12.18.1. The SDK is written in TypeScript and targets ES2015.
+* Node.js >= 14.20.0. The SDK is written in TypeScript and targets ES2015.
 
 [intacct]: http://www.intacct.com
 [ia-developer]: https://developer.intacct.com/
