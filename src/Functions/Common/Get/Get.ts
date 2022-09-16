@@ -1,9 +1,9 @@
 /**
- * @module Intacct/SDK/Functions/Common/GetList
+ * @module Intacct/SDK/Functions/Common/Get
  */
 
 /**
- * Copyright 2022 Sage Intacct, Inc.
+ * Copyright 2021 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -20,17 +20,25 @@
 import IaXmlWriter from "../../../Xml/IaXmlWriter";
 import AbstractFunction from "../../AbstractFunction";
 
-export default class GetList extends AbstractFunction {
+export default class Get extends AbstractFunction {
     public object: string;
-
+    public key: string;
     public fields: string[];
 
     public writeXml(xml: IaXmlWriter): void {
+        if (this.object === undefined) {
+            throw new Error("required parameter 'object' undefined");
+        }
+        if (this.key === undefined) {
+            throw new Error("required parameter 'key' undefined");
+        }
+
         xml.writeStartElement("function");
         xml.writeAttribute("controlid", this.controlId, true);
 
-        xml.writeStartElement("get_list");
+        xml.writeStartElement("get");
         xml.writeAttribute("object", this.object);
+        xml.writeAttribute("key", this.key);
 
         // optionally add fields to include in list
         if (this.fields !== undefined) {

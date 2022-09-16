@@ -1,5 +1,5 @@
 /**
- * Copyright 2022 Sage Intacct, Inc.
+ * Copyright 2020 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -14,10 +14,10 @@
  */
 
 import * as chai from "chai";
-import GetList from "../../../../src/Functions/Common/GetList/GetList";
+import Get from "../../../../src/Functions/Common/Get/Get";
 import XmlObjectTestHelper from "../../../Xml/XmlObjectTestHelper";
 
-describe("GetList", () => {
+describe("Get", () => {
     before((done) => {
         return done();
     });
@@ -31,37 +31,39 @@ describe("GetList", () => {
         return done();
     });
 
-    it("should get company info", () => {
+    it("should get supdoc (attachment)", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
-        <get_list object="company_info" />
+        <get object="supdoc" key="A1234" />
     </function>
 </test>`;
 
-        const record = new GetList("unittest");
-        record.object = "company_info";
+        const record = new Get("unittest");
+        record.object = "supdoc";
+        record.key = "A1234";
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });
 
-    it("should get company info fields", () => {
+    it("should get supdoc (attachment) fields", () => {
         const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
-        <get_list object="supdoc">
+        <get object="supdoc" key="A1234">
             <fields>
-                <field>supdocname</field>
+                <field>supdocid</field>
                 <field>description</field>
                 <field>folder</field>
             </fields>
-        </get_list>
+        </get>
     </function>
 </test>`;
 
-        const record = new GetList("unittest");
+        const record = new Get("unittest");
         record.object = "supdoc";
-        record.fields = ["supdocname", "description", "folder"];
+        record.key = "A1234";
+        record.fields = ["supdocid", "description", "folder"];
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });
