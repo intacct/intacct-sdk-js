@@ -57,6 +57,8 @@ export default class PurchasingTransactionLineCreate extends AbstractPurchasingT
         xml.writeElement("classid", this.classId);
         xml.writeElement("contractid", this.contractId);
         xml.writeElement("billable", this.billable);
+        xml.writeElement("costtypeid", this.costTypeId);
+        xml.writeElement("taskid", this.taskId)
 
         xml.writeEndElement(); // potransitem
     }
