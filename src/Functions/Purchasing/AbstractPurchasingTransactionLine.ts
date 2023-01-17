@@ -47,6 +47,7 @@ export default abstract class AbstractPurchasingTransactionLine implements IXmlO
     public customFields: Array<[string, any]> = [];
     public costTypeId: string;
     public taskId: string;
+    public needByDate: Date;
 
     public abstract writeXml(xml: IaXmlWriter): void;
 }
