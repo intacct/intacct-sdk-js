@@ -3,7 +3,7 @@
  */
 
 /**
- * Copyright 2020 Sage Intacct, Inc.
+ * Copyright 2022 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -19,6 +19,8 @@
 
 import AbstractFunction from "../AbstractFunction";
 import ArPaymentItem from "./ArPaymentItem";
+import OnlineAchPayment from "./OnlineAchPayment";
+import OnlineCardPayment from "./OnlineCardPayment";
 
 export default abstract class AbstractArPayment extends AbstractFunction {
 
@@ -43,4 +45,6 @@ export default abstract class AbstractArPayment extends AbstractFunction {
     public referenceNumber: string;
 
     public applyToTransactions: ArPaymentItem[];
+    public onlineCardPayment: OnlineCardPayment;
+    public onlineAchPayment: OnlineAchPayment;
 }

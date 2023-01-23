@@ -26,3 +26,5 @@ export { default as InvoiceLineUpdate } from "./InvoiceLineUpdate";
 export { default as InvoiceReverse } from "./InvoiceReverse";
 export { default as InvoiceUpdate } from "./InvoiceUpdate";
 export { default as InvoiceSummaryCreate } from "./InvoiceSummaryCreate";
+export { default as OnlineAchPayment } from "./OnlineAchPayment";
+export { default as OnlineCardPayment } from "./OnlineCardPayment";

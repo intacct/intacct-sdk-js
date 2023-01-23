@@ -1,8 +1,13 @@
+export { default as AbstractBankAccountTransactionRecord } from "./AbstractBankAccountTransactionRecord";
+export { default as AbstractBankFeeds } from "./AbstractBankFeeds";
 export { default as AbstractChargeCardTransaction } from "./AbstractChargeCardTransaction";
 export { default as AbstractChargeCardTransactionLine } from "./AbstractChargeCardTransactionLine";
 export { default as AbstractDeposit } from "./AbstractDeposit";
 export { default as AbstractOtherReceipt } from "./AbstractOtherReceipt";
 export { default as AbstractOtherReceiptLine } from "./AbstractOtherReceiptLine";
+export { default as BankAccountTransactionRecord } from "./BankAccountTransactionRecord";
+export { default as BankFeedsCreate } from "./BankFeedsCreate";
+export { default as BankFeedsDelete } from "./BankFeedsDelete";
 export { default as ChargeCardTransactionCreate } from "./ChargeCardTransactionCreate";
 export { default as ChargeCardTransactionLineCreate } from "./ChargeCardTransactionLineCreate";
 export { default as ChargeCardTransactionLineUpdate } from "./ChargeCardTransactionLineUpdate";

@@ -3,7 +3,7 @@
  */
 
 /**
- * Copyright 2020 Sage Intacct, Inc.
+ * Copyright 2022 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -137,7 +137,8 @@ export default class RequestHandler {
                 return body;
             } else if (this.requestConfig.noRetryServerErrorCodes.indexOf(response.status) !== -1) {
                 // Do not retry this explicitly set 500 level server error
-                throw new FetchError(response.status, body, httpClient.options, response);
+                const error = {code: response.status};
+                throw new FetchError(body, httpClient.options, error);
             } else if (response.status >= 500 && response.status <= 599) {
                 // Retry 500 level server errors
                 continue;
@@ -147,7 +148,9 @@ export default class RequestHandler {
                 if (mimeType === "text/xml" || mimeType === "application/xml") {
                     return body;
                 }
-                throw new FetchError(response.status, body, httpClient.options, response);
+                const status = response.status;
+                const resp: Record<string, unknown> = {status: response};
+                throw new FetchError(body, httpClient.options, resp);
             }
         }
         throw new Error("Request retry count exceeded max retry count: " + this.requestConfig.maxRetries.toString());

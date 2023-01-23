@@ -3,7 +3,7 @@
  */
 
 /**
- * Copyright 2020 Sage Intacct, Inc.
+ * Copyright 2022 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -23,6 +23,7 @@ import AbstractFunction from "../AbstractFunction";
 export default class Lookup extends AbstractFunction {
 
     public objectName: string;
+    public docParId: string;
 
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");
@@ -31,6 +32,10 @@ export default class Lookup extends AbstractFunction {
         xml.writeStartElement("lookup");
 
         xml.writeElement("object", this.objectName, true);
+
+        if (this.docParId !== undefined) {
+        xml.writeElement("docparid", this.docParId, true);
+        }
 
         xml.writeEndElement(); // lookup
 

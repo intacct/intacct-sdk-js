@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Sage Intacct, Inc.
+ * Copyright 2022 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -42,6 +42,23 @@ describe("Lookup", () => {
 
         const record = new Lookup("unittest");
         record.objectName = "TEST";
+
+        XmlObjectTestHelper.CompareXml(expected, record);
+    });
+    it("should run lookup with object name and docparid", () => {
+        const expected = `<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <function controlid="unittest">
+        <lookup>
+            <object>TEST</object>
+            <docparid>Sales Invoice</docparid>
+        </lookup>
+    </function>
+</test>`;
+
+        const record = new Lookup("unittest");
+        record.objectName = "TEST";
+        record.docParId = "Sales Invoice"
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });
