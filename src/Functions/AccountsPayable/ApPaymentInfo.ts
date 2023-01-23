@@ -3,7 +3,7 @@
  */
 
 /**
- * Copyright 2020 Sage Intacct, Inc.
+ * Copyright 2022 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -21,6 +21,7 @@ import IApPaymentDetail from "./IApPaymentDetail";
 
 export default class ApPaymentInfo {
 
+    public recordNo: number;
     public paymentMethod: string;
     public financialEntityId: string;
     public vendorId: string;

@@ -3,7 +3,7 @@
  */
 
 /**
- * Copyright 2020 Sage Intacct, Inc.
+ * Copyright 2022 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -47,6 +47,8 @@ export default class StatisticalJournalEntryLineCreate extends AbstractStatistic
             xml.writeElement("LOCATION", this.locationId);
             xml.writeElement("DEPARTMENT", this.departmentId);
             xml.writeElement("PROJECTID", this.projectId);
+            xml.writeElement("TASKID", this.taskId);
+            xml.writeElement("COSTTYPEID", this.costTypeId);
             xml.writeElement("CUSTOMERID", this.customerId);
             xml.writeElement("VENDORID", this.vendorId);
             xml.writeElement("EMPLOYEEID", this.employeeId);

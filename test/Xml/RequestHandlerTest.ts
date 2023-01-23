@@ -1,5 +1,5 @@
 /**
- * Copyright 2020 Sage Intacct, Inc.
+ * Copyright 2022 Sage Intacct, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"). You may not
  * use this file except in compliance with the License. You may obtain a copy
@@ -336,7 +336,7 @@ describe("RequestHandler", () => {
             chai.assert.isOk(false, "Expected exception not thrown");
         } catch (ex) {
             chai.assert.instanceOf(ex, FetchError);
-            chai.assert.equal(ex.message, "524");
+            chai.assert.equal(ex.code, "524");
         }
     });
     it("should execute with a debug logger", async () => {
