@@ -11,6 +11,7 @@ export { default as AllocationCreate } from "./AllocationCreate";
 export { default as AllocationDelete } from "./AllocationDelete";
 export { default as AllocationLine } from "./AllocationLine";
 export { default as AllocationUpdate } from "./AllocationUpdate";
+export { default as AttachmentGet } from "./AttachmentGet";
 export { default as AttachmentFile } from "./AttachmentFile";
 export { default as AttachmentsCreate } from "./AttachmentsCreate";
 export { default as AttachmentsDelete } from "./AttachmentsDelete";
