@@ -41,6 +41,7 @@ describe("AttachmentFile", () => {
 
         const record = new AttachmentGet();
         record.attachmentsId = key;
+        record.controlId = "unittest";
 
         XmlObjectTestHelper.CompareXml(expected, record);
     });
