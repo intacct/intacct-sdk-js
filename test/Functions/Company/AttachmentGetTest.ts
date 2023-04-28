@@ -13,7 +13,6 @@
  * permissions and limitations under the License.
  */
 
-import * as path from "path";
 import AttachmentGet from "../../../src/Functions/Company/AttachmentGet";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
