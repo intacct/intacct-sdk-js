@@ -181,6 +181,10 @@ export default class IaXmlWriter {
         }
     }
 
+    public writeText(value: string): void {
+        this._writer = this._writer.text(value);
+    }
+
     public writeCustomFieldsImplicit(customFields: Array<[string, any]>) {
         if (customFields != null && customFields.length > 0) {
             for (const customFieldId in customFields) {
