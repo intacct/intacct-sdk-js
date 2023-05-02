@@ -13,23 +13,10 @@
  * permissions and limitations under the License.
  */
 
-import * as chai from "chai";
 import GetList from "../../../src/Functions/Common/GetList";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
 describe("GetList", () => {
-  before(done => {
-    return done();
-  });
-  beforeEach(done => {
-    return done();
-  });
-  afterEach(done => {
-    return done();
-  });
-  after(done => {
-    return done();
-  });
   it("should get company info", () => {
     const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
@@ -40,6 +27,33 @@ describe("GetList", () => {
 
     const record = new GetList("unittest");
     record.object = "company_info";
+
+    XmlObjectTestHelper.CompareXml(expected, record);
+  });
+  it("should get attachment with all attributes", () => {
+    const expected = `<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <function controlid="unittest">
+        <get_list object="supdoc" maxitems="1" start="10" showprivate="true">
+            <fields>
+                <field>recordno</field>
+                <field>supdocid</field>
+            </fields>
+            <sorts>
+                <sortfield order="asc">recordno</sortfield>
+                <sortfield order="desc">supdocid</sortfield>
+            </sorts>
+        </get_list>
+    </function>
+</test>`;
+
+    const record = new GetList("unittest");
+    record.object = "supdoc";
+    record.maxitems = 1;
+    record.start = 10;
+    record.showprivate = true;
+    record.fields = ["recordno", "supdocid"];
+    record.sorts = [{ recordno: "asc" }, { supdocid: "desc" }];
 
     XmlObjectTestHelper.CompareXml(expected, record);
   });

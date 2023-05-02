@@ -166,6 +166,10 @@ export default class IaXmlWriter {
         this.writeElement("day", dateFormat(date, "dd"), writeNull);
     }
 
+    public writeText(value: string): void {
+        this._writer = this._writer.text(value);
+    }
+
     public writeCustomFieldsExplicit(customFields: Array<[string, any]>) {
         if (customFields != null && customFields.length > 0) {
             this.writeStartElement("customfields");
