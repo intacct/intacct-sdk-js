@@ -39,6 +39,7 @@ export default class RequestHandler {
     public requestConfig: RequestConfig;
 
     public endpointUrl: string;
+    public sageAppId: string;
 
     constructor(clientConfig: ClientConfig, requestConfig: RequestConfig) {
         const packageInfo = require("../../package.json");
@@ -50,6 +51,7 @@ export default class RequestHandler {
             const endpoint = new Endpoint(clientConfig);
             this.endpointUrl = endpoint.url;
         }
+        this.sageAppId = clientConfig.sageAppId != null ? clientConfig.sageAppId : "";
         this.clientConfig = clientConfig;
 
         this.requestConfig = requestConfig;
@@ -103,6 +105,12 @@ export default class RequestHandler {
     }
 
     private async execute(xml: string): Promise<string> {
+        const additionalHeaders =
+            this.sageAppId != null && this.sageAppId !== ""
+                ? {
+                    "x-sage-app-id": this.sageAppId,
+                    }
+                : {};
         const httpClient = this.getHttpClient({
             url: this.endpointUrl,
             method: "POST",
@@ -115,6 +123,7 @@ export default class RequestHandler {
                 "Content-Type": "application/xml",
                 "Accept-Encoding": "gzip",
                 "User-Agent": "intacct-sdk-js-client/" + this.version,
+                ...additionalHeaders,
             },
             size: 0,
         });

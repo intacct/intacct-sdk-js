@@ -34,6 +34,8 @@ export default abstract class AbstractClient {
      */
     protected static readonly PROFILE_ENV_NAME = "INTACCT_PROFILE";
 
+    protected static readonly SAGE_APP_ID_ENV_NAME = "INTACCT_SAGE_APP_ID";
+
     /**
      * @return ClientConfig
      */
@@ -49,6 +51,10 @@ export default abstract class AbstractClient {
 
         if (config.profileName == null) {
             config.profileName = process.env[AbstractClient.PROFILE_ENV_NAME];
+        }
+
+        if (config.sageAppId == null) {
+            config.sageAppId = process.env[AbstractClient.SAGE_APP_ID_ENV_NAME];
         }
 
         if (

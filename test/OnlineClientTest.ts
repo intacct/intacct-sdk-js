@@ -13,6 +13,7 @@
  * permissions and limitations under the License.
  */
 
+import { rejects } from "assert";
 import * as chai from "chai";
 import * as nock from "nock";
 import * as winston from "winston";
@@ -242,6 +243,179 @@ describe("OnlineClient", () => {
                 "Get API Session Failed Something went wrong - " +
                 "XL03000009 The entire transaction in this operation has been rolled back due to an error.");
         }
+    });
+    it('should execute a request with the Sage App ID from config', async () => {
+      const xmlResponse = `<?xml version="1.0" encoding="utf-8" ?>
+      <response>
+            <control>
+                  <status>success</status>
+                  <senderid>testsenderid</senderid>
+                  <controlid>requestUnitTest</controlid>
+                  <uniqueid>false</uniqueid>
+                  <dtdversion>3.0</dtdversion>
+            </control>
+            <operation>
+                  <authentication>
+                        <status>success</status>
+                        <userid>testuser</userid>
+                        <companyid>testcompany</companyid>
+                        <locationid></locationid>
+                        <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                        <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
+                  </authentication>
+                  <result>
+                      <status>success</status>
+                      <function>readByQuery</function>
+                      <controlid>func1UnitTest</controlid>
+                      <data listtype="customer" count="1" totalcount="1" numremaining="0" resultId="">
+                          <customer>
+                              <CUSTOMERID>C0001</CUSTOMERID>
+                              <NAME>Intacct Corporation</NAME>
+                          </customer>
+                      </data>
+                  </result>
+            </operation>
+      </response>`;
+      const headers = {
+          "Content-Type": 'text/xml; encoding="UTF-8"',
+      };
+
+      nock.disableNetConnect();
+      nock("https://api.intacct.com", {
+            reqheaders: {
+                  "x-sage-app-id": "testAppId",
+            },
+      })
+          .replyContentLength()
+          .post("/ia/xml/xmlgw.phtml")
+          .reply(200, xmlResponse, headers);
+
+      process.env.INTACCT_SAGE_APP_ID = "testAppId";
+      const config = new ClientConfig();
+      config.senderId = "testsender";
+      config.senderPassword = "testsendpass";
+      config.sessionId = "testsession..";
+
+      const client = new OnlineClient(config);
+
+      const response = await client.execute(new ReadByQuery("func1UnitTest"));
+      chai.assert.equal(response.getResult().data[0].CUSTOMERID, "C0001");
+      process.env.INTACCT_SAGE_APP_ID = "";
+    });
+
+    it('should execute a request with the Sage App ID from environment variable', async () => {
+      const xmlResponse = `<?xml version="1.0" encoding="utf-8" ?>
+      <response>
+            <control>
+                  <status>success</status>
+                  <senderid>testsenderid</senderid>
+                  <controlid>requestUnitTest</controlid>
+                  <uniqueid>false</uniqueid>
+                  <dtdversion>3.0</dtdversion>
+            </control>
+            <operation>
+                  <authentication>
+                        <status>success</status>
+                        <userid>testuser</userid>
+                        <companyid>testcompany</companyid>
+                        <locationid></locationid>
+                        <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                        <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
+                  </authentication>
+                  <result>
+                      <status>success</status>
+                      <function>readByQuery</function>
+                      <controlid>func1UnitTest</controlid>
+                      <data listtype="customer" count="1" totalcount="1" numremaining="0" resultId="">
+                          <customer>
+                              <CUSTOMERID>C0001</CUSTOMERID>
+                              <NAME>Intacct Corporation</NAME>
+                          </customer>
+                      </data>
+                  </result>
+            </operation>
+      </response>`;
+      const headers = {
+          "Content-Type": 'text/xml; encoding="UTF-8"',
+      };
+
+      nock.disableNetConnect();
+      nock("https://api.intacct.com", {
+            reqheaders: {
+                  "x-sage-app-id": "testAppId",
+            },
+      })
+          .replyContentLength()
+          .post("/ia/xml/xmlgw.phtml")
+          .reply(200, xmlResponse, headers);
+          
+      process.env.INTACCT_SAGE_APP_ID = "testAppId";
+      const config2 = new ClientConfig();
+      config2.senderId = "testsender";
+      config2.senderPassword = "testsendpass";
+      config2.sessionId = "testsession..";
+      // Omit config2.sageAppId
+      
+
+      const client2 = new OnlineClient(config2);
+      const response2 = await client2.execute(new ReadByQuery("func1UnitTest"));
+      chai.assert.equal(response2.getResult().data[0].CUSTOMERID, "C0001");
+      process.env.INTACCT_SAGE_APP_ID = '';
+    });
+    it('should fail to execute a request with an incorrect Sage App ID', async () => {
+      const xmlResponse = `<?xml version="1.0" encoding="utf-8" ?>
+      <response>
+            <control>
+                  <status>success</status>
+                  <senderid>testsenderid</senderid>
+                  <controlid>requestUnitTest</controlid>
+                  <uniqueid>false</uniqueid>
+                  <dtdversion>3.0</dtdversion>
+            </control>
+            <operation>
+                  <authentication>
+                        <status>success</status>
+                        <userid>testuser</userid>
+                        <companyid>testcompany</companyid>
+                        <locationid></locationid>
+                        <sessiontimestamp>2015-12-06T15:57:08-08:00</sessiontimestamp>
+                        <sessiontimeout>2015-12-07T15:57:08-08:00</sessiontimeout>
+                  </authentication>
+                  <result>
+                      <status>success</status>
+                      <function>readByQuery</function>
+                      <controlid>func1UnitTest</controlid>
+                      <data listtype="customer" count="1" totalcount="1" numremaining="0" resultId="">
+                          <customer>
+                              <CUSTOMERID>C0001</CUSTOMERID>
+                              <NAME>Intacct Corporation</NAME>
+                          </customer>
+                      </data>
+                  </result>
+            </operation>
+      </response>`;
+      const headers = {
+          "Content-Type": 'text/xml; encoding="UTF-8"',
+      };
+
+      nock.disableNetConnect();
+      nock("https://api.intacct.com", {
+            reqheaders: {
+                  "x-sage-app-id": "testAppId",
+            },
+      })
+          .replyContentLength()
+          .post("/ia/xml/xmlgw.phtml")
+          .reply(200, xmlResponse, headers);
+
+      const config = new ClientConfig();
+      config.senderId = "testsender";
+      config.senderPassword = "testsendpass";
+      config.sessionId = "testsession..";
+      config.sageAppId = "incorrectSageAppId";
+
+      const client = new OnlineClient(config);
+      await rejects(async () => await client.execute(new ReadByQuery("func1UnitTest")));
     });
     it("should log the request and response", async () => {
         const xmlResponse = `<?xml version="1.0" encoding="utf-8" ?>

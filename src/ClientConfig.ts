@@ -55,6 +55,8 @@ export default class ClientConfig {
 
     public logMessageFormatter: MessageFormatter;
 
+    public sageAppId: string;
+
     constructor() {
         this.logLevel = "debug";
         this.logMessageFormatter = new MessageFormatter();
