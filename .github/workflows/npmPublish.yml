@@ -10,18 +10,16 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v3
+      # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v3
         with:
           node-version: '18.16.0'
+          registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
           scope: '@intacct-thyme'
       - run: npm ci
       - run: npm run build
       - run: npm test
-      - run: |  
-          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
-          echo "@intacct-thyme:registry=https://npm.pkg.github.com/" >> .npmrc
-          echo "always-auth=true" >> .npmrc
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
