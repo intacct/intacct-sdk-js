@@ -21,19 +21,22 @@ import IaXmlWriter from "../../Xml/IaXmlWriter";
 import AbstractFunction from "../AbstractFunction";
 
 export default class Inspect extends AbstractFunction {
+  public objectName: string;
+  public detail: boolean = false;
 
-    public objectName: string;
+  public writeXml(xml: IaXmlWriter): void {
+    xml.writeStartElement("function");
+    xml.writeAttribute("controlid", this.controlId, true);
 
-    public writeXml(xml: IaXmlWriter): void {
-        xml.writeStartElement("function");
-        xml.writeAttribute("controlid", this.controlId, true);
-
-        xml.writeStartElement("inspect");
-
-        xml.writeElement("object", this.objectName || "*", true);
-
-        xml.writeEndElement(); // inspect
-
-        xml.writeEndElement(); // function
+    xml.writeStartElement("inspect");
+    if (this.detail === true) {
+      xml.writeAttribute("detail", "1");
     }
+
+    xml.writeElement("object", this.objectName || "*", true);
+
+    xml.writeEndElement(); // inspect
+
+    xml.writeEndElement(); // function
+  }
 }
