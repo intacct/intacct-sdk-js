@@ -2,6 +2,7 @@ export { default as Read } from "./Read";
 export { default as ReadByName } from "./ReadByName";
 export { default as ReadByQuery } from "./ReadByQuery";
 export { default as ReadMore } from "./ReadMore";
+export { default as ReadUserFormatting } from "./ReadUserFormatting";
 export { default as Inspect } from "../Common/Inspect";
 export { default as Lookup } from "../Common/Lookup";
 export { default as GetList } from "./GetList";
@@ -11,7 +12,4 @@ export { default as GetDimensionRelationships } from "./GetDimensionRelationship
 
 import * as Query from "./Query/index";
 import * as NewQuery from "./NewQuery/index";
-export {
-    Query,
-    NewQuery,
-};
+export { Query, NewQuery };
