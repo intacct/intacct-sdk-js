@@ -18,20 +18,20 @@ import Inspect from "../../../src/Functions/Common/Inspect";
 import XmlObjectTestHelper from "../../Xml/XmlObjectTestHelper";
 
 describe("Inspect", () => {
-    before((done) => {
-        return done();
-    });
-    beforeEach((done) => {
-        return done();
-    });
-    afterEach((done) => {
-        return done();
-    });
-    after((done) => {
-        return done();
-    });
-    it("should run inpect with object name", () => {
-        const expected = `<?xml version="1.0" encoding="utf-8" ?>
+  before((done) => {
+    return done();
+  });
+  beforeEach((done) => {
+    return done();
+  });
+  afterEach((done) => {
+    return done();
+  });
+  after((done) => {
+    return done();
+  });
+  it("should run inpect with object name", () => {
+    const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
         <inspect>
@@ -40,13 +40,29 @@ describe("Inspect", () => {
     </function>
 </test>`;
 
-        const record = new Inspect("unittest");
-        record.objectName = "TEST";
+    const record = new Inspect("unittest");
+    record.objectName = "TEST";
 
-        XmlObjectTestHelper.CompareXml(expected, record);
-    });
-    it("should run inpect for all object", () => {
-        const expected = `<?xml version="1.0" encoding="utf-8" ?>
+    XmlObjectTestHelper.CompareXml(expected, record);
+  });
+  it("should run detailed inpect with object name", () => {
+    const expected = `<?xml version="1.0" encoding="utf-8" ?>
+<test>
+    <function controlid="unittest">
+        <inspect detail="1">
+            <object>TEST</object>
+        </inspect>
+    </function>
+</test>`;
+
+    const record = new Inspect("unittest");
+    record.objectName = "TEST";
+    record.detail = true;
+
+    XmlObjectTestHelper.CompareXml(expected, record);
+  });
+  it("should run inpect for all object", () => {
+    const expected = `<?xml version="1.0" encoding="utf-8" ?>
 <test>
     <function controlid="unittest">
         <inspect>
@@ -55,8 +71,8 @@ describe("Inspect", () => {
     </function>
 </test>`;
 
-        const record = new Inspect("unittest");
+    const record = new Inspect("unittest");
 
-        XmlObjectTestHelper.CompareXml(expected, record);
-    });
+    XmlObjectTestHelper.CompareXml(expected, record);
+  });
 });
