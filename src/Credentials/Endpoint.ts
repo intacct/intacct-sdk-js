@@ -26,6 +26,8 @@ export default class Endpoint {
 
     public static readonly ENDPOINT_URL_ENV_NAME = "INTACCT_ENDPOINT_URL";
 
+    public static readonly ALLOW_NON_INTACCT_ENDPOINT_URL_ENV_NAME = "INTACCT_ALLOW_NON_INTACCT_ENDPOINT_URL";
+
     public static readonly DOMAIN_NAME = "intacct.com";
 
     public static readonly FULL_QUALIFIED_DOMAIN_NAME = Endpoint.DOMAIN_NAME + ".";
@@ -36,27 +38,39 @@ export default class Endpoint {
         return (hostname.substr(-checkMainDomain.length) === checkMainDomain) ||
             (hostname.substr(-checkFQDNDomain.length) === checkFQDNDomain);
     }
+
+    private allowNonIntacctEndpointUrl: boolean;
+
     private _url: string;
     get url(): string {
         return this._url;
     }
-
     set url(address: string) {
         if (address == null || address === "") {
             address = Endpoint.DEFAULT_ENDPOINT;
         }
 
-        const parsedUrl = url.parse(address);
-        if (!Endpoint.isDomainValid(parsedUrl.hostname)) {
-            throw new Error("Endpoint URL is not a valid " + Endpoint.DOMAIN_NAME + " domain name.");
-        }
+        this.verifyEndpointUrl(address);
         this._url = address;
     }
+
     constructor(config: ClientConfig) {
+        if (config.allowNonIntacctEndpointUrl == null) {
+            this.allowNonIntacctEndpointUrl = process.env[Endpoint.ALLOW_NON_INTACCT_ENDPOINT_URL_ENV_NAME] === "true";
+        } else {
+            this.allowNonIntacctEndpointUrl = config.allowNonIntacctEndpointUrl;
+        }
         if (config.endpointUrl == null) {
             this.url = process.env[Endpoint.ENDPOINT_URL_ENV_NAME];
         } else {
             this.url = config.endpointUrl;
+        }
+    }
+
+    private verifyEndpointUrl(address: string): void | never {
+        const parsedUrl = url.parse(address);
+        if (!Endpoint.isDomainValid(parsedUrl.hostname) && !this.allowNonIntacctEndpointUrl) {
+            throw new Error("Endpoint URL is not a valid " + Endpoint.DOMAIN_NAME + " domain name.");
         }
     }
 }

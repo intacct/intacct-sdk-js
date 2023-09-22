@@ -29,6 +29,8 @@ export default class ClientConfig {
 
     public endpointUrl: string;
 
+    public allowNonIntacctEndpointUrl: boolean;
+
     public senderId: string;
 
     public senderPassword: string;

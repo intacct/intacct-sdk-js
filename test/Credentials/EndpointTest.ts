@@ -67,7 +67,7 @@ describe("Endpoint", () => {
         chai.assert.equal(endpoint.url, "https://api.intacct.com/ia/xml/xmlgw.phtml");
     });
 
-    it("should throw exception on invalid Endpoint URL", () => {
+    it("should throw exception on invalid Endpoint URL when allowNonIntacctEndpointUrl is false", () => {
         chai.assert.throws(
             () => {
                 const config = new ClientConfig();
@@ -77,6 +77,15 @@ describe("Endpoint", () => {
             Error,
             "Endpoint URL is not a valid intacct.com domain name.",
         );
+    });
+
+
+    it("should allow a non-Intacct endpoint URL when allowNonIntacctEndpointUrl is true", () => {
+        const config = new ClientConfig();
+        config.allowNonIntacctEndpointUrl = true;
+        config.endpointUrl = "http://localhost:18181/ia/xml/xmlgw.phtml";
+        const endpoint = new Endpoint(config);
+        chai.assert.equal(endpoint.url, "http://localhost:18181/ia/xml/xmlgw.phtml");
     });
 
     it("should allow FQDN Endpoint URL", () => {
