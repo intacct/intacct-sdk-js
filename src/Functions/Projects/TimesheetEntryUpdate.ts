@@ -21,52 +21,64 @@ import IaXmlWriter from "../../Xml/IaXmlWriter";
 import AbstractTimesheetEntry from "./AbstractTimesheetEntry";
 
 export default class TimesheetEntryUpdate extends AbstractTimesheetEntry {
-    private _isEmbedded: boolean;
-    constructor(isEmbedded = true) {
-        super(...arguments);
-        this._isEmbedded = isEmbedded;
+  private _isEmbedded: boolean;
+  constructor(isEmbedded = true) {
+    super(...arguments);
+    this._isEmbedded = isEmbedded;
+  }
+  public writeXml(xml: IaXmlWriter): void {
+    if (!this._isEmbedded) {
+      xml.writeStartElement("function");
+      xml.writeAttribute("controlid", this.controlId, true);
+      xml.writeStartElement("update");
     }
-    public writeXml(xml: IaXmlWriter): void {
-        if (!this._isEmbedded) {
-            xml.writeStartElement("function");
-            xml.writeAttribute("controlid", this.controlId, true);
-            xml.writeStartElement("update");
-        }
 
-        xml.writeStartElement("TIMESHEETENTRY");
-        xml.writeElement("RECORDNO", this.lineRecordNo);
+    xml.writeStartElement("TIMESHEETENTRY");
+    xml.writeElement("RECORDNO", this.lineRecordNo);
 
-        xml.writeElementDate("ENTRYDATE", this.entryDate, IaXmlWriter.intacctDateFormat);
+    xml.writeElementDate("ENTRYDATE", this.entryDate, IaXmlWriter.intacctDateFormat);
 
-        xml.writeElement("QTY", this.quantity);
+    xml.writeElement("QTY", this.quantity);
 
-        xml.writeElement("DESCRIPTION", this.description);
-        xml.writeElement("NOTES", this.notes);
-        xml.writeElement("TASKKEY", this.taskRecordNo);
-        xml.writeElement("TIMETYPE", this.timeTypeName);
-        xml.writeElement("BILLABLE", this.billable);
+    xml.writeElement("DESCRIPTION", this.description);
+    xml.writeElement("NOTES", this.notes);
+    xml.writeElement("TASKKEY", this.taskRecordNo);
+    xml.writeElement("TIMETYPE", this.timeTypeName);
+    xml.writeElement("BILLABLE", this.billable);
 
-        xml.writeElement("EXTBILLRATE", this.overrideBillingRate);
-        xml.writeElement("EXTCOSTRATE", this.overrideLaborCostRate);
+    xml.writeElement("EXTBILLRATE", this.overrideBillingRate);
+    xml.writeElement("EXTCOSTRATE", this.overrideLaborCostRate);
 
-        xml.writeElement("DEPARTMENTID", this.departmentId);
-        xml.writeElement("LOCATIONID", this.locationId);
-        xml.writeElement("PROJECTID", this.projectId);
-        xml.writeElement("CUSTOMERID", this.customerId);
-        xml.writeElement("VENDORID", this.vendorId);
-        xml.writeElement("ITEMID", this.itemId);
-        xml.writeElement("CLASSID", this.classId);
-        xml.writeElement("CONTRACTID", this.contractId);
-        xml.writeElement("WAREHOUSEID", this.warehouseId);
-        xml.writeElement("COSTTYPEID", this.costtypeId);
-
-        xml.writeCustomFieldsImplicit(this.customFields);
-
-        xml.writeEndElement(); // TIMESHEETENTRY
-
-        if (!this._isEmbedded) {
-            xml.writeEndElement(); // update
-            xml.writeEndElement(); // function
-        }
+    xml.writeElement("DEPARTMENTID", this.departmentId);
+    xml.writeElement("LOCATIONID", this.locationId);
+    xml.writeElement("PROJECTID", this.projectId);
+    xml.writeElement("CUSTOMERID", this.customerId);
+    xml.writeElement("VENDORID", this.vendorId);
+    xml.writeElement("ITEMID", this.itemId);
+    xml.writeElement("CLASSID", this.classId);
+    xml.writeElement("CONTRACTID", this.contractId);
+    xml.writeElement("WAREHOUSEID", this.warehouseId);
+    xml.writeElement("COSTTYPEID", this.costtypeId);
+    if (this.employeepositionId) {
+      xml.writeElement("EMPPOSITIONID", this.employeepositionId);
     }
+    if (this.laborclassId) {
+      xml.writeElement("LABORCLASSID", this.laborclassId);
+    }
+    if (this.laborshiftId) {
+      xml.writeElement("LABORSHIFTID", this.laborshiftId);
+    }
+    if (this.laborunionId) {
+      xml.writeElement("LABORUNIONID", this.laborunionId);
+    }
+
+    xml.writeCustomFieldsImplicit(this.customFields);
+
+    xml.writeEndElement(); // TIMESHEETENTRY
+
+    if (!this._isEmbedded) {
+      xml.writeEndElement(); // update
+      xml.writeEndElement(); // function
+    }
+  }
 }
