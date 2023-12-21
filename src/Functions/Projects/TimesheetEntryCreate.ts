@@ -23,22 +23,22 @@ import AbstractTimesheetEntry from "./AbstractTimesheetEntry";
 export default class TimesheetEntryCreate extends AbstractTimesheetEntry {
     private _isEmbedded: boolean;
     constructor(isEmbedded = true) {
-      super(...arguments);
-      this._isEmbedded = isEmbedded;
+        super(...arguments);
+        this._isEmbedded = isEmbedded;
     }
 
     public writeXml(xml: IaXmlWriter): void {
         if (!this._isEmbedded) {
-          xml.writeStartElement("function");
-          xml.writeAttribute("controlid", this.controlId, true);
-          xml.writeStartElement("create");
+            xml.writeStartElement("function");
+            xml.writeAttribute("controlid", this.controlId, true);
+            xml.writeStartElement("create");
         }
         xml.writeStartElement("TIMESHEETENTRY");
         if (!this._isEmbedded) {
-          xml.writeElement("TIMESHEETKEY", this.timesheetRecordNo);
+            xml.writeElement("TIMESHEETKEY", this.timesheetRecordNo);
         }
         if (this._isEmbedded && this.recordNo) {
-          xml.writeElement("RECORDNO", this.recordNo);
+            xml.writeElement("RECORDNO", this.recordNo);
         }
 
         xml.writeElementDate("ENTRYDATE", this.entryDate, IaXmlWriter.intacctDateFormat);
@@ -65,13 +65,25 @@ export default class TimesheetEntryCreate extends AbstractTimesheetEntry {
         xml.writeElement("CONTRACTID", this.contractId);
         xml.writeElement("WAREHOUSEID", this.warehouseId);
         xml.writeElement("COSTTYPEID", this.costtypeId);
+        if (this.employeepositionId) {
+            xml.writeElement("EMPPOSITIONID", this.employeepositionId);
+        }
+        if (this.laborclassId) {
+            xml.writeElement("LABORCLASSID", this.laborclassId);
+        }
+        if (this.laborshiftId) {
+            xml.writeElement("LABORSHIFTID", this.laborshiftId);
+        }
+        if (this.laborunionId) {
+            xml.writeElement("LABORUNIONID", this.laborunionId);
+        }
 
         xml.writeCustomFieldsImplicit(this.customFields);
 
         xml.writeEndElement(); // TIMESHEETENTRY
         if (!this._isEmbedded) {
-          xml.writeEndElement(); // create
-          xml.writeEndElement(); // function
+            xml.writeEndElement(); // create
+            xml.writeEndElement(); // function
         }
     }
 }

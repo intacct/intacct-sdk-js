@@ -22,7 +22,6 @@ import IXmlObject from "../../Xml/IXmlObject";
 import AbstractFunction from "../AbstractFunction";
 
 export default abstract class AbstractTimesheetEntry extends AbstractFunction implements IXmlObject {
-
     public recordNo: number;
     public timesheetRecordNo: number;
     public lineRecordNo: number;
@@ -46,6 +45,10 @@ export default abstract class AbstractTimesheetEntry extends AbstractFunction im
     public contractId: string;
     public warehouseId: string;
     public costtypeId: string;
+    public employeepositionId: string;
+    public laborclassId: string;
+    public laborshiftId: string;
+    public laborunionId: string;
 
     public customFields: Array<[string, any]> = [];
 

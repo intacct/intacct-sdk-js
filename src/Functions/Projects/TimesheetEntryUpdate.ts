@@ -59,6 +59,18 @@ export default class TimesheetEntryUpdate extends AbstractTimesheetEntry {
         xml.writeElement("CONTRACTID", this.contractId);
         xml.writeElement("WAREHOUSEID", this.warehouseId);
         xml.writeElement("COSTTYPEID", this.costtypeId);
+        if (this.employeepositionId) {
+            xml.writeElement("EMPPOSITIONID", this.employeepositionId);
+        }
+        if (this.laborclassId) {
+            xml.writeElement("LABORCLASSID", this.laborclassId);
+        }
+        if (this.laborshiftId) {
+            xml.writeElement("LABORSHIFTID", this.laborshiftId);
+        }
+        if (this.laborunionId) {
+            xml.writeElement("LABORUNIONID", this.laborunionId);
+        }
 
         xml.writeCustomFieldsImplicit(this.customFields);
 
