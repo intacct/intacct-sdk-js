@@ -1,82 +1,82 @@
 {
-  "name": "@intacct-thyme/intacct-sdk",
-  "version": "2.2.2-fork.9",
-  "description": "Sage Intacct SDK for JavaScript",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
-  "keywords": [
-    "sage intacct",
-    "intacct",
-    "sage",
-    "sdk"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/intacct-thyme/intacct-sdk-js.git"
-  },
-  "author": {
-    "name": "Sage Intacct, Inc.",
-    "url": "https://www.sageintacct.com"
-  },
-  "license": "Apache-2.0",
-  "homepage": "https://developer.intacct.com",
-  "engines": {
-    "node": ">=14.20.0"
-  },
-  "files": [
-    "/dist"
-  ],
-  "directories": {
-    "lib": "dist"
-  },
-  "scripts": {
-    "prebuild": "rimraf dist/*",
-    "build": "npm run build-ts",
-    "build-ts": "tsc",
-    "tslint": "tslint -c tslint.json 'src/**/*.ts'",
-    "doc": "rimraf doc && typedoc src/",
-    "pretest": "npm run build",
-    "test": "npm run tslint && npm run test-mocha",
-    "test-mocha": "mocha -require ts-node/register \"test/**/*.ts\"",
-    "coverage": "nyc npm run test",
-    "preversion": "npm test",
-    "version": "npm run build",
-    "postversion": "git push && git push --tags"
-  },
-  "devDependencies": {
-    "@types/chai": "^4.2.16",
-    "@types/dateformat": "^3.0.1",
-    "@types/ini": "^1.3.30",
-    "@types/lodash": "^4.14.168",
-    "@types/mocha": "^8.2.2",
-    "@types/mock-fs": "^4.13.0",
-    "@types/node": "^14.14.41",
-    "@types/uuid": "^8.3.0",
-    "@types/xml2js": "^0.4.8",
-    "@types/xmlbuilder": "^0.0.32",
-    "chai": "~4.2.0",
-    "mocha": "^10.0.0",
-    "mock-fs": "^4.13.0",
-    "nock": "^13.0.11",
-    "nyc": "^15.1.0",
-    "rimraf": "^3.0.2",
-    "ts-node": "^10.9.1",
-    "tslint": "^5.20.1",
-    "typedoc": "^0.23.8",
-    "typescript": "^4.2.4"
-  },
-  "dependencies": {
-    "content-type": "^1.0.4",
-    "dateformat": "^4.5.1",
-    "ini": "^1.3.8",
-    "node-fetch": "^2.6.7",
-    "striptags": "^3.1.1",
-    "uuid": "^8.3.2",
-    "winston": "^3.3.3",
-    "xml2js": "^0.4.23",
-    "xmlbuilder": "^12.0.1"
-  }
+    "name": "@intacct-thyme/intacct-sdk",
+    "version": "2.2.2-fork.10",
+    "description": "Sage Intacct SDK for JavaScript",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "keywords": [
+        "sage intacct",
+        "intacct",
+        "sage",
+        "sdk"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/intacct-thyme/intacct-sdk-js.git"
+    },
+    "author": {
+        "name": "Sage Intacct, Inc.",
+        "url": "https://www.sageintacct.com"
+    },
+    "license": "Apache-2.0",
+    "homepage": "https://developer.intacct.com",
+    "engines": {
+        "node": ">=14.20.0"
+    },
+    "files": [
+        "/dist"
+    ],
+    "directories": {
+        "lib": "dist"
+    },
+    "scripts": {
+        "prebuild": "rimraf dist/*",
+        "build": "npm run build-ts",
+        "build-ts": "tsc",
+        "tslint": "tslint -c tslint.json 'src/**/*.ts'",
+        "doc": "rimraf doc && typedoc src/",
+        "pretest": "npm run build",
+        "test": "npm run tslint && npm run test-mocha",
+        "test-mocha": "mocha -require ts-node/register \"test/**/*.ts\"",
+        "coverage": "nyc npm run test",
+        "preversion": "npm test",
+        "version": "npm run build",
+        "postversion": "git push && git push --tags"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.2.16",
+        "@types/dateformat": "^3.0.1",
+        "@types/ini": "^1.3.30",
+        "@types/lodash": "^4.14.168",
+        "@types/mocha": "^8.2.2",
+        "@types/mock-fs": "^4.13.0",
+        "@types/node": "^14.14.41",
+        "@types/uuid": "^8.3.0",
+        "@types/xml2js": "^0.4.8",
+        "@types/xmlbuilder": "^0.0.32",
+        "chai": "~4.2.0",
+        "mocha": "^10.0.0",
+        "mock-fs": "^4.13.0",
+        "nock": "^13.0.11",
+        "nyc": "^15.1.0",
+        "rimraf": "^3.0.2",
+        "ts-node": "^10.9.1",
+        "tslint": "^5.20.1",
+        "typedoc": "^0.23.8",
+        "typescript": "^4.2.4"
+    },
+    "dependencies": {
+        "content-type": "^1.0.4",
+        "dateformat": "^4.5.1",
+        "ini": "^1.3.8",
+        "node-fetch": "^2.6.7",
+        "striptags": "^3.1.1",
+        "uuid": "^8.3.2",
+        "winston": "^3.3.3",
+        "xml2js": "^0.4.23",
+        "xmlbuilder": "^12.0.1"
+    }
 }
