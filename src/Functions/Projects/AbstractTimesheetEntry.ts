@@ -22,36 +22,35 @@ import IXmlObject from "../../Xml/IXmlObject";
 import AbstractFunction from "../AbstractFunction";
 
 export default abstract class AbstractTimesheetEntry extends AbstractFunction implements IXmlObject {
+    public recordNo: number;
+    public timesheetRecordNo: number;
+    public lineRecordNo: number;
+    public entryDate: Date;
+    public quantity: number;
+    public description: string;
+    public notes: string;
+    public taskId: string;
+    public taskRecordNo: number;
+    public timeTypeName: string;
+    public billable: boolean;
+    public overrideBillingRate: number;
+    public overrideLaborCostRate: number;
+    public departmentId: string;
+    public locationId: string;
+    public projectId: string;
+    public customerId: string;
+    public vendorId: string;
+    public itemId: string;
+    public classId: string;
+    public contractId: string;
+    public warehouseId: string;
+    public costtypeId: string;
+    public employeepositionId: string;
+    public laborclassId: string;
+    public laborshiftId: string;
+    public laborunionId: string;
 
-  public recordNo: number;
-  public timesheetRecordNo: number;
-  public lineRecordNo: number;
-  public entryDate: Date;
-  public quantity: number;
-  public description: string;
-  public notes: string;
-  public taskId: string;
-  public taskRecordNo: number;
-  public timeTypeName: string;
-  public billable: boolean;
-  public overrideBillingRate: number;
-  public overrideLaborCostRate: number;
-  public departmentId: string;
-  public locationId: string;
-  public projectId: string;
-  public customerId: string;
-  public vendorId: string;
-  public itemId: string;
-  public classId: string;
-  public contractId: string;
-  public warehouseId: string;
-  public costtypeId: string;
-  public employeepositionId: string;
-  public laborclassId: string;
-  public laborshiftId: string;
-  public laborunionId: string;
+    public customFields: Array<[string, any]> = [];
 
-  public customFields: Array<[string, any]> = [];
-
-  public abstract writeXml(xml: IaXmlWriter): void;
+    public abstract writeXml(xml: IaXmlWriter): void;
 }

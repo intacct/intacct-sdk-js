@@ -21,69 +21,69 @@ import IaXmlWriter from "../../Xml/IaXmlWriter";
 import AbstractTimesheetEntry from "./AbstractTimesheetEntry";
 
 export default class TimesheetEntryCreate extends AbstractTimesheetEntry {
-  private _isEmbedded: boolean;
-  constructor(isEmbedded = true) {
-    super(...arguments);
-    this._isEmbedded = isEmbedded;
-  }
-
-  public writeXml(xml: IaXmlWriter): void {
-    if (!this._isEmbedded) {
-      xml.writeStartElement("function");
-      xml.writeAttribute("controlid", this.controlId, true);
-      xml.writeStartElement("create");
-    }
-    xml.writeStartElement("TIMESHEETENTRY");
-    if (!this._isEmbedded) {
-      xml.writeElement("TIMESHEETKEY", this.timesheetRecordNo);
-    }
-    if (this._isEmbedded && this.recordNo) {
-      xml.writeElement("RECORDNO", this.recordNo);
+    private _isEmbedded: boolean;
+    constructor(isEmbedded = true) {
+        super(...arguments);
+        this._isEmbedded = isEmbedded;
     }
 
-    xml.writeElementDate("ENTRYDATE", this.entryDate, IaXmlWriter.intacctDateFormat);
+    public writeXml(xml: IaXmlWriter): void {
+        if (!this._isEmbedded) {
+            xml.writeStartElement("function");
+            xml.writeAttribute("controlid", this.controlId, true);
+            xml.writeStartElement("create");
+        }
+        xml.writeStartElement("TIMESHEETENTRY");
+        if (!this._isEmbedded) {
+            xml.writeElement("TIMESHEETKEY", this.timesheetRecordNo);
+        }
+        if (this._isEmbedded && this.recordNo) {
+            xml.writeElement("RECORDNO", this.recordNo);
+        }
 
-    xml.writeElement("QTY", this.quantity, true);
+        xml.writeElementDate("ENTRYDATE", this.entryDate, IaXmlWriter.intacctDateFormat);
 
-    xml.writeElement("DESCRIPTION", this.description);
-    xml.writeElement("NOTES", this.notes);
-    xml.writeElement("TASKKEY", this.taskRecordNo);
-    xml.writeElement("TASKID", this.taskId);
-    xml.writeElement("TIMETYPE", this.timeTypeName);
-    xml.writeElement("BILLABLE", this.billable);
+        xml.writeElement("QTY", this.quantity, true);
 
-    xml.writeElement("EXTBILLRATE", this.overrideBillingRate);
-    xml.writeElement("EXTCOSTRATE", this.overrideLaborCostRate);
+        xml.writeElement("DESCRIPTION", this.description);
+        xml.writeElement("NOTES", this.notes);
+        xml.writeElement("TASKKEY", this.taskRecordNo);
+        xml.writeElement("TASKID", this.taskId);
+        xml.writeElement("TIMETYPE", this.timeTypeName);
+        xml.writeElement("BILLABLE", this.billable);
 
-    xml.writeElement("DEPARTMENTID", this.departmentId);
-    xml.writeElement("LOCATIONID", this.locationId);
-    xml.writeElement("PROJECTID", this.projectId);
-    xml.writeElement("CUSTOMERID", this.customerId);
-    xml.writeElement("VENDORID", this.vendorId);
-    xml.writeElement("ITEMID", this.itemId);
-    xml.writeElement("CLASSID", this.classId);
-    xml.writeElement("CONTRACTID", this.contractId);
-    xml.writeElement("WAREHOUSEID", this.warehouseId);
-    xml.writeElement("COSTTYPEID", this.costtypeId);
-    if (this.employeepositionId) {
-      xml.writeElement("EMPPOSITIONID", this.employeepositionId);
+        xml.writeElement("EXTBILLRATE", this.overrideBillingRate);
+        xml.writeElement("EXTCOSTRATE", this.overrideLaborCostRate);
+
+        xml.writeElement("DEPARTMENTID", this.departmentId);
+        xml.writeElement("LOCATIONID", this.locationId);
+        xml.writeElement("PROJECTID", this.projectId);
+        xml.writeElement("CUSTOMERID", this.customerId);
+        xml.writeElement("VENDORID", this.vendorId);
+        xml.writeElement("ITEMID", this.itemId);
+        xml.writeElement("CLASSID", this.classId);
+        xml.writeElement("CONTRACTID", this.contractId);
+        xml.writeElement("WAREHOUSEID", this.warehouseId);
+        xml.writeElement("COSTTYPEID", this.costtypeId);
+        if (this.employeepositionId) {
+            xml.writeElement("EMPPOSITIONID", this.employeepositionId);
+        }
+        if (this.laborclassId) {
+            xml.writeElement("LABORCLASSID", this.laborclassId);
+        }
+        if (this.laborshiftId) {
+            xml.writeElement("LABORSHIFTID", this.laborshiftId);
+        }
+        if (this.laborunionId) {
+            xml.writeElement("LABORUNIONID", this.laborunionId);
+        }
+
+        xml.writeCustomFieldsImplicit(this.customFields);
+
+        xml.writeEndElement(); // TIMESHEETENTRY
+        if (!this._isEmbedded) {
+            xml.writeEndElement(); // create
+            xml.writeEndElement(); // function
+        }
     }
-    if (this.laborclassId) {
-      xml.writeElement("LABORCLASSID", this.laborclassId);
-    }
-    if (this.laborshiftId) {
-      xml.writeElement("LABORSHIFTID", this.laborshiftId);
-    }
-    if (this.laborunionId) {
-      xml.writeElement("LABORUNIONID", this.laborunionId);
-    }
-
-    xml.writeCustomFieldsImplicit(this.customFields);
-
-    xml.writeEndElement(); // TIMESHEETENTRY
-    if (!this._isEmbedded) {
-      xml.writeEndElement(); // create
-      xml.writeEndElement(); // function
-    }
-  }
 }
