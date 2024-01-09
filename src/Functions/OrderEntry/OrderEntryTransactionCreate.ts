@@ -86,6 +86,10 @@ export default class OrderEntryTransactionCreate extends AbstractOrderEntryTrans
         xml.writeElement("state", this.state);
         xml.writeElement("projectid", this.projectId);
 
+        if (this.taxSolutionId != null) {
+            xml.writeElement("taxsolutionid", this.taxSolutionId);
+        }
+
         xml.writeStartElement("sotransitems");
         if (this.lines != null && this.lines.length > 0) {
             for (const line of this.lines) {

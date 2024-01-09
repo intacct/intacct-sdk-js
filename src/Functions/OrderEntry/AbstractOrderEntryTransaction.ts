@@ -51,6 +51,7 @@ export default abstract class AbstractOrderEntryTransaction extends AbstractFunc
     public projectId: string;
     public subtotals: AbstractTransactionSubtotal[];
     public lines: AbstractOrderEntryTransactionLine[];
+    public taxSolutionId: string;
 
     public customFields: Array<[string, any]> = [];
 

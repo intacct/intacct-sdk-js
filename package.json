@@ -1,5 +1,5 @@
 {
-  "name": "@intacct/intacct-sdk",
+  "name": "@xometry/intacct-sdk",
   "version": "2.2.1",
   "description": "Sage Intacct SDK for JavaScript",
   "main": "dist/index.js",
@@ -12,7 +12,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/intacct/intacct-sdk-js.git"
+    "url": "https://github.com/xometry/intacct-sdk-js.git"
   },
   "author": {
     "name": "Sage Intacct, Inc.",
@@ -20,9 +20,6 @@
   },
   "license": "Apache-2.0",
   "homepage": "https://developer.intacct.com",
-  "bugs": {
-    "url": "https://github.com/intacct/intacct-sdk-js/issues"
-  },
   "engines": {
     "node": ">=14.20.0"
   },
