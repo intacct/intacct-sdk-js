@@ -1,0 +1,56 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: write
+  packages: write
+  repository-projects: read
+  issues: read
+
+env:
+  AWS_DEFAULT_REGION: us-west-2
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci-workflow.yml
+  build:
+    needs: ci
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: actions/checkout@v3
+      - run: yarn install
+      - run: yarn build
+      - uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist
+  release:
+    needs: [build]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+      - uses: cycjimmy/semantic-release-action@v3
+        with:
+          semantic_version: 22.0.12
+          extra_plugins: |
+            @semantic-release/release-notes-generator
+            @semantic-release/changelog
+            @semantic-release/github
+            @semantic-release/npm
+            @semantic-release/git@10.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: git push && git push --tags

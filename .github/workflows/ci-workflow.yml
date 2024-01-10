@@ -1,0 +1,32 @@
+name: 'CI'
+
+on:
+  workflow_call:
+    inputs:	
+      config-path:	
+        required: false	
+        type: string
+  pull_request:
+    branches:
+    - main
+
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    
+jobs:
+  lint-test-typecheck:
+    name: 'Test'
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "yarn"
+      - name: Install Dependencies
+        run: |
+          yarn install --frozen-lockfile
+      - name: Unit Test
+        run: yarn test
+      - name: Type Check
+        run: yarn tsc
