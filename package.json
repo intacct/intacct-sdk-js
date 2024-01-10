@@ -1,6 +1,6 @@
 {
   "name": "@xometry/intacct-sdk",
-  "version": "1.0.0",
+  "version": "2.2.1",
   "description": "Sage Intacct SDK for JavaScript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
