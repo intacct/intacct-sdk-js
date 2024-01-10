@@ -30,7 +30,6 @@
     "lib": "dist"
   },
   "scripts": {
-    "prebuild": "rimraf dist/*",
     "build": "yarn build-ts",
     "build-ts": "tsc",
     "tslint": "tslint -c tslint.json 'src/**/*.ts'",
