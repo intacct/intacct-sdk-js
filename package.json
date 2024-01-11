@@ -34,13 +34,10 @@
     "build-ts": "tsc",
     "tslint": "tslint -c tslint.json 'src/**/*.ts'",
     "doc": "rimraf doc && typedoc src/",
-    "pretest": "yarn build",
     "test": "yarn tslint && yarn test-mocha",
     "test-mocha": "mocha -require ts-node/register \"test/**/*.ts\"",
     "coverage": "nyc yarn test",
-    "preversion": "npm test",
-    "version": "yarn build",
-    "postversion": "git push && git push --tags"
+    "version": "yarn build"
   },
   "devDependencies": {
     "@types/chai": "^4.2.16",
