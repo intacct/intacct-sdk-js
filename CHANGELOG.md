@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/xometry/intacct-sdk-js/compare/v2.2.1...v2.3.0) (2024-01-11)
+
+
+### Features
+
+* Taxsolutionid ([664181e](https://github.com/xometry/intacct-sdk-js/commit/664181e9be96dc046b4506b9d6b792175d3a21e6))
+
 # 1.0.0 (2024-01-11)
 
 
