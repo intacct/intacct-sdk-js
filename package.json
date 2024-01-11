@@ -36,8 +36,7 @@
     "doc": "rimraf doc && typedoc src/",
     "test": "yarn tslint && yarn test-mocha",
     "test-mocha": "mocha -require ts-node/register \"test/**/*.ts\"",
-    "coverage": "nyc yarn test",
-    "version": "yarn build"
+    "coverage": "nyc yarn test"
   },
   "devDependencies": {
     "@types/chai": "^4.2.16",
