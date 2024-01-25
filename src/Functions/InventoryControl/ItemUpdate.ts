@@ -81,6 +81,14 @@ export default class ItemUpdate extends AbstractItem {
         xml.writeElement("TOTALPERIODS", this.numberOfPeriods);
         xml.writeElement("COMPUTEFORSHORTTERM", this.proratePriceAllowed);
         xml.writeElement("RENEWALMACROID", this.defaultRenewalMacroId);
+        
+        if (this.warehouseId != null) {
+            xml.writeStartElement("WAREHOUSEINFO");
+            xml.writeStartElement("ITEMWAREHOUSEINFO");
+            xml.writeElement("WAREHOUSEID", this.warehouseId);
+            xml.writeEndElement(); // ITEMWAREHOUSEINFO
+            xml.writeEndElement(); // WAREHOUSEINFO
+        }
 
         xml.writeCustomFieldsImplicit(this.customFields);
 

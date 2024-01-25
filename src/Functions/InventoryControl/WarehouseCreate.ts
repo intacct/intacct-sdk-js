@@ -51,6 +51,10 @@ export default class WarehouseCreate extends AbstractWarehouse {
             xml.writeEndElement(); // SHIPTO
         }
 
+        if (this.vendorRecordNo != null) {
+            xml.writeElement("RVENDOR", this.vendorRecordNo);
+        }
+
         xml.writeElement("USEDINGL", this.usedInGeneralLedger);
 
         if (this.active === true) {

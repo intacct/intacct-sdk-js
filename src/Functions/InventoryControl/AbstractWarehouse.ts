@@ -41,5 +41,7 @@ export default abstract class AbstractWarehouse extends AbstractFunction {
 
     public active: boolean;
 
+    public vendorRecordNo: number;
+
     public customFields: Array<[string, any]> = [];
 }

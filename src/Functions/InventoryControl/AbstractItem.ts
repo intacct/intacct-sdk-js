@@ -66,6 +66,7 @@ export default abstract class AbstractItem extends AbstractFunction {
     public numberOfPeriods: number;
     public proratePriceAllowed: boolean;
     public defaultRenewalMacroId: string;
+    public warehouseId: string;
 
     public customFields: Array<[string, any]> = [];
 }
