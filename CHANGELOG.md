@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/xometry/intacct-sdk-js/compare/v2.3.0...v2.4.0) (2024-01-31)
+
+
+### Features
+
+* APP-51737 - Add new relation fields for item and warehouse creation/updating ([#3](https://github.com/xometry/intacct-sdk-js/issues/3)) ([b721434](https://github.com/xometry/intacct-sdk-js/commit/b721434e1be853ffe9f23d7ab1d2b4da0333258d))
+
 # [2.3.0](https://github.com/xometry/intacct-sdk-js/compare/v2.2.1...v2.3.0) (2024-01-11)
 
 
