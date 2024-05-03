@@ -442,7 +442,7 @@ describe("Result", () => {
                 <status>success</status>
                 <function>readByQuery</function>
                 <controlid>818b0a96-3faf-4931-97e6-1cf05818ea44</controlid>
-                <data listtype="class" count="1" totalcount="2" numremaining="1" resultId="myResultId">
+                <data listtype="class" count="1" totalcount="2" numremaining="1" offset="0" resultId="myResultId">
                     <class>
                         <RECORDNO>8</RECORDNO>
                         <CLASSID>C1234</CLASSID>
@@ -471,6 +471,7 @@ describe("Result", () => {
         chai.assert.equal(result.count, 1);
         chai.assert.equal(result.totalCount, 2);
         chai.assert.equal(result.numRemaining, 1);
+        chai.assert.equal(result.offset, 0);
         chai.assert.equal(result.resultId, "myResultId");
         chai.assert.equal(result.data.length, 1);
     });
@@ -497,7 +498,7 @@ describe("Result", () => {
                 <status>success</status>
                 <function>readByQuery</function>
                 <controlid>818b0a96-3faf-4931-97e6-1cf05818ea44</controlid>
-                <data listtype="class" count="2" totalcount="3" numremaining="1" resultId="myResultId">
+                <data listtype="class" count="2" totalcount="3" numremaining="1" offset="0" resultId="myResultId">
                     <class>
                         <RECORDNO>8</RECORDNO>
                         <CLASSID>C1234</CLASSID>
@@ -543,6 +544,7 @@ describe("Result", () => {
         chai.assert.equal(result.count, 2);
         chai.assert.equal(result.totalCount, 3);
         chai.assert.equal(result.numRemaining, 1);
+        chai.assert.equal(result.offset, 0);
         chai.assert.equal(result.resultId, "myResultId");
         chai.assert.equal(result.data.length, 2);
     });
