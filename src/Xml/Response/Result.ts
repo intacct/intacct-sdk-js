@@ -64,6 +64,11 @@ export default class Result {
         return this._numRemaining;
     }
 
+    private _offset: number;
+    get offset(): number {
+        return this._offset;
+    }
+
     private _resultId: string;
     get resultId(): string {
         return this._resultId;
@@ -149,6 +154,10 @@ export default class Result {
 
                 if (dataAttr.hasOwnProperty("numremaining")) {
                     this._numRemaining = parseInt(dataAttr["numremaining"], 10);
+                }
+
+                if (dataAttr.hasOwnProperty("offset")) {
+                    this._offset = parseInt(dataAttr["offset"], 10);
                 }
 
                 if (dataAttr.hasOwnProperty("resultId")) {
