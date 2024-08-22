@@ -31,7 +31,7 @@ export default class BankFeedsCreate extends AbstractBankFeeds {
 
         xml.writeElement("FINANCIALENTITY", this.financialEntity, true);
 
-        xml.writeElementDate('FEEDDATE', this.feedDate);
+        xml.writeElementDate("FEEDDATE", this.feedDate);
 
         xml.writeElement("FEEDTYPE", this.feedType, true);
 
