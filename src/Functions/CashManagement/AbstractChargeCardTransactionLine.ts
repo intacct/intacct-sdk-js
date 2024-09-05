@@ -29,6 +29,7 @@ export default abstract class AbstractChargeCardTransactionLine implements IXmlO
     public departmentId: string;
     public locationId: string;
     public projectId: string;
+    public taskId: string;
     public customerId: string;
     public vendorId: string;
     public employeeId: string;
