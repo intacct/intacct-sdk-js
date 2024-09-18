@@ -49,6 +49,7 @@ export default class PurchasingTransactionLineCreate extends AbstractPurchasingT
 
     xml.writeCustomFieldsExplicit(this.customFields);
 
+    xml.writeElement("sourcelinekey", this.sourceLineKey);
     xml.writeElement("projectid", this.projectId);
     xml.writeElement("taskid", this.taskId);
     xml.writeElement("costtypeid", this.costTypeId);
