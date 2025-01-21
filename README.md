@@ -13,7 +13,7 @@ The application in this repository is currently **deployed** as a package depend
 
 ## Contact Information
 
-* accounting-automation-service is maintained by the Revenue and Payments Squad (OFD).
+* xometry/intacct-sdk-js is maintained by the Revenue and Payments Squad (OFD).
 * accountingenablement@xometry.com
 * If you are an on-call developer and need to route an alert about this service, in OpsGenie please route alerts to the "Financial Services and Supplies Domains" team.
 * If you have questions, the primary slack channel for discussion is [#order-fulfillment-engineering](https://xometry.slack.com/archives/C01V0FCEXBR), and you can tag @revenue-and-payments-tech
