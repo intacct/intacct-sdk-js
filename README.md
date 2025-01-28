@@ -9,6 +9,25 @@ This repository is a fork of intacct/intacct-sdk-js to add missing fields and ch
 
 The application in this repository is currently **deployed** as a package dependency of [accounting-automation-service](https://github.com/xometry/accounting-automation-service).
 
+## Deploying Changes
+
+Ensure PRs are set to merge to the `main` branch not the original Intacct `master` branch.
+To trigger deployment of any changes on merge make sure you add `feat:` to the beginning of the PR merge commit title.
+
+![example merge deploy](<Screenshot 2025-01-28 at 10.59.43 AM.png>)
+
+## Testing
+For testing changes to package locally use [yarn link](https://yarnpkg.com/cli/link).
+In the root directory of the project you want to use the local version of this intacct-sdk-js package run the following command:
+```
+yarn link ~/path-to-intacct-sdk-js/folder
+```
+
+When you are done testing make sure to unlink the local package:
+```
+yarn unlink ~/path-to-intacct-sdk-js/folder
+```
+
 🚨 **SOX:** This repository is under SOX control, please see [Xometry SOX Change Control Guidelines](https://xometry.atlassian.net/wiki/spaces/ACCTT/pages/6183256540/Xometry+SOX+Change+Control+Guidelines)
 
 ## Contact Information
