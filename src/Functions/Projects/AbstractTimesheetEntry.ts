@@ -29,7 +29,11 @@ export default abstract class AbstractTimesheetEntry extends AbstractFunction im
     public description: string;
     public notes: string;
     public taskRecordNo: number;
+    public taskId: string;
+    public costTypeId: string;
     public timeTypeName: string;
+    public laborClassId: string;
+    public laborUnionId: string;
     public billable: boolean;
     public overrideBillingRate: number;
     public overrideLaborCostRate: number;
