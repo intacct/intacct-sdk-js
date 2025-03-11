@@ -22,6 +22,19 @@ import AbstractFunction from "../../AbstractFunction";
 
 export default class GetList extends AbstractFunction {
     public object: string;
+    /** Maximum number of items to return. */
+    public maxitems?: number;
+    /** List of fields to return in the response. */
+    public fields?: string[];
+    /** First item from total result set to include in response, zero-based integer. */
+    public start?: number;
+    /** Show entity private records if running this at top level. */
+    public showprivate?: boolean;
+    // TODO: write filter property on GetList
+    /** Limits the objects to return based on their field values. */
+    // public filter?: unknown;
+    /** Sorts the objects to return based on their field values. */
+    public sorts?: Array<Record<string, "asc" | "desc">>;
 
     public writeXml(xml: IaXmlWriter): void {
         xml.writeStartElement("function");
@@ -29,6 +42,45 @@ export default class GetList extends AbstractFunction {
 
         xml.writeStartElement("get_list");
         xml.writeAttribute("object", this.object);
+
+        if (this.maxitems != null) {
+            // The API supports a negative maxitem, so no validation performed
+            xml.writeAttribute("maxitems", this.maxitems);
+        }
+
+        if (this.start != null) {
+            // The API supports a negative start, so no validation performed
+            xml.writeAttribute("start", this.start);
+        }
+
+        if (this.showprivate != null) {
+            xml.writeAttribute("showprivate", this.showprivate);
+        }
+
+        // TODO: filter
+
+        if (this.fields != null && this.fields.length > 0) {
+            xml.writeStartElement("fields");
+            for (const field of this.fields) {
+                xml.writeElement("field", field, false);
+            }
+            xml.writeEndElement(); // fields
+        }
+
+        if (this.sorts != null && this.sorts.length > 0) {
+            xml.writeStartElement("sorts");
+            for (const sort of this.sorts) {
+                for (const field in sort) {
+                    if (sort.hasOwnProperty(field)) {
+                        xml.writeStartElement("sortfield");
+                        xml.writeAttribute("order", sort[field]);
+                        xml.writeText(field);
+                        xml.writeEndElement(); // sortfield
+                    }
+                }
+            }
+            xml.writeEndElement(); // sorts
+        }
 
         xml.writeEndElement(); // get_list
 
