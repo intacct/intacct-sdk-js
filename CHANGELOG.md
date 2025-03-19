@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/xometry/intacct-sdk-js/compare/v2.4.0...v2.5.0) (2025-03-19)
+
+
+### Features
+
+* Merge pull request [#15](https://github.com/xometry/intacct-sdk-js/issues/15) from xometry/RP-665-release ([df55217](https://github.com/xometry/intacct-sdk-js/commit/df55217c0e7f0677a99c1e8c8e913b5b70d6b89d))
+
 # [2.4.0](https://github.com/xometry/intacct-sdk-js/compare/v2.3.0...v2.4.0) (2024-01-31)
 
 
