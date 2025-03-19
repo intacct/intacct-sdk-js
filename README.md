@@ -16,6 +16,8 @@ To trigger deployment of any changes on merge make sure you add `feat:` to the b
 
 ![example merge deploy](<Screenshot 2025-01-28 at 10.59.43 AM.png>)
 
+The semantic version should be automatically bumped by the `cycjimmy/semantic-release-action@v3` action defined in workflows/main.yml. Here is an [example commit by this bot](https://github.com/xometry/intacct-sdk-js/commit/dda86823145fd2624a9fac316749b5a7474afb59).
+
 ## Testing
 For testing changes to package locally use [yarn link](https://yarnpkg.com/cli/link).
 In the root directory of the project you want to use the local version of this intacct-sdk-js package run the following command:
