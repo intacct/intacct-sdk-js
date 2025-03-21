@@ -12,6 +12,7 @@ The application in this repository is currently **deployed** as a package depend
 ## Deploying Changes
 
 Ensure PRs are set to merge to the `main` branch not the original Intacct `master` branch.
+
 To trigger deployment of any changes on merge make sure you add `feat:` to the beginning of the PR merge commit title.
 
 ![example merge deploy](<Screenshot 2025-01-28 at 10.59.43 AM.png>)
