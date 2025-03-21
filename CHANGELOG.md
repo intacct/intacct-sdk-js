@@ -1,3 +1,11 @@
+# [2.6.0](https://github.com/xometry/intacct-sdk-js/compare/v2.5.0...v2.6.0) (2025-03-21)
+
+
+### Features
+
+* Merge pull request [#17](https://github.com/xometry/intacct-sdk-js/issues/17) from xometry/RP-665-c ([d940653](https://github.com/xometry/intacct-sdk-js/commit/d940653a9a704b610c9f329cd1b98c7956e401cb))
+* release previous changes to npm ([b0369db](https://github.com/xometry/intacct-sdk-js/commit/b0369dbe4377128fe47de4b8b2ac8ed7c18d896e))
+
 # [2.5.0](https://github.com/xometry/intacct-sdk-js/compare/v2.4.0...v2.5.0) (2025-03-19)
 
 
