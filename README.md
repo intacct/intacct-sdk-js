@@ -1,5 +1,20 @@
 # Sage Intacct SDK for JavaScript
 
+
+## ⚠️ Deprecation Notice ⚠️  
+
+As of **Sage Intacct 2025 Release 1** (February 2025), the **REST API** is **Generally Available (GA)**.  
+With this, we are **no longer actively developing enhancements** for the XML SDKs.  
+
+Developers can continue using the SDKs, but any future changes, maintenance, and feature development will be **self-managed**.  
+For new integrations, we strongly recommend using the [REST API](https://developer.sage.com/intacct/docs/).
+
+For any questions, refer to our [developer support](https://developer.sage.com/intacct/docs/developer-portal/rest-api-faq/).
+
+---
+
+
+
 [![npm version](https://badge.fury.io/js/%40intacct%2Fintacct-sdk.svg)](https://badge.fury.io/js/%40intacct%2Fintacct-sdk)
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.npmjs.com/package/@sage-intact/intacct-sdk)
 
