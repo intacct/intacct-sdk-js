@@ -21,44 +21,46 @@ import IaXmlWriter from "../../Xml/IaXmlWriter";
 import AbstractPurchasingTransactionLine from "./AbstractPurchasingTransactionLine";
 
 export default class PurchasingTransactionLineUpdate extends AbstractPurchasingTransactionLine {
+  public lineNo: number;
 
-    public lineNo: number;
+  public writeXml(xml: IaXmlWriter): void {
+    xml.writeStartElement("updatepotransitem");
 
-    public writeXml(xml: IaXmlWriter): void {
-        xml.writeStartElement("updatepotransitem");
+    xml.writeAttribute("line_num", this.lineNo);
+    xml.writeElement("itemid", this.itemId);
+    xml.writeElement("itemdesc", this.itemDescription);
+    xml.writeElement("taxable", this.taxable);
+    xml.writeElement("warehouseid", this.warehouseId);
+    xml.writeElement("quantity", this.quantity);
+    xml.writeElement("unit", this.unit);
+    xml.writeElement("price", this.price);
+    xml.writeElement("locationid", this.locationId);
+    xml.writeElement("departmentid", this.departmentId);
+    xml.writeElement("memo", this.memo);
 
-        xml.writeAttribute("line_num", this.lineNo);
-        xml.writeElement("itemid", this.itemId);
-        xml.writeElement("itemdesc", this.itemDescription);
-        xml.writeElement("taxable", this.taxable);
-        xml.writeElement("warehouseid", this.warehouseId);
-        xml.writeElement("quantity", this.quantity);
-        xml.writeElement("unit", this.unit);
-        xml.writeElement("price", this.price);
-        xml.writeElement("locationid", this.locationId);
-        xml.writeElement("departmentid", this.departmentId);
-        xml.writeElement("memo", this.memo);
-
-        if (this.itemDetails != null && this.itemDetails.length > 0) {
-            xml.writeStartElement("itemdetails");
-            for (const itemDetail of this.itemDetails) {
-                itemDetail.writeXml(xml);
-            }
-            xml.writeEndElement(); // itemdetails
-        }
-
-        xml.writeElement("form1099", this.form1099);
-
-        xml.writeCustomFieldsExplicit(this.customFields);
-
-        xml.writeElement("projectid", this.projectId);
-        xml.writeElement("customerid", this.customerId);
-        xml.writeElement("vendorid", this.vendorId);
-        xml.writeElement("employeeid", this.employeeId);
-        xml.writeElement("classid", this.classId);
-        xml.writeElement("contractid", this.contractId);
-        xml.writeElement("billable", this.billable);
-
-        xml.writeEndElement(); // updatepotransitem
+    if (this.itemDetails != null && this.itemDetails.length > 0) {
+      xml.writeStartElement("itemdetails");
+      for (const itemDetail of this.itemDetails) {
+        itemDetail.writeXml(xml);
+      }
+      xml.writeEndElement(); // itemdetails
     }
+
+    xml.writeElement("form1099", this.form1099);
+
+    xml.writeCustomFieldsExplicit(this.customFields);
+
+    xml.writeElement("sourcelinekey", this.sourceLineKey);
+    xml.writeElement("projectid", this.projectId);
+    xml.writeElement("taskid", this.taskId);
+    xml.writeElement("costtypeid", this.costTypeId);
+    xml.writeElement("customerid", this.customerId);
+    xml.writeElement("vendorid", this.vendorId);
+    xml.writeElement("employeeid", this.employeeId);
+    xml.writeElement("classid", this.classId);
+    xml.writeElement("contractid", this.contractId);
+    xml.writeElement("billable", this.billable);
+
+    xml.writeEndElement(); // updatepotransitem
+  }
 }
