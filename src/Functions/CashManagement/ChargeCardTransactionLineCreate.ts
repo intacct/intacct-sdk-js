@@ -39,6 +39,7 @@ export default class ChargeCardTransactionLineCreate extends AbstractChargeCardT
         xml.writeElement("vendorid", this.vendorId);
         xml.writeElement("employeeid", this.employeeId);
         xml.writeElement("projectid", this.projectId);
+        xml.writeElement("taskid", this.taskId);
         xml.writeElement("itemid", this.itemId);
         xml.writeElement("classid", this.classId);
         xml.writeElement("contractid", this.contractId);
