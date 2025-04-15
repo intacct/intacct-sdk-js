@@ -113,5 +113,9 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
+  },
+  "resolutions": {
+    "@semantic-release/git/micromatch/braces": "3.0.3",
+    "mocha/chokidar/braces": "3.0.3" 
   }
 }
