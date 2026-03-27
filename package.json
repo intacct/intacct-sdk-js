@@ -24,7 +24,7 @@
     "url": "https://github.com/intacct/intacct-sdk-js/issues"
   },
   "engines": {
-    "node": ">=14.20.0"
+    "node": ">=18.18.0"
   },
   "files": [
     "/dist"
@@ -58,7 +58,7 @@
     "@types/xml2js": "^0.4.8",
     "@types/xmlbuilder": "^0.0.32",
     "chai": "~4.2.0",
-    "mocha": "^10.0.0",
+    "mocha": "^11.0.0",
     "mock-fs": "^4.13.0",
     "nock": "^13.0.11",
     "nyc": "^15.1.0",
@@ -79,5 +79,8 @@
     "winston": "^3.3.3",
     "xml2js": "^0.5.0",
     "xmlbuilder": "^12.0.1"
+  },
+  "overrides": {
+    "serialize-javascript": "^7.0.5"
   }
 }
