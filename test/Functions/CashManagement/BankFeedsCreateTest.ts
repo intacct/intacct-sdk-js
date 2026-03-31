@@ -37,11 +37,7 @@ describe("BankFeedsCreate", () => {
         <create>
             <BANKACCTTXNFEED>
                 <FINANCIALENTITY>BA1145</FINANCIALENTITY>
-                <FEEDDATE>
-                    <year>2015</year>
-                    <month>06</month>
-                    <day>30</day>
-                </FEEDDATE>
+                <FEEDDATE>2015/06/15</FEEDDATE>
                 <FEEDTYPE>onl</FEEDTYPE>
             </BANKACCTTXNFEED>
         </create>
@@ -62,12 +58,8 @@ describe("BankFeedsCreate", () => {
     <function controlid="unittest">
         <create>
             <BANKACCTTXNFEED>
-                <FINANCIALENTITY>BA1145</FINANCIALENTITY>
-                <FEEDDATE>
-                    <year>2015</year>
-                    <month>06</month>
-                    <day>30</day>
-                </FEEDDATE>
+                <FINANCIALENTITY>BA1145</FINANCIALENTITY>                
+                <FEEDDATE>2015/06/30</FEEDDATE>
                 <FEEDTYPE>xml</FEEDTYPE>
                 <BANKACCTTXNRECORDS>
                     <BANKACCTTXNRECORD>
